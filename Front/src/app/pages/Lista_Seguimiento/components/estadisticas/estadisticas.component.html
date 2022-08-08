@@ -1,0 +1,88 @@
+<div class="estadisticas">
+    <div class="estadisticas-info">
+        <div class="estadisticas-info__left">
+            <div class="estadisticas-info__data">
+                <div class="estadisticas-info__data--title">
+                    <label>NOMBRE PROYECTO</label>
+                </div>
+                <div class="estadisticas-info__data--content">
+                    <label>{{projectName}}</label>
+                </div>
+            </div>
+
+            <div class="estadisticas-info__data">
+                <div class="estadisticas-info__data--title">
+                    <label>OBJETIVO DEL PROYECTO</label>
+                </div>
+                <div class="estadisticas-info__data--content">
+                    <label>{{projectObjective}}</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="estadisticas-info__right">
+            <div class="estadisticas-info__data">
+                <div class="estadisticas-info__data--title">
+                    <label>INVESTIGADOR PRINCIPAL</label>
+                </div>
+                <div class="estadisticas-info__data--content">
+                    <label>{{principal}}</label>
+                </div>
+            </div>
+
+            <div class="estadisticas-info__data">
+                <div class="estadisticas-info__data--title">
+                    <label>FECHA INICIO - CIERRE</label>
+                </div>
+                <div class="estadisticas-info__data--content">
+                    <label>{{initialDate}} - {{finalDate}}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="estadisticas-finaciera">
+        <div class="estadisticas-finaciera__title">
+            <label>EJECUCIÓN FINANCIERA</label>
+        </div>
+        <div class="charts" *ngIf="chartData.length > 0">
+            <div style="width: 100%;">
+                <canvas
+                    baseChart
+                    [chartType]="'bar'"
+                    [legend]="true"
+                    [options]="options"
+                    [datasets]="chartData">
+
+                </canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="estadisticas-finaciera">
+        <div class="estadisticas-finaciera__title">
+            <label>EJECUCIÓN TECNICA</label>
+        </div>
+        <div class="charts" *ngIf="chartActividad.length > 0">
+            <div *ngFor="let chart of chartActividad" style="width: 100%;">
+                <ng-container *ngIf="chart.listaCharts.length > 0">
+                    <div *ngFor="let chartData of chart.listaCharts">
+                        <div class="title-chart">
+                            <label>Objetivo: {{chart.objetivo}}</label>
+                        </div>
+                        <div class="title-chart">
+                            <label>Actividad: {{chart.nombreActividad}}</label>
+                        </div>
+                        <canvas
+                            baseChart
+                            [chartType]="'bar'"
+                            [legend]="true"
+                            [options]="options"
+                            [datasets]="chartData">
+                        </canvas>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>

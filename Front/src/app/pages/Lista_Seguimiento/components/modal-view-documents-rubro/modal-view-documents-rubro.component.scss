@@ -1,0 +1,90 @@
+$background-color: #F1F5F9;
+$background-header-color: #F3F2F7;
+$text-color: #2E3A4C;
+$white-color: #FFF;
+$background-green-button: #E4F8ED;
+$border-green-button: #2AC770;
+$background-purple-button: #EEEDFD;
+$border-purple-button: #7366F0;
+$background-orange-button: #FFF3E8;
+$border-orange-button: #FFB46C;
+$background-red-button: #FCEAEA;
+$border-red-button: #ED6667;
+
+.modal-rubros-documentos-dashboard {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  color: $text-color;
+  margin-top: 20px;
+  min-height: 200px;
+  min-width: 820px;
+
+  &__table {
+    border-collapse: collapse;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    margin: 0 auto;
+    width: 75%;
+
+    thead {
+      background-color: $background-header-color;
+      font-weight: bold;
+      font-size: 15px;
+    }
+
+    &--title {
+      text-align: center;
+    }
+
+    .square-icon-default {
+      background-color: $background-orange-button;
+      color: $border-orange-button;
+      border-radius: 10px;
+      cursor: pointer;
+      height: 36px;
+      padding: 5px;
+      width: 36px;
+    }
+
+    .square-red-icon {
+      @extend .square-icon-default;
+      background-color: $background-red-button;
+      color: $border-red-button;
+    }
+
+    .square-orange-icon {
+      @extend .square-icon-default;
+      background-color: $background-orange-button;
+      color: $border-orange-button;
+    }
+  }
+
+  &__title {
+    text-align: center;
+    width: 100%;
+
+    label {
+      display: block;
+      font-weight: bold;
+      font-size: 16px;
+
+      &:first-child {
+        font-size: 20px;
+      }
+    }
+  }
+
+  &__button {
+    margin-top: 20px;
+    text-align: center;
+    width: 100%;
+  }
+}
+
+.icon-click-pdf {
+  margin: 0 auto;
+
+  span{
+    cursor: pointer;
+  }
+}

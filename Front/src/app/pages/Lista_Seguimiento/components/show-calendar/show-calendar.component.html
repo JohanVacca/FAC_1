@@ -1,0 +1,20 @@
+<div class="show-calendar-seguimiento">
+    <div class="show-calendar-seguimiento__title">
+        <label>{{data.name}}</label>
+    </div>
+    <div class="show-calendar-seguimiento__sub-title">
+        <label>{{SUB_TITLE}} <b>{{data.name}}</b></label>
+    </div>
+    <div class="show-calendar-seguimiento__calendar">
+        <mat-form-field appearance="fill">
+            <mat-label>Seleccionar fecha</mat-label>
+            <input matInput [matDatepicker]="picker" (dateInput)="OnDateChange($event.value)">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div class="show-calendar-seguimiento__button">
+        <button [disabled]="!selectedDate" mat-button mat-stroked-button (click)="saveDate()">{{SAVE_DATE}}</button>
+        <button mat-button mat-stroked-button (click)="saveDate()">{{CANCEL}}</button>
+    </div>
+</div>

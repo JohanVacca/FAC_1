@@ -1,0 +1,53 @@
+<div class="container">
+  <mat-card>
+    <mat-card-title>Registrar Grupo</mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="registroGrupo" autocomplete="off">
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Nombre del Grupo</mat-label>
+          <input formControlName="nombreGrupo" matInput>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Código del Grupo</mat-label>
+          <input (keyup)="validateGroupCode($event.target.value)" type="text" formControlName="codigo" matInput>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Líder del Grupo</mat-label>
+          <input formControlName="lider" matInput>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Categoría</mat-label>
+          <mat-select formControlName="categoria" name="groupCats">
+            <mat-option *ngFor="let groupCat of groupCats" [value]="groupCat.descr">
+              {{groupCat.descr}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Antiguedad (en años)</mat-label>
+          <input type="number" formControlName="antiguedad" matInput>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Entidad</mat-label>
+          <input formControlName="entidad" matInput>
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+
+    <div *ngIf="showErrorGroupCode" class="error-message-label-reg">
+      <label>{{errorMessageGroupCode}}</label>
+    </div>
+
+    <mat-card-actions class="btncrear">
+      <button *ngIf="!data.actualizar && !showErrorGroupCode" [disabled]="!registroGrupo.valid" (click)="guardarGrupo($event)" mat-raised-button
+        color="primary" mat-dialog-close="false">Crear</button>
+      <button *ngIf="data.actualizar" [disabled]="!registroGrupo.valid" (click)="updateGrupo()" mat-raised-button
+        color="primary" mat-dialog-close="false">Actualizar</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

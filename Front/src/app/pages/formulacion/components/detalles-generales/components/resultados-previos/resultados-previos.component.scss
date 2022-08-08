@@ -1,0 +1,16 @@
+.text-area-generico {
+  &__title {
+    padding: 20px 20px 0;
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+  &__input {
+    padding: 20px;
+
+    textarea {
+      min-height: 150px;
+      width: 100%;
+    }
+  }
+}

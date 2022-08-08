@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 md-6 sm-3">
+      <mat-card>
+        <mat-card-title>Anexos de la investigación</mat-card-title>
+        <from [formGroup]="complemento">
+          <div>
+            <mat-form-field class="full-width" appearance="fill">
+              <mat-label>Elegir Tipo de Complemento</mat-label>
+              <mat-select formControlName="Complements" name="complemento">
+                <mat-option *ngFor="let complemento of complementos" [value]="complemento" (click)="Activar()">
+                  {{complemento}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <button mat-icon-button matTooltipClass="tooltip-white" *ngIf="acti" (click)="openDialog()" matTooltip="Agregar Complemento"
+            matTooltipPosition="above">
+            <mat-icon class="iconoadd">add_circle</mat-icon>
+          </button>
+          </div>
+        </from>
+      </mat-card>
+    </div>
+  </div>
+
+  <table *ngIf="Val" class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Tipo de documento</th>
+        <th scope="col">Nombre del Documento</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let Doc of dataSource; index as i">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>
+        {{ Doc.name }}
+        </td>
+        <td>
+          {{ Doc.NombreDoc }}
+        </td>
+        <th>
+          <button mat-icon-button aria-label="Example icon-button with a heart icon"
+            matTooltipClass="tooltip-white" matTooltip="Eliminar" matTooltipPosition="above"
+            (click)="deleteFile(Doc)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </th>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+  

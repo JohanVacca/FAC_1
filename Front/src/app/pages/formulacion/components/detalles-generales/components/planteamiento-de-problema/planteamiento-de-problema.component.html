@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 md-6 sm-3">
+            <mat-card class="planteamiento-card">
+                <mat-card-title>Planteamiento de problema</mat-card-title>
+                <mat-card-content>
+                    <form [formGroup]="planteamientoForm">
+                        <mat-card-subtitle>Planteamiento del problema</mat-card-subtitle>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Planteamiento del problema</mat-label>
+                            <textarea formControlName="planteamiento" matInput></textarea>
+                        </mat-form-field>
+
+                        <mat-card-subtitle>¿En qué consiste?</mat-card-subtitle>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>¿En qué consiste?</mat-label>
+                            <textarea formControlName="enQueConsiste" matInput></textarea>
+                        </mat-form-field>
+
+                        <mat-card-subtitle>¿Por qué se requiere?</mat-card-subtitle>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>¿Por qué se requiere?</mat-label>
+                            <textarea formControlName="porQueSeRequiere" matInput></textarea>
+                        </mat-form-field>
+
+                        <mat-card-subtitle>¿Para qué desarrollarlo?</mat-card-subtitle>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>¿Para qué desarrollarlo?</mat-label>
+                            <textarea formControlName="paraQueDesarrollarlo" matInput></textarea>
+                        </mat-form-field>
+
+                        <mat-card-subtitle>Beneficios para la FAC</mat-card-subtitle>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Beneficios para la FAC</mat-label>
+                            <textarea formControlName="beneficiosFAC" matInput></textarea>
+                        </mat-form-field>
+
+                        <mat-card-subtitle>Utilidad</mat-card-subtitle>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Utilidad</mat-label>
+                            <input type="number" formControlName="utilidad" matInput>
+                        </mat-form-field>
+
+                        <mat-card-subtitle>Inversion</mat-card-subtitle>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Inversion</mat-label>
+                            <input type="number" formControlName="inversion" matInput>
+                        </mat-form-field>
+                    </form>
+                </mat-card-content>
+                <mat-card-actions class="planteamiento-card__btn">
+                    <button [disabled]="!planteamientoForm.valid" (click)="agregarPlanteamiento()" mat-raised-button
+                            color="primary">Crear
+                    </button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>

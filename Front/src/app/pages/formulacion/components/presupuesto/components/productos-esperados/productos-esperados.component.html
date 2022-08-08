@@ -1,0 +1,66 @@
+<mat-card class="card">
+  <div class="container">
+    <mat-card-title>
+      Lista de Productos
+      <button mat-icon-button matTooltipClass="tooltip-white" (click)="agregarProducto()" matTooltip="Agregar Entidad"
+        matTooltipPosition="above">
+        <mat-icon class="iconoadd">add_circle</mat-icon>
+      </button>
+    </mat-card-title>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="tipo">
+        <th mat-header-cell *matHeaderCellDef> Tipo de Producto </th>
+        <td mat-cell *matCellDef="let element"> {{element.tipoProducto}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="rubro">
+        <th mat-header-cell *matHeaderCellDef> Rubro </th>
+        <td mat-cell *matCellDef="let element">{{element.rubroRelacionado}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="descripcion">
+        <th mat-header-cell *matHeaderCellDef> Descripcion </th>
+        <td mat-cell *matCellDef="let element">{{element.descripcion}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="fuerza">
+        <th mat-header-cell *matHeaderCellDef> % Fuerza Arm </th>
+        <td mat-cell *matCellDef="let element">{{element.partFuerza}}</td>
+      </ng-container>
+      <ng-container matColumnDef="otro">
+        <th mat-header-cell *matHeaderCellDef> % Otro </th>
+        <td mat-cell *matCellDef="let element">{{element.partOtros}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="acciones">
+        <th scope="col" mat-header-cell *matHeaderCellDef>Acciones</th>
+        <td mat-cell *matCellDef="let row">
+          <ul class="table-action-list">
+            <li>
+              <button mat-icon-button aria-label="Example icon-button with a heart icon" (click)="deleteProducto(row)"
+                matTooltipClass="tooltip-white" matTooltip="Eliminar registro" matTooltipPosition="above">
+
+                <mat-icon>delete</mat-icon>
+              </button>
+            </li>
+
+            <li>
+              <button mat-icon-button aria-label="Example icon-button with a heart icon" (click)="updateProducto(row)"
+                matTooltipClass="tooltip-white" matTooltip="Editar registro" matTooltipPosition="above">
+
+                <mat-icon>edit</mat-icon>
+              </button>
+            </li>
+          </ul>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+
+  </div>
+</mat-card>

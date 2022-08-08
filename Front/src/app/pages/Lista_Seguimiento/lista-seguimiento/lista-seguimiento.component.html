@@ -1,0 +1,39 @@
+<div class="container">
+  <mat-card class="card">
+    <mat-card-title>Listado de Convocatorias Para hacer seguimiento</mat-card-title>
+    <mat-card-subtitle>En la siguiente tabla encontrará las convocatorias activas en el sistema</mat-card-subtitle>
+
+    <table mat-table [dataSource]="dataSource1" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Nombre. </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="Descripcion">
+        <th mat-header-cell *matHeaderCellDef> Descripcion </th>
+        <td mat-cell *matCellDef="let element">{{element.Descripcion}}</td>
+      </ng-container>
+      <ng-container matColumnDef="acciones">
+        <th scope="col" mat-header-cell *matHeaderCellDef>Acciones</th>
+        <td mat-cell *matCellDef="let row">
+          <ul class="table-action-list">
+            <li>
+              <button mat-icon-button aria-label="Example icon-button with a heart icon"
+                (click)="view(row._id,row.ProyectoBloqueado,row)" matTooltipClass="tooltip-white"
+                matTooltip="Ver Proyectos" matTooltipPosition="above">
+                <mat-icon>preview</mat-icon>
+              </button>
+            </li>
+          </ul>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
+
+    </table>
+
+  
+  </mat-card>
+</div>

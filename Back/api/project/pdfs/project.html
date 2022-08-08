@@ -1,0 +1,258 @@
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Titillium+Web:400,700');
+  * {
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 1.4em;
+    font-weight: bold;
+  }
+
+  p span {
+    font-weight: bold;
+  }
+
+  .box {
+    margin-top: 16px;
+    border: 1px solid grey;
+    padding: 6px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .border {
+    border: 1px solid;
+    padding: 8px;
+  }
+
+  span.key-words {
+    border: 1px solid #e0d9d9;
+    padding: 6px;
+    margin: 16px;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .uppercase {
+    text-transform: uppercase;
+  }
+
+  .bold {
+    font-weight: bold;
+  }
+
+  .no-line {
+    line-height: 1;
+  }
+
+  .intern-code {
+    width: 200px;
+    float: right;
+  }
+  .bg-grey {
+    background-color: #f2f2f2;
+  }
+  .padding {
+    padding: 6px;
+  }
+  .bg-blue {
+    background: #001f60;
+    color: white;
+    text-align: center;
+  }
+</style>
+<div id="following-preview" class="print-section">
+  <div id="pageHeader">
+    <span style="float: right"></span>
+    <table style="height: 63px; width: 100%;" border="1">
+      <tbody>
+      <tr style="height: 50px;">
+        <td style="width: 20%; height: 100%;">&nbsp;</td>
+        <td style="width: 50%; height: 100%;">
+          <table style="height: 50px; width: 100%;">
+            <tbody>
+            <tr>
+              <td style="width: 100%;">
+                <h1 class="text-center uppercase bold no-line">FUERZA A&Eacute;REA COLOMBIANA</h1>
+                <h2 class="text-center uppercase bold no-line">AUTORIDAD AERON&Aacute;UTICA DE LA AVIACI&Oacute;N DE ESTADO</h2>
+              </td>
+            </tr>
+            <tr>
+              <td style="width: 334px;">&nbsp;<br />
+                <table>
+                  <tbody>
+                  <tr>
+                    <td rowspan="2">
+                      <h3 class="text-center uppercase">FORMATO FORMULACI&Oacute;N PROYECTO DE I+D+i</h3>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+        <td style="width: 30%; height: 100%;">
+          <table style="height: 100%; width: 100%;">
+            <tbody>
+            <tr>
+              <td class="text-center bold" style="width: 87px;">C&oacute;digo</td>
+              <td class="text-center bold" style="width: 88px;">GH-JEA-FR-014</td>
+            </tr>
+            <tr>
+              <td class="text-center bold" style="width: 87px;">Versi&oacute;n N&ordm;</td>
+              <td class="text-center bold" style="width: 88px;">01</td>
+            </tr>
+            <tr>
+              <td class="text-center bold" style="width: 87px;">Vigencia</td>
+              <td class="text-center bold" style="width: 88px; ">22-11-2018</td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="intern-code">
+    <table style="height: 42px; width: 100%" border="1">
+      <tbody>
+      <tr>
+        <td class="bg-grey padding" style="width: 133px;">C&oacute;digo Interno</td>
+        <td class="padding" style="width: 133px;">FP-__/ 20___</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div>
+    <table style="height: 231px; width: 100%;" border="1">
+      <tbody>
+
+      <!-- Información General -->
+      <tr>
+        <td class="bg-blue bold uppercase" style="width: 583px; text-align: center;">Informaci&oacute;n General</td>
+      </tr>
+      <tr>
+        <td style="width: 583px;">
+          <table style="height: 191px; width: 100%;" border="1">
+            <tbody>
+            <tr>
+              <td class="bg-grey" style="width: 160px;">Unidad/Dependencia</td>
+              <td style="width: 430px;">
+                <table style="height: 28px; width: 100%;" border="1">
+                  <tbody>
+                  <tr>
+                    <td style="width: 262px;">${project.dependency}</td>
+                    <td class="bg-grey" style="width: 41px;">Fecha</td>
+                    <td style="width: 152px;">&nbsp;</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td class="bg-grey" style="width: 160px;">Gestor ACTI</td>
+              <td style="width: 430px;">${project.names} ${project.surname}</td>
+            </tr>
+            <tr>
+              <td class="bg-grey" style="width: 160px;">Contactos del Gestor</td>
+              <td style="width: 430px;">
+                <table style="height: 36px; width: 100%;" border="1">
+                  <tbody>
+                  <tr>
+                    <td style="width: 150px;">${project.email}</td>
+                    <td style="width: 151px;">&nbsp;</td>
+                    <td style="width: 153px;">${project.phoneNumber}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td class="bg-grey" style="width: 160px;">Programa de Investigaci&oacute;n</td>
+              <td style="width: 430px;">${project.invProgram.descr}</td>
+            </tr>
+            <tr>
+              <td class="bg-grey" style="width: 160px;">SubPrograma de Investigaci&oacute;n</td>
+              <td style="width: 430px;">${project.invSubProgram.descr}</td>
+            </tr>
+            <tr>
+              <td class="bg-grey" style="width: 160px;">L&iacute;nea de Investigaci&oacute;n</td>
+              <td style="width: 430px;">${project.invLine.descr}</td>
+            </tr>
+            <tr>
+              <td class="bg-grey" style="width: 160px;">Qui&eacute;n avala la Postulaci&oacute;n</td>
+              <td style="width: 430px;">${project.invEndorser.descr}</td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+
+      <!-- Tipo de Investigación -->
+      <tr>
+        <td class="bg-blue bold" style="width: 100%; text-align: center;">
+          <span class="uppercase"> TIPO DE INVESTIGACI&Oacute;N A DESARROLLAR</span>
+          (Refi&eacute;rase al Modelo de Investigaci&oacute;n del SEFAC)
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <table border="1">
+            <tbody>
+            <tr>
+              <td class="bg-grey">Aplicada</td>
+              <td></td>
+              <td class="bg-grey">Desarollo Tecnol&oacute;gico</td>
+              <td></td>
+              <td class="bg-grey">Innovaci&oacute;n</td>
+              <td></td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+
+      <!-- Componente Científico Tecnológico -->
+      <tr>
+        <td class="bg-blue bold" style="width: 100%; text-align: center;">
+          <span class="uppercase">COMPONENTE CIENT&Iacute;FICO-TECNOL&Oacute;GICO</span>
+        </td>
+      </tr>
+
+      <tr>
+        <td style="width: 583px;">
+          <table style="height: 191px; width: 100%;" border="1">
+            <tbody>
+            <tr>
+              <td class="bg-grey" style="width: 160px;">Título del Proyecto</td>
+              <td style="width: 430px;">${project.title}</td>
+            </tr>
+
+            <tr>
+              <td class="bg-grey" style="width: 160px;">Duración</td>
+              <td style="width: 430px;">${project.durationOfMonths}</td>
+            </tr>
+
+            <tr>
+              <td class="bg-grey" style="width: 160px;">Lugar de Ejecución</td>
+              <td style="width: 430px;">${project.placeOfExecution}</td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

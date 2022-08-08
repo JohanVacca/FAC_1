@@ -1,0 +1,768 @@
+<div class="container">
+    <div class="container">
+        <div class="row">
+            <div id="PROYECTPDF">
+                <table class="table table-pdf-form centrar-todo">
+                    <thead>
+                    <tr>
+                        <td class="image-table" colspan="3" rowspan="3">
+                            <img src="assets/images/logo.png" alt="Logo FAC">
+                        </td>
+                        <td class="cssencabezado" colspan="5">FUERZA AÉREA COLOMBIANA</td>
+                        <td class="cssencabezado" colspan="1">Código</td>
+                        <td class="cssencabezado" colspan="3">GH-JEAES-FR-296</td>
+                    </tr>
+                    <tr>
+                        <td class="cssencabezado" colspan="5" rowspan="2">
+                            FORMATO FORMULACIÓN PROYECTO DE I+D+i
+                        </td>
+                        <td colspan="1" class="cssencabezado">Versión N°</td>
+                        <td colspan="3" class="cssencabezado">02</td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" class="cssencabezado">Vigencia</td>
+                        <td colspan="3" class="cssencabezado">12-04-2021</td>
+                    </tr>
+                    </thead>
+                </table>
+
+                <div class="table-codigo-right">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td class="title-table-codigo"><label>Código interno</label></td>
+                            <td>FP-___/20___</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <table class="table table-pdf-form">
+                    <thead>
+                    <tr class="table-title">
+                        <td style="width: 100%" colspan="4">INFORMACION GENERAL</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 25%">Unidad/Dependencia</td>
+                        <td style="width: 25%">{{unidadDependencia}}</td>
+                        <td style="width: 25%">Fecha</td>
+                        <td style="width: 25%">{{date}}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 25%">Gestor ACTI</td>
+                        <td style="width: 75%" colspan="3">{{gestor}}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 25%">Contactos del Gestor</td>
+                        <td style="width: 25%">{{email}}</td>
+                        <td style="width: 25%">{{telefonoGestor}}</td>
+                        <td style="width: 25%"></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 25%">Programa de investigación</td>
+                        <td style="width: 75%" colspan="3">{{programa}}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 25%">Subprograma de investigación</td>
+                        <td style="width: 75%" colspan="3">{{subprograma}}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 25%">Línea de investigación</td>
+                        <td style="width: 75%" colspan="3">{{linea}}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 25%">Quién avala la Postulación</td>
+                        <td style="width: 75%" colspan="3">{{avala}}</td>
+                    </tr>
+                    </thead>
+                </table>
+
+                <table class="table table-pdf-form">
+                    <thead>
+                    <tr class="table-title">
+                        <td style="width: 100%" colspan="6">
+                            COMPONENTE CIENTÍFICO-TECNOLÓGICO
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 25%">Aplicada</td>
+                        <td style="width: 9%">
+                            <div *ngIf="modelo==='Aplicada'">
+                                <label>X</label>
+                            </div>
+                        </td>
+                        <td style="width: 25%">Desarrollo tecnológico</td>
+                        <td style="width: 8%">
+                            <div *ngIf="modelo==='Desarrollo Tecnológico'">
+                                <label>X</label>
+                            </div>
+                        </td>
+                        <td style="width: 25%">Innovación</td>
+                        <td style="width: 8%">
+                            <div *ngIf="modelo==='Innovación'">
+                                <label>X</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 25%">Trabajo de Grado Apoyo Educativo</td>
+                        <td style="width: 9%">
+                            <div *ngIf="modelo==='Trabajo de Grado Apoyo Educativo'">
+                                <label>X</label>
+                            </div>
+                        </td>
+                        <td style="width: 25%">Nombre del Programa Académico</td>
+                        <td style="width: 25%" colspan="3">
+                            <div *ngIf="modelo==='Nombre del Programa Académico'">
+                                <label>X</label>
+                            </div>
+                        </td>
+                    </tr>
+                    </thead>
+                </table>
+
+                <table class="table table-pdf-form">
+                    <thead>
+                    <tr class="table-title">
+                        <td style="width: 100%" colspan="4">TIPO DE INVESTIGACIÓN A DESARROLLAR (Refiérase al Modelo de
+                            Investigación del SEFAC)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 25%">Titulo del Proyecto</td>
+                        <td style="width: 75%" colspan="3">{{nombreProyecto}}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 25%">Duración</td>
+                        <td style="width: 75%" colspan="3">{{duracion}} Meses</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 25%">Lugar de ejecución</td>
+                        <td style="width: 75%" colspan="3">{{lugar}}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 25%">Centro(s) de Investigación</td>
+                        <td style="width: 75%" colspan="3">{{centroDeInvestigacion}}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 25%">Grupo(s) de investigación</td>
+                        <td style="width: 75%" colspan="3">
+                            <div>
+                                <table *ngFor="let grupo of grupos">
+                                    <thead>
+                                    <tr>
+                                        <td class="title-table-grupo" style="width: 25%"><label>Nombre Grupo</label>
+                                        </td>
+                                        <td style="width: 75%" colspan="3">{{grupo.nombreGrupo}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title-table-grupo" style="width: 25%"><label>Categoria</label></td>
+                                        <td style="width: 75%" colspan="3">{{grupo.categoria}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title-table-grupo" style="width: 25%"><label>Líder Grupo</label></td>
+                                        <td style="width: 75%" colspan="3">{{grupo.lider}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title-table-grupo" style="width: 25%"><label>Código GrupLAC</label>
+                                        </td>
+                                        <td style="width: 75%" colspan="3">{{grupo.codigo}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title-table-grupo" style="width: 25%"><label>Entidad</label></td>
+                                        <td style="width: 75%" colspan="3">{{grupo.entidad}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title-table-grupo" style="width: 25%"><label>VoBo Líder del
+                                            Grupo</label></td>
+                                        <td style="width: 75%" colspan="3">{{grupo.lider}}</td>
+                                    </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 25%">Equipo investigador</td>
+                        <td style="width: 75%" colspan="3">
+                            <div>
+                                <table>
+                                    <thead>
+                                    <tr class="title-table-equipo">
+                                        <th><b><label>Grado. Apellidos y Nombres</label></b></th>
+                                        <th><b><label>Dedicación</label></b></th>
+                                        <th><b><label>Grupo de Investigación</label></b></th>
+                                        <th><b><label>Tipo de rol</label></b></th>
+                                        <th><b><label>Función</label></b></th>
+                                    </tr>
+                                    <tr *ngFor="let equipo of equipoInvestigacion">
+                                        <td>{{equipo.apellido}}</td>
+                                        <td>{{equipo.dedicacion}}</td>
+                                        <td>{{equipo.grupos}}</td>
+                                        <td>{{equipo.cargo}}</td>
+                                        <td>{{equipo.cargo}}</td>
+                                    </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 25%">Resumen / Abstract</td>
+                        <td style="width: 75%" colspan="3">{{resumen}}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 25%">Palabras clave</td>
+                        <td style="width: 75%" colspan="3">
+                            <ul>
+                                <li *ngFor="let palabra of palabrasClave">{{palabra.palabra}}</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 25%">Planteamiento del Problema</td>
+                        <td style="width: 75%" colspan="3">{{planteamiento?.planteamiento}}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 25%">Justificación, Pertinencia y Oportunidad del Proyecto</td>
+                        <td style="width: 75%" colspan="3">
+                            <div>
+                                <table>
+                                    <tbody>
+                                    <tr>
+                                        <td class="title-table-justificacion"><label>En qué consiste?</label></td>
+                                        <td style="width: 100%">{{planteamiento?.enQueConsiste}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title-table-justificacion"><label>Por qué se requiere?</label></td>
+                                        <td style="width: 100%">{{planteamiento?.porQueSeRequiere}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title-table-justificacion"><label>Para qué desarrollarlo?</label>
+                                        </td>
+                                        <td style="width: 100%">{{planteamiento?.paraQueDesarrollarlo}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title-table-justificacion"><label>Beneficions para la FAC</label>
+                                        </td>
+                                        <td style="width: 100%">{{planteamiento?.beneficiosFAC}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title-table-justificacion"><label>Indicador ROI</label></td>
+                                        <td style="width: 100%">
+                                            {{calculateRoiIndicator()}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title-table-justificacion"><label>VoBo Proceso</label></td>
+                                        <td class="firma-imagen-center" style="width: 100%">
+                                            <img class="firma-imagen-pdf" *ngIf="firmaInvestigadorPrincipal"
+                                                 src="data:image/png;base64,{{firmaInvestigadorPrincipal.data}}"
+                                                 alt="Imagen De Firma">
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 25%">Marco Conceptual</td>
+                        <td style="width: 75%" colspan="3">{{marcoConceptual}}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 25%">Estado del Arte</td>
+                        <td style="width: 75%" colspan="3">{{estadoArte}}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 25%">Resultados Previos de la Investigación</td>
+                        <td style="width: 75%" colspan="3">{{resultadosPrevios}}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 25%">Pregunta de investigación</td>
+                        <td style="width: 75%" colspan="3">{{pregunta}}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 25%">Objetivo General del Proyecto</td>
+                        <td style="width: 75%" colspan="3">{{objetivoGeneral}}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 25%">Objetivos Específicos</td>
+                        <td style="width: 75%" colspan="3">
+                            <ul>
+                                <li *ngFor="let objetivo of objetivosEspecificos">{{objetivo.descr}}</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 25%">Metodología</td>
+                        <td style="width: 75%" colspan="3">
+                            {{metodologia}}
+                            <ul>
+                                <li *ngFor="let metodologiaObject of listaDeMetodologia">
+                                    {{metodologiaObject.objetivo}}
+                                    <ul>
+                                        <li *ngFor="let actividad of metodologiaObject.actividades">{{actividad}}</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 25%">Resultados Esperados</td>
+                        <td style="width: 75%" colspan="3">{{resultadosEsperados}}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 25%">Productos Esperados</td>
+                        <td style="width: 75%" colspan="3">
+                            <div>
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <th rowspan="2" class="title-table-productos"><label>Tipo de producto</label>
+                                        </th>
+                                        <th rowspan="2" class="title-table-productos"><label>Descripción</label></th>
+                                        <th colspan="2" class="title-table-productos"><label>Participación*</label></th>
+                                    </tr>
+                                    <tr>
+                                        <th class="title-table-productos"><label>FAC</label></th>
+                                        <th class="title-table-productos"><label>OTRA</label></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr *ngFor="let productosEsperado of productosEsperados">
+                                        <td class="title-table-productos">
+                                            <label>{{productosEsperado.tipoProducto}}</label>
+                                        </td>
+                                        <td><b>{{productosEsperado.rubroRelacionado}}</b></td>
+                                        <td><b>{{productosEsperado.partFuerza}}%</b></td>
+                                        <td><b>{{productosEsperado.partOtros}}%</b></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div>
+                                <label>
+                                    *Porcentaje de titularidad de la Propiedad Intelectual de las instituciones
+                                    participantes del proyecto para cada uno de los productos esperados. Cuando los
+                                    resultados del proyecto de investigación a desarrollar se consideren temas de
+                                    Defensa y
+                                    Seguridad Nacional, los derechos de Propiedad Intelectual serán exclusivamente del
+                                    Ministerio de Defensa.
+                                </label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 25%">Estructura de Trabajo para el Desarrollo de Productos</td>
+                        <td style="width: 75%" colspan="3">
+                            <div>
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <td class="title-table-estructura"><label>No.</label></td>
+                                        <td class="title-table-estructura"><label>Actividad</label></td>
+                                        <td class="title-table-estructura"><label>% Actividad</label></td>
+                                        <td class="title-table-estructura"><label>Objetivo</label></td>
+                                        <td class="title-table-estructura"><label>Recursos</label></td>
+                                        <td class="title-table-estructura"><label>Fecha Inicio</label></td>
+                                        <td class="title-table-estructura"><label>Fecha Final</label></td>
+                                        <td class="title-table-estructura"><label>Resultado esperados</label></td>
+                                        <td class="title-table-estructura"><label>Productos esperados</label></td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <ng-container *ngFor="let activity of listaDeActividades; let i = index">
+                                        <tr *ngFor="let sub of activity.subActividad; let j = index">
+                                            <td *ngIf="j===0"
+                                                [attr.rowspan]="activity.subActividad.length">
+                                                <b>{{i + 1}}</b>
+                                            </td>
+                                            <td *ngIf="j===0"
+                                                [attr.rowspan]="activity.subActividad.length">
+                                                <b>{{activity.nombreAct}}</b>
+                                            </td>
+                                            <td>
+                                                <label>
+                                                    {{calculateAdvance(sub.fechaInicio.toString(), sub.fechaFinal.toString())}}
+                                                    %
+                                                </label>
+                                            </td>
+                                            <td>{{activity.objetivo}}</td>
+                                            <td>-</td>
+                                            <td>{{ sub.fechaInicio | date: 'shortDate' }}</td>
+                                            <td>{{ sub.fechaFinal | date: 'shortDate' }}</td>
+                                            <td>
+                                                {{resultadosEsperados}}
+                                            </td>
+                                            <td>
+                                                {{getProductosEsperados(sub.nombreSub)}}
+                                            </td>
+                                        </tr>
+                                    </ng-container>
+                                    <tr>
+                                        <td class="title-table-estructura" colspan="2"><label>Total</label></td>
+                                        <td class="title-table-estructura" colspan="7"><label>{{totalAdvance}} %</label>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 25%">Implicaciones Éticas y Ambientales</td>
+                        <td style="width: 75%" colspan="3">{{impactoAmbiental}}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 25%">Riesgos del Proyecto</td>
+                        <td style="width: 75%" colspan="3">
+                            <div>
+                                <table class="table-riesgos">
+                                    <thead>
+                                    <tr>
+                                        <td class="title-table-riesgos"><label>id</label></td>
+                                        <td class="title-table-riesgos"><label>Descipción</label></td>
+                                        <td class="title-table-riesgos"><label>Consecuencias</label></td>
+                                        <td class="title-table-riesgos"><label>Acción sugerida</label></td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr *ngFor="let riesgo of riesgos; let i = index">
+                                        <td><label>{{i + 1}}</label></td>
+                                        <td><label>{{riesgo.descripcion}}</label></td>
+                                        <td><label>{{riesgo.consecuencia}}</label></td>
+                                        <td><label>{{riesgo.accion}}</label></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 25%">Bibliografía</td>
+                        <td style="width: 75%" colspan="3">
+                            <ul>
+                                <li *ngFor="let bibliografia of bibliografias">{{bibliografia.bibliografia}}</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    </thead>
+                </table>
+
+                <table class="table table-pdf-form" style="width: 100%">
+                    <thead>
+                    <tr class="table-title">
+                        <td style="width: 100%" colspan="4">COMPONENTE PRESUPUESTAL</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 25%">Costos del Proyecto</td>
+                        <td style="width: 75%" colspan="3">
+                            <div *ngIf="entidades.length < 3">
+                                <table style="width: 100%">
+                                    <thead>
+                                    <tr>
+                                        <th class="title-table-costos" rowspan="3"><label>Rubro</label></th>
+                                        <th class="title-table-costos center-row-table" rowspan="3"><label>Porcentaje</label></th>
+                                        <ng-container *ngFor="let entidad of entidades; let i = index">
+                                            <th *ngIf="i < 2" class="title-table-costos" colspan="2">
+                                                <label>{{entidad.nombre}}</label>
+                                            </th>
+                                        </ng-container>
+                                    </tr>
+                                    <tr>
+                                        <ng-container *ngFor="let entidad of entidades; let i = index">
+                                            <th *ngIf="i < 2" colspan="2" class="porcentaje">
+                                                <label>{{calculatePercentageByEntity(entidad.nombre)}}</label>
+                                            </th>
+                                        </ng-container>
+                                    </tr>
+                                    <tr>
+                                        <ng-container *ngFor="let entidad of entidades; let i = index">
+                                            <ng-container *ngIf="i < 2">
+                                                <th class="title-table-costos" colspan="1"><label>Efectivo</label></th>
+                                                <th class="title-table-costos" colspan="1"><label>Especie</label></th>
+                                            </ng-container>
+                                        </ng-container>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <ng-container *ngFor="let rubroActual of listaDeRubros">
+<!--                                        validar que la primera o segunda entidad este en el rubro actual sino no se muestra-->
+                                        <ng-container *ngIf="rubroActual.efectivo || rubroActual.especie">
+                                            <tr>
+                                                <td>{{rubroActual.nombre}}</td>
+                                                <td>{{calculatePercentage(rubroActual.nombre)}}</td>
+                                                <ng-container *ngFor="let entidad of entidades; let j = index">
+                                                    <ng-container *ngIf="j < 2">
+                                                        <td>{{getAmount(entidad.nombre, 'Efectivo', rubroActual.nombre) | currency}}</td>
+                                                        <td>{{getAmount(entidad.nombre, 'Especie', rubroActual.nombre) | currency}}</td>
+                                                    </ng-container>
+                                                </ng-container>
+                                            </tr>
+                                        </ng-container>
+                                    </ng-container>
+                                    <tr>
+                                        <td class="title-table-costos">
+                                            <label> <b>Subtotal por Tipo de Recurso</b></label>
+                                        </td>
+                                        <td class="title-table-costos">
+                                            <label>  </label>
+                                        </td>
+                                        <ng-container *ngFor="let entidad of entidades; let j = index">
+                                            <ng-container *ngIf="j < 2">
+                                                <td>
+                                                    <b>{{getTotalSubTypeAmount(entidad.nombre, 'Efectivo') | currency}}</b>
+                                                </td>
+                                                <td>
+                                                    <b>{{getTotalSubTypeAmount(entidad.nombre, 'Especie') | currency}}</b>
+                                                </td>
+                                            </ng-container>
+                                        </ng-container>
+                                    </tr>
+                                    <tr>
+                                        <td class="title-table-costos" colspan="1">
+                                            <label><b>Total Proyecto</b></label>
+                                        </td>
+                                        <td [attr.colspan]="entidades.length * 2">{{totalDelProyecto | currency}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div *ngIf="entidades.length < 3">
+                                <label>*Monto máximo a financiar hasta el 30% del valor aportado en efectivo.</label>
+                                <label>** Monto máximo a financiar hasta el 25% del valor aportado en efectivo.</label>
+                                <label>*** Monto máximo a financiar hasta el 5% del valor aportado en efectivo.</label>
+                                <label *ngIf="entidades.length > LIMIT_RUBROS">
+                                    <b>EL TOTAL SE SUMA CON EL COMPONENTE PRESUPUESTAL ANEXO. POR FAVOR REVISAR LOS
+                                        DOCUMENTOS ANEXOS</b>
+                                </label>
+                            </div>
+
+                            <div *ngIf="entidades.length > 2">
+                                <label>Los rubros se mostraran en los documentos anexos</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 25%">Posibles Fuentes de Financiación del Proyecto</td>
+                        <td style="width: 75%" colspan="3"></td>
+                    </tr>
+                    </thead>
+                </table>
+
+                <table class="table table-pdf-form">
+                    <thead>
+                    <tr class="table-title">
+                        <td style="width: 100%" colspan="4">FORMALIZACIÓN DEL PROYECTO</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 25%">Investigador</td>
+                        <td style="width: 75%" colspan="3" class="firma-imagen-center">
+                            <img class="firma-imagen-pdf" *ngIf="firmaInvestigador"
+                                 src="data:image/png;base64,{{firmaInvestigador.data}}" alt="Imagen De Firma">
+                            <div *ngIf="fechaFirmaInvestigador">{{FECHA_FIRMA}}{{fechaFirmaInvestigador | date: 'medium' }}</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 25%">Investigador Principal Titular</td>
+                        <td style="width: 75%" colspan="3" class="firma-imagen-center">
+                            <img class="firma-imagen-pdf" *ngIf="firmaInvestigadorPrincipal"
+                                 src="data:image/png;base64,{{firmaInvestigadorPrincipal.data}}" alt="Imagen De Firma">
+                            <div *ngIf="fechaFirmaInvestigadorPrincipal">{{FECHA_FIRMA}}{{fechaFirmaInvestigadorPrincipal| date: 'medium' }}</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 25%">Gestor ACTI</td>
+                        <td style="width: 75%" colspan="3" class="firma-imagen-center">
+                            <img class="firma-imagen-pdf" *ngIf="firmaComandante"
+                                 src="data:image/png;base64,{{firmaComandante.data}}" alt="Imagen De Firma">
+                            <div *ngIf="fechaFirmaComandante">{{FECHA_FIRMA}}{{fechaFirmaComandante| date: 'medium' }}</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 25%">Comandante Unidad/Jefe Dependencia</td>
+                        <td style="width: 75%" colspan="3" class="firma-imagen-center">
+                            <img class="firma-imagen-pdf" *ngIf="firmaGestorActi"
+                                 src="data:image/png;base64,{{firmaGestorActi.data}}" alt="Imagen De Firma">
+                            <div *ngIf="fechaFirmaGestorActi">{{FECHA_FIRMA}}{{fechaFirmaGestorActi| date: 'medium' }}</div>
+                        </td>
+                    </tr>
+                    </thead>
+                </table>
+
+                <table class="table table-pdf-form">
+                    <thead>
+                    <tr class="table-title">
+                        <td style="width: 100%" colspan="10">REVISIÓN JEA-DICTI</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 80%" colspan="8">
+                            El Proyecto se alinea con la Política de CTeI establecida en el Modelo de Investigación del
+                            SEFAC?
+                        </td>
+                        <td style="width: 10%" colspan="1">SI</td>
+                        <td style="width: 10%" colspan="1">NO</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 80%" colspan="8">
+                            El Proyecto está vinculado a uno de los Grupos de Investigación del SCTeI de la FAC?
+                        </td>
+                        <td style="width: 10%" colspan="1">SI</td>
+                        <td style="width: 10%" colspan="1">NO</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 80%" colspan="8">
+                            Se cuenta con Convenio vigente con la otra institución partícipe del proyecto? N/A
+                        </td>
+                        <td style="width: 10%" colspan="1">SI</td>
+                        <td style="width: 10%" colspan="1">NO</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 80%" colspan="8">
+                            La distribución de la Propiedad Intelectual de los productos esperados es acorde con la
+                            política vigente?
+                        </td>
+                        <td style="width: 10%" colspan="1">SI</td>
+                        <td style="width: 10%" colspan="1">NO</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 80%" colspan="8">
+                            El proyecto se envía a evaluación por pares académicos INTERNOS EXTERNOS
+                        </td>
+                        <td style="width: 10%" colspan="1">SI</td>
+                        <td style="width: 10%" colspan="1">NO</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 80%" colspan="8">
+                            El proyecto requiere ajustes en su formulación
+                        </td>
+                        <td style="width: 10%" colspan="1">SI</td>
+                        <td style="width: 10%" colspan="1">NO</td>
+                    </tr>
+                    </thead>
+                </table>
+
+                <table class="table table-pdf-form">
+                    <thead>
+                    <tr class="table-title">
+                        <td style="width: 100%" colspan="10">CONCEPTO</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 80%" colspan="8">
+                            El proyecto es validado para ser postulado para financiación interna o externa
+                        </td>
+                        <td style="width: 10%" colspan="1">SI</td>
+                        <td style="width: 10%" colspan="1">NO</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 25%">Subdirector DICTI</td>
+                        <td style="width: 25%">Firma y Postfirma</td>
+                        <td style="width: 25%">Director DICTI</td>
+                        <td style="width: 25%">Firma y Postfirma</td>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+
+            <table class="table table-pdf-form" *ngIf="entidades.length > LIMIT_RUBROS" style="width: 100%" id="DocumentosAnexos">
+                <thead>
+                <tr class="table-title">
+                    <td style="width: 100%">DOCUMENTOS ANEXOS</td>
+                </tr>
+                <tr>
+                    <td style="width: 100%">
+                        <div>
+                            <table style="width: 100%">
+                                <thead>
+                                <tr>
+                                    <th class="title-table-costos" rowspan="3"><label>Rubro</label></th>
+                                    <th class="title-table-costos center-row-table" rowspan="3"><label>Porcentaje</label></th>
+                                    <ng-container *ngFor="let entidad of entidades; let i = index">
+                                        <th
+                                            class="title-table-costos" colspan="2">
+                                            <label>{{entidad.nombre}}</label>
+                                        </th>
+                                    </ng-container>
+                                </tr>
+                                <tr>
+                                    <ng-container *ngFor="let entidad of entidades; let i = index">
+                                        <th colspan="2" class="porcentaje">
+                                            <label>{{calculatePercentageByEntity(entidad.nombre)}}</label>
+                                        </th>
+                                    </ng-container>
+                                </tr>
+                                <tr>
+                                    <ng-container *ngFor="let entidad of entidades; let i = index">
+                                        <ng-container>
+                                            <th class="title-table-costos" colspan="1"><label>Efectivo</label></th>
+                                            <th class="title-table-costos" colspan="1"><label>Especie</label></th>
+                                        </ng-container>
+                                    </ng-container>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <ng-container *ngFor="let rubroActual of listaDeRubros">
+                                    <tr>
+                                        <ng-container *ngIf="rubroActual.efectivo || rubroActual.especie">
+                                            <td>{{rubroActual.nombre}}</td>
+                                            <td>{{calculatePercentage(rubroActual.nombre)}}</td>
+                                            <ng-container *ngFor="let entidad of entidades; let j = index">
+                                                <ng-container>
+                                                    <td>{{getAmount(entidad.nombre, 'Efectivo', rubroActual.nombre) | currency}}</td>
+                                                    <td>{{getAmount(entidad.nombre, 'Especie', rubroActual.nombre) | currency}}</td>
+                                                </ng-container>
+                                            </ng-container>
+                                        </ng-container>
+                                    </tr>
+                                </ng-container>
+                                <tr>
+                                    <td class="title-table-costos">
+                                        <label> <b>Subtotal por Tipo de Recurso</b></label>
+                                    </td>
+                                    <td class="title-table-costos">
+                                        <label> </label>
+                                    </td>
+                                    <ng-container *ngFor="let entidad of entidades; let i = index">
+                                        <ng-container>
+                                            <td>
+                                                <b>{{getTotalSubTypeAmount(entidad.nombre, 'Efectivo') | currency}}</b>
+                                            </td>
+                                            <td>
+                                                <b>{{getTotalSubTypeAmount(entidad.nombre, 'Especie') | currency}}</b>
+                                            </td>
+                                        </ng-container>
+                                    </ng-container>
+                                </tr>
+                                <tr>
+                                    <td class="title-table-costos" colspan="1">
+                                        <label><b>Total Proyecto</b></label>
+                                    </td>
+                                    <td [attr.colspan]="(entidades.length * 2)-3">{{totalDelProyecto | currency}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div>
+                            <label>*Monto máximo a financiar hasta el 30% del valor aportado en efectivo.</label>
+                            <label>** Monto máximo a financiar hasta el 25% del valor aportado en efectivo.</label>
+                            <label>*** Monto máximo a financiar hasta el 5% del valor aportado en efectivo.</label>
+                        </div>
+                    </td>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+
+    <div class="container">
+        <mat-dialog-actions align="end">
+            <button (click)="downloadPDF()" mat-button [mat-dialog-close]="true" cdkFocusInitial>Generar PDF</button>
+            <button mat-button mat-dialog-close (click)="closeModal()">Cerrar</button>
+        </mat-dialog-actions>
+
+    </div>
+</div>

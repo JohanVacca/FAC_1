@@ -1,0 +1,25 @@
+.btn-upload {
+  font-size: 48px;
+  background-color: white;
+  border-color: white;
+  width: 40px;
+  height: 40px;
+  &.btn-primary {
+    color: #007bff;
+  }
+  &.btn-danger {
+    color: #dc3545;
+  }
+  &.btn-success {
+    color: #dc3545;
+  }
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+.form-group {
+  margin-top: 5px;
+  margin-bottom: 0;
+}

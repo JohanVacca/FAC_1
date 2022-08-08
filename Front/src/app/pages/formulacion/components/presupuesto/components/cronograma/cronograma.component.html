@@ -1,0 +1,50 @@
+<mat-card class="card">
+  <div class="container">
+    <mat-card-title>
+      Lista de Actividades
+      <button mat-icon-button matTooltipClass="tooltip-white" (click)="agregarActividad()"
+        matTooltip="Agregar Actividad" matTooltipPosition="above">
+        <mat-icon class="iconoadd">add_circle</mat-icon>
+      </button>
+    </mat-card-title>
+    <mat-card-content>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Nombre Actividad</th>
+            <th scope="col">Predecesora</th>
+            <th scope="col">Sub actividad</th>
+            <th scope="col">Fecha inicio</th>
+            <th scope="col">Fecha Fin</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let crono of cronograma; index as i">
+          <td rowspan="1000" scope="row">
+            {{ crono.nombreAct }}
+            <button mat-icon-button aria-label="Example icon-button with a heart icon"
+              matTooltipClass="tooltip-white" matTooltip="Actualizar Actividad" matTooltipPosition="above" (click)="EditActividad(crono.idUnicoTare)">
+
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button aria-label="Example icon-button with a heart icon"
+              matTooltipClass="tooltip-white" matTooltip="Eliminar Actividad" matTooltipPosition="above" (click)="Eliminar(crono.idUnicoTare)">
+
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+          <td rowspan="1000" scope="row">
+            {{ crono.predecesora.name }}
+          </td>
+          <tr *ngFor="let sub of crono.subActividad">
+            <td scope="row">{{ sub.nombreSub }}</td>
+            <td>{{ sub.fechaInicio | date: 'shortDate' }}</td>
+            <td>{{ sub.fechaFinal | date: 'shortDate' }}</td>
+          </tr>
+
+        </tbody>
+      </table>
+
+    </mat-card-content>
+
+  </div>
+</mat-card>

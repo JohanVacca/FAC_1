@@ -1,0 +1,326 @@
+.mat-card-title {
+  font-weight: 700;
+  // font: 400 24px/32px Roboto, "Helvetica Neue", sans-serif;
+    letter-spacing: normal;
+    margin: 0 0 16px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    // border: 1px solid #E6EFFD;
+    padding: 0.5rem;
+    position: relative;
+    margin-bottom: 2.1rem;
+    color: #001326;
+    font-family: "Work Sans", sans-serif;
+    display: block;
+}
+.tooltip-red {
+  background: #b71c1c;
+  font-size: 16px;
+}
+.tooltip-white {
+  background: #001326;
+
+  font-size: 16px;
+}
+.mat-form-field {
+  margin-top: 16px;
+}
+
+//hoja general
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+table {
+  width: 100%;
+}
+.iconoadd{
+  background-repeat: no-repeat;
+  display: inline-block;
+  fill: currentColor;
+  height: 54px;
+  width: 54px;
+  font-size: 44px;
+  background-color: transparent;
+    color: #001326;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    padding: 0.5rem;
+}
+.mat-form-field {
+  margin-top: 16px;
+}
+//
+.mat-slide-toggle.mat-checked .mat-slide-toggle-label .mat-slide-toggle-bar {
+  background-color: #A4BEFF;
+}
+.card {
+
+ padding:2.3rem 2.4rem 3rem 2.4rem;
+}
+
+//
+.table-container{
+ margin-top: 2rem;
+ border-radius: .8rem;
+ border: solid 2px  #E6EFFD;
+ overflow: hidden;
+ table{
+
+     border-radius: .5rem;
+     overflow: hidden;
+     border:solid 2px  #E6EFFD;
+     border-collapse: collapse;
+     tr{
+         &:not(:last-child){
+             border-bottom: solid 2px  #E6EFFD;
+         }
+     }
+
+     th{
+         background-color:  #E6EFFD;
+         padding:.5rem !important;
+         text-align: center;
+         &:first-child{
+             padding-left: 2.4rem !important;
+         }
+         &:last-child{
+             padding-right: 2.4rem !important;
+         }
+     }
+     td{
+         font-family: 'Work Sans', sans-serif;
+         font-size:  1.2rem;
+         padding:1rem .5rem;
+         text-align: left;
+         vertical-align: top;
+         &:first-child{
+             padding-left: 2.4rem;
+         }
+         &:last-child{
+             padding-right: 2.4rem;
+         }
+     }
+
+     caption{
+         font-family:   'Montserrat', sans-serif;
+         padding: 3.9rem 2.4rem 2rem;
+         text-align: left;
+     }
+
+
+
+     &.listado-indices-entidades{
+
+         th{
+             height:7rem;
+         }
+         td{
+             height:6.6rem;
+         }
+         caption{
+             padding: 3.9rem 2.4rem 2rem !important;
+         }
+
+     }
+
+
+ }
+
+}
+
+.mat-table{
+ font-family: 'Work Sans', sans-serif;
+}
+tr.mat-header-row {
+background-color: #E6EFFD;
+}
+
+th.mat-header-cell {
+ background: #001326;
+ color: #e2e2e2;
+ font-size:  1.2rem;
+ border-bottom:solid;
+ text-align: center;
+ &.align-center{
+     text-align: center;
+     .mat-sort-header-container{
+         display: flex;
+         justify-content: center;
+     }
+ }
+}
+
+
+.mat-sort-header-arrow{
+ color: #001326;
+}
+.mat-cell{
+ color:#001326;
+ font-size:  1.2rem;
+ padding:1.5rem !important;
+}
+td.mat-cell{
+ border-bottom: solid 2px  #E6EFFD;
+}
+
+ul.table-action-list{
+ list-style-type: none;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ li{
+     display:inline-block;
+     padding-right:1rem;
+     &:last-of-type{
+         padding-right: 0;
+     }
+     a,button{
+         background-color: transparent;
+         color: #001326;
+         border-radius:50%;
+         display:flex;
+         justify-content: center;
+         align-items: center;
+         border:0;
+         text-decoration: none;
+         cursor:pointer;
+         transition:all .2s;
+         padding:.5rem;
+         &:hover{
+             background-color:  #001326;
+             color:#FFFFFF;
+         }
+     }
+ }
+}
+.mat-card-title{
+  font-weight: 700;
+  font-family: "Work Sans", sans-serif;
+  letter-spacing: normal;
+  margin: 0 0 16px;
+  color: #001326;
+  padding: 0.5rem;
+}
+.mat-card-subtitle{
+  color: #001326;
+  font-family: "Work Sans", sans-serif;
+}
+td{
+ .estado-activo{
+     background-color: #069169;
+     color:white;
+     padding:.2rem .7rem;
+     display:inline-flex;
+     align-items:center;
+     justify-content: center;
+     font-family: 'Work Sans', sans-serif;
+     font-size: 1.5rem;
+     min-height: 2.3rem;
+     min-width:7rem;
+     border-radius: .4rem;
+ }
+ &.align-center{
+     text-align:center;
+ }
+ .estado-inactivo{
+     background-color:  #A80521;
+     color:white;
+     padding:.2rem .7rem;
+     display:inline-flex;
+     align-items:center;
+     justify-content: center;
+     font-family: 'Work Sans', sans-serif;
+     font-size: 1.5rem;
+     min-height: 2.3rem;
+     min-width:7rem;
+     border-radius: .4rem;
+ }
+ &:first-child{
+     padding-left:1.4rem !important;
+ }
+ &:last-child{
+     padding-right: 2.4rem !important;
+ }
+}
+
+
+td{
+ .mat-slide-toggle{
+     margin:0;
+ }
+}
+button{
+ .mat-button-wrapper{
+     display: flex;
+     align-items: center;
+ }
+}
+.estado-sin-gestionar{
+ background-color: #FFAB00;
+ color:white;
+ padding:.2rem .7rem;
+ display:inline-flex;
+ align-items:center;
+ justify-content: center;
+ font-family: 'Work Sans', sans-serif;
+ font-size: 1.5rem;
+ min-height: 2.3rem;
+ min-width:7rem;
+ border-radius: .4rem;
+}
+.estado-activo{
+ background-color: #069169;
+ color:white;
+ padding:.2rem .7rem;
+ display:inline-flex;
+ align-items:center;
+ justify-content: center;
+ font-family: 'Work Sans', sans-serif;
+ font-size: 1.5rem;
+ min-height: 2.3rem;
+ min-width:7rem;
+ border-radius: .4rem;
+}
+.estado-inactivo{
+ background-color:  #A80521;
+ color:white;
+ padding:.2rem .7rem;
+ display:inline-flex;
+ align-items:center;
+ justify-content: center;
+ font-family: 'Work Sans', sans-serif;
+ font-size: 1.5rem;
+ min-height: 2.3rem;
+ min-width:7rem;
+ border-radius: .4rem;
+}
+.estado-deshabilitado{
+ background-color: #707070;
+ color:white;
+ padding:.2rem .7rem;
+ display:inline-flex;
+ align-items:center;
+ justify-content: center;
+ font-family: 'Work Sans', sans-serif;
+ font-size: 1.5rem;
+ min-height: 2.3rem;
+ min-width:7rem;
+ border-radius: .4rem;
+}
+.botonera-tabla{
+ margin-top: 7rem;
+ margin-bottom: 6.7rem;
+}

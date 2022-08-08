@@ -1,0 +1,100 @@
+.mat-card-subtitle {
+  color: #004884;
+  font-family: "Work Sans", sans-serif;
+  display: block;
+  padding: 1rem;
+}
+
+.mat-form-field {
+  margin-top: 16px;
+}
+
+td {
+  line-height: 120%;
+}
+
+.tooltip-red {
+  background: #b71c1c;
+  font-size: 16px;
+}
+
+.tooltip-white {
+  background: #3772FF;
+  font-size: 16px;
+}
+
+.card {
+  padding: 3.3rem 2.4rem 4rem 2.4rem;
+}
+
+::ng-deep {
+  .card-centros {
+    &__title {
+      label {
+        color: #004884;
+        font-weight: 700;
+        letter-spacing: normal;
+        font-family: "Work Sans", sans-serif;
+        font-size: 24px;
+      }
+    }
+  }
+
+  .centro-de-inv {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 20px 15px;
+
+    &__form {
+      mat-form-field {
+        width: 100%;
+      }
+    }
+
+    &__btn {
+      position: relative;
+      padding-left: 25px;
+
+      &--button {
+        width: 100%;
+        height: 60px;
+        bottom: 0;
+        position: absolute;
+      }
+
+      button {
+        position: absolute;
+        top: 20px;
+      }
+    }
+  }
+
+  .card-centros-listado {
+    &__table-div {
+      table {
+        width: 100%;
+
+        .table-acciones {
+          justify-content: left;
+        }
+      }
+    }
+  }
+}
+
+::ng-deep {
+  .color-red-delete-button {
+    border-bottom: 0 !important;
+    mat-icon {
+      color: red;
+    }
+  }
+
+  .color-orange-update-button {
+    margin-left: 15px;
+    border-bottom: 0 !important;
+    mat-icon {
+      color: orange;
+    }
+  }
+}

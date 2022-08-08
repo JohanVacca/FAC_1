@@ -1,0 +1,56 @@
+table,
+td,
+th {
+  border: 1px solid #595959;
+  border-collapse: collapse;
+}
+
+.csstitulotabla {
+  font-weight: bold;
+  text-align: center;
+}
+
+.cssinfotabla {}
+
+.areatexttable {
+  height: 300px;
+}
+
+.csssubtitulotabla {
+  font-weight: bolder;
+  background-color: #F5F5F5
+}
+
+.cssopciontabla {
+
+  background-color: #F5F5F5
+}
+
+.cssencabezado {
+  font-size: 12pt;
+  font-weight: bold;
+}
+
+.cssimgencabezado {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.seguimiento-reporte {
+  &-button {
+    margin-top: 20px;
+    text-align: center;
+  }
+}
+
+::ng-deep {
+  .firma-imagen {
+    &-center {
+      text-align: center;
+    }
+    &-pdf {
+      height: 200px;
+      width: 200px;
+    }
+  }
+}

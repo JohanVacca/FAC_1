@@ -1,0 +1,29 @@
+<div class="modal-centros-dashboard">
+    <div class="modal-centros-dashboard__title">
+        <label>{{TITLE}}</label>
+        <label>{{NAME}}{{data.centro.name}}</label>
+        <label>{{TOTAL_PROJECTS}}{{data.proyectos.length}}</label>
+    </div>
+    <table class="modal-centros-dashboard__table" *ngIf="data.proyectos.length > 0">
+        <thead>
+        <tr>
+            <td>{{NUMBER}}</td>
+            <td>{{PROJECT}}</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let project of data.proyectos; let i = index">
+            <td>{{i + 1}}</td>
+            <td>{{project.iniciarProyecto[0].nombreProyecto}}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div *ngIf="data.proyectos.length === 0">
+        <label>{{MESSAGE_NOT_FOUND}}</label>
+    </div>
+
+    <div class="modal-centros-dashboard__button">
+        <button mat-button mat-stroked-button (click)="closeModal()">{{CLOSE_MODAL}}</button>
+    </div>
+</div>

@@ -1,0 +1,68 @@
+<mat-card class="card">
+    <div class="container">
+        <mat-card-title>Listado de Grupos
+            <button mat-icon-button matTooltipClass="tooltip-white" (click)="registrarGrupo()" matTooltip="Agregar"
+                    matTooltipPosition="above">
+                <mat-icon class="iconoadd">add_circle</mat-icon>
+            </button>
+        </mat-card-title>
+
+        <div *ngIf="dataSource?.length > 0">
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 table-group">
+
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef> Nombre</th>
+                    <td mat-cell *matCellDef="let element"> {{element.nombreGrupo}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="codigo">
+                    <th mat-header-cell *matHeaderCellDef> Codigo</th>
+                    <td mat-cell *matCellDef="let element">{{element.codigo}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="antiguedad">
+                    <th mat-header-cell *matHeaderCellDef> Antiguedad</th>
+                    <td mat-cell *matCellDef="let element">{{element.antiguedad}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="entidad">
+                    <th mat-header-cell *matHeaderCellDef> Entidad</th>
+                    <td mat-cell *matCellDef="let element">{{element.entidad}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="acciones">
+                    <th scope="col" mat-header-cell *matHeaderCellDef>Acciones</th>
+                    <td mat-cell *matCellDef="let row">
+                        <ul class="table-action-list">
+                            <li>
+                                <button mat-icon-button aria-label="Example icon-button with a heart icon"
+                                        (click)="deleteGrupo(row.codigo)" matTooltipClass="tooltip-white"
+                                        matTooltip="Eliminar"
+                                        matTooltipPosition="above">
+
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                            </li>
+                            <li>
+                                <button (click)="updateGrupo(row)" mat-icon-button
+                                        aria-label="Example icon-button with a heart icon"
+                                        matTooltipClass="tooltip-white" matTooltip="Editar" matTooltipPosition="above">
+
+                                    <mat-icon>edit</mat-icon>
+                                </button>
+                            </li>
+                        </ul>
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+            </table
+            >
+        </div>
+        <div *ngIf="dataSource?.length === 0" class="mensaje-sin-grupos">
+            <label>Sin grupos</label>
+        </div>
+
+    </div>
+</mat-card>

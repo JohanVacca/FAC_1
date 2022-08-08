@@ -1,0 +1,145 @@
+<div class="container">
+
+    <mat-card>
+
+        <mat-dialog-content class="mat-typography">
+            <mat-card-title>Creación de Actividades</mat-card-title>
+            <br>
+
+            <mat-card-content>
+                <form [formGroup]="registroCronograma">
+                    <mat-card>
+                        <h3>Actividad</h3>
+                        <div>
+                            <mat-form-field class="large-width-form" appearance="fill">
+                                <mat-label>Nombre de la Actividad</mat-label>
+                                <input type="text" formControlName="nombreAct" matInput
+                                       placeholder="Nombre de la actividad">
+                            </mat-form-field>
+                        </div>
+
+                        <div>
+                            <mat-form-field class="large-width-form" appearance="fill">
+                                <mat-label> Actividades Predecesoras</mat-label>
+                                <mat-select formControlName="Predecesora" name="PredecesoraACT">
+                                    <mat-option *ngFor="let Prede of PredecesoraACT" [value]="Prede">
+                                        {{Prede.name}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+
+                        <div>
+                            <mat-form-field class="large-width-form" appearance="fill">
+                                <mat-label>Objetivos especificos</mat-label>
+                                <mat-select formControlName="objetivo" name="objetivo">
+                                    <mat-option *ngFor="let objetivo of objetivosEspecificos" [value]="objetivo.descr">
+                                        {{objetivo.descr}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </mat-card>
+                    <br>
+                    <mat-card>
+                        <h3>Sub Actividad</h3>
+                        <div class="large-width-form">
+                            <mat-form-field class="large-width-form" appearance="fill">
+                                <mat-label>Nombre de la Sub-Actividad</mat-label>
+                                <input type="text" formControlName="nombreSub" matInput
+                                       placeholder="Nombre de la sub-actividad">
+                            </mat-form-field>
+                        </div>
+
+                        <div class="large-width-form date-form-act">
+
+                            <div class="date-form-act__start">
+                                <mat-form-field color="accent" appearance="fill">
+                                    <mat-label>Fecha Inicio</mat-label>
+                                    <input matInput formControlName="fechaInicio" [matDatepicker]="picker">
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker color="primary"></mat-datepicker>
+                                </mat-form-field>
+                                <br>
+                                <div *ngIf="ValFechas" class="alert alert-danger alert-dismissible fade show"
+                                     role="alert">
+                                    <strong>Error en las fechas!</strong> la fecha de inicio es mayor que la de final
+                                    <button (click)="CloseAlert()" type="button" class="close" data-dismiss="alert"
+                                            aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <button mat-icon-button matTooltipClass="tooltip-white"
+                                        matTooltip="Agregar Sub-Actividad"
+                                        matTooltipPosition="above" (click)="AgregarSub()"
+                                        *ngIf="registroCronograma.valid">
+                                    <mat-icon class="iconoadd">add_circle</mat-icon>
+                                </button>
+                            </div>
+                            <div class="date-form-act__end">
+                                <mat-form-field color="accent" appearance="fill">
+                                    <mat-label>Fecha fin</mat-label>
+                                    <input matInput formControlName="fechaFinal" [matDatepicker]="picker2">
+                                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker2 color="primary"></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </mat-card>
+                </form>
+                <br>
+                <table class="table table-striped" *ngIf="AgSub.length > 0">
+                    <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Sub actividad</th>
+                        <th scope="col">Fecha inicio</th>
+                        <th scope="col">Fecha Fin</th>
+                        <th scope="col" style="text-align: center;">Acciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let sub of AgSub; index as i">
+                        <th scope="row">{{ i + 1 }}</th>
+                        <td>{{ sub.nombreSub }}</td>
+                        <td>{{ sub.fechaInicio | date: 'shortDate' }}</td>
+                        <td>{{ sub.fechaFinal | date: 'shortDate' }}</td>
+                        <td>
+                            <ul class="table-action-list">
+                                <li>
+                                    <button mat-icon-button aria-label="Example icon-button with a heart icon"
+                                            matTooltipClass="tooltip-white" matTooltip="Actualizar Actividad"
+                                            matTooltipPosition="above" (click)="editarSub(sub)">
+
+                                        <mat-icon>edit</mat-icon>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button mat-icon-button aria-label="Example icon-button with a heart icon"
+                                            matTooltipClass="tooltip-white" matTooltip="Eliminar Actividad"
+                                            matTooltipPosition="above" (click)="eliminarSub(sub)">
+
+                                        <mat-icon>delete</mat-icon>
+                                    </button>
+                                </li>
+                            </ul>
+
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </mat-card-content>
+
+        </mat-dialog-content>
+        <mat-card-actions *ngIf="registroCronograma.value.nombreAct == '' && !editar">
+            <button mat-raised-button color="" disabled>Guardar</button>
+        </mat-card-actions>
+        <mat-card-actions *ngIf="registroCronograma.value.nombreAct != '' && !editar">
+            <button mat-raised-button color="primary" (click)="saveCronograma()" [mat-dialog-close]="true">Guardar</button>
+        </mat-card-actions>
+        <mat-card-actions *ngIf="registroCronograma.value.nombreAct != '' && editar">
+            <button mat-raised-button color="primary" (click)="obSubEdit()" [mat-dialog-close]="true">Editar</button>
+        </mat-card-actions>
+
+    </mat-card>
+</div>

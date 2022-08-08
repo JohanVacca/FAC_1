@@ -1,0 +1,83 @@
+<div>
+    <div class="all">
+        <div class="contenedor">
+
+            <div class="panel-informativo">
+                <div class="p-col-12 p-md-4 col-xs-12 ">
+                    <div>
+                        <div class="login-card">
+                            <div class="icono">
+                                <img src="https://cdn979857.fac.mil.co/sites/default/files/marca%20fac%20gris%20fn.png"
+                                     alt=""
+                                     height="50px" width="auto">
+                            </div>
+                            <form [formGroup]="LoginForm" class="example-form">
+                                <mat-form-field>
+                                    <mat-label>Email</mat-label>
+                                    <input formControlName="email" name="email" type="email"
+                                           placeholder="Ej. alguien@example.com"
+                                           matInput required>
+                                </mat-form-field>
+                                <div class="form-validation-message"
+                                     *ngIf="email().invalid && (email().dirty || email().touched)">
+                                    <span *ngIf="email().errors['email']">Por favor ingrese un formato de email válido</span>
+                                    <span *ngIf="email().errors['required']">Éste campo es requerido</span>
+                                </div>
+                                <div *ngIf="CorrI" class="alert" role="alert">
+                                    <small>!Usuario Incorrecto!</small>
+                                    <button (click)="CloseAlert()" type="button" class="close" data-dismiss="alert"
+                                            aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div *ngIf="CorrCN" class="alert" role="alert">
+                                    <small>!Usuario Existente!</small>Faltan permisos
+                                    <button (click)="CloseAlert()" type="button" class="close" data-dismiss="alert"
+                                            aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="example-container">
+                                    <mat-form-field>
+                                        <mat-label>Password</mat-label>
+                                        <input minlength="6" type="password" name="password"
+                                               formControlName="password"
+                                               matInput [type]="hide ? 'password' : 'text'" required>
+                                        <button mat-icon-button matSuffix (click)="hide = !hide"
+                                                [attr.aria-label]="'Hide password'"
+                                                [attr.aria-pressed]="hide">
+                                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                        </button>
+                                    </mat-form-field>
+                                </div>
+                            </form>
+                            <div class="form-validation-message" *ngIf="password().invalid && (password().dirty || password().touched)">
+                                <span class="TamañoText" *ngIf="password().errors['minlength'] && password().dirty">La contraseña debe
+                                  contener mínimo 6 caracteres
+                                </span>
+                                <span class="TamañoText"
+                                      *ngIf="password().errors['required']">Éste campo es requerido</span>
+                            </div>
+                            <div *ngIf="ClaveI" class="alert" role="alert">
+                                <small>!Contraseña erronea!</small>
+                                <button (click)="CloseAlert()" type="button" class="close" data-dismiss="alert"
+                                        aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <br>
+                            <button [disabled]="!LoginForm.valid" (click)="onSubmit()" mat-raised-button
+                                    color="primary">
+                                Iniciar Sesión
+                            </button>
+                            <br>
+                            <p> ¿No tienes una cuenta?</p>
+                            <button mat-flat-button (click)="goToSignUp()" target="_blank">Registro</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

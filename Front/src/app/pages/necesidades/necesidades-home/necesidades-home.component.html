@@ -1,0 +1,119 @@
+<div class="container">
+    <div>
+        <div class="card card-firma card-firma-listado">
+            <div class="card-centros__title"><label>{{LIST}}</label></div>
+            <div class="card-firma__message">
+                <label>{{MESSAGE_LIST}}</label>
+            </div>
+
+            <div class="centro-de-inv">
+                <div class="centro-de-inv__form">
+                    <form [formGroup]="centrosForm" class="example-form">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Nombre de la necesidad</mat-label>
+                            <input name="name" formControlName="name" [(ngModel)]="name" matInput/>
+                        </mat-form-field>
+                    </form>
+                </div>
+
+                <div class="centro-de-inv__form">
+                    <form [formGroup]="centrosForm" class="example-form">
+                        <mat-form-field class="full-width" appearance="fill">
+                            <mat-label>Programas de investigación</mat-label>
+                            <mat-select formControlName="programa" [(value)]="programa">
+                                <mat-option *ngFor="let Progam of ProgamIns" [value]="Progam.descr">
+                                    {{Progam.descr}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </form>
+                </div>
+            </div>
+
+            <div class="centro-de-inv">
+                <div class="centro-de-inv__form">
+                    <form [formGroup]="centrosForm" class="example-form">
+                        <mat-form-field class="full-width" appearance="fill">
+                            <mat-label>Subprograma de investigación</mat-label>
+                            <mat-select formControlName="subprograma" [(value)]="subprograma">
+                                <mat-option *ngFor="let ProgamS of ProgamSubIns" [value]="ProgamS.descr">
+                                    {{ProgamS.descr}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </form>
+                </div>
+
+
+
+                <div class="centro-de-inv__form">
+                    <form [formGroup]="centrosForm" class="example-form">
+                        <mat-form-field class="full-width" appearance="fill">
+                            <mat-label>Lineas de Investigación</mat-label>
+                            <mat-select formControlName="lineasinv" [(value)]="lineasinv">
+                                <mat-option *ngFor="let Lins of LinsIns" [value]="Lins.descr">
+                                        {{Lins.descr}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </form>
+                </div>
+            </div>
+
+            <div class="centro-de-inv1">
+                <div class="centro-de-inv1__form">
+                    <form [formGroup]="centrosForm" class="example-form">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Descripción</mat-label>
+                            <input name="descripcion" formControlName="descripcion" [(ngModel)]="descripcion" matInput/>
+                            <mat-hint>Debe definir la dependencia de la unidad de la cuál surge dicha necesidad</mat-hint>
+                        </mat-form-field>
+                    </form>
+                </div>
+            </div>
+
+
+
+            <div class="centro-de-inv1">
+                <div class="centro-de-inv1__form">
+                    <form [formGroup]="centrosForm" class="example-form">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>¿Por qué se necesita?</mat-label>
+                            <input name="porque" formControlName="porque" [(ngModel)]="porque" matInput/>
+                        </mat-form-field>
+                    </form>
+                </div>
+            </div>
+ 
+          
+            <div class="centro-de-inv2">
+                <div class="centro-de-inv2__form">
+                    <form [formGroup]="centrosForm" class="example-form">
+                        <mat-form-field class="full-width" appearance="fill">
+                            <mat-label>° Prioridad</mat-label>
+                            <mat-select formControlName="selectedValue" [(value)]="selectedValue">
+                                <mat-option *ngFor="let optionn of optionns" [value]="optionn.viewValue">
+                                  {{optionn.viewValue}}
+                                </mat-option>
+                              </mat-select>
+                        </mat-form-field>
+                    </form>
+                </div>
+
+
+                <div class="centro-de-inv__btn">
+                    <mat-card-actions class="planteamiento-card__btn">
+                        <button (click)="addNecesidad()" mat-raised-button
+                                color="primary">Crear
+                        </button>
+                    </mat-card-actions> 
+                </div>
+            </div> 
+            
+
+
+            <app-necesidades-table></app-necesidades-table>
+
+        </div>
+    </div>
+</div>

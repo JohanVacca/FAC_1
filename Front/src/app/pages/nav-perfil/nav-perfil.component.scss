@@ -1,0 +1,38 @@
+.LetraBlanca {
+  color: #FFF;
+  text-align: center;
+}
+
+.close-sesion {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  margin-top: 15px;
+
+  label {
+    margin-left: 10px;
+    padding-top: 2px;
+    cursor: pointer;
+  }
+}
+
+.card {
+    max-width: 300px;
+  }
+
+  .example-header-image {
+    background-image: url('https://i.ytimg.com/vi/gKcChpK34tk/maxresdefault.jpg');
+    background-size: cover;
+    width:150px; 
+    height:150px; 
+    border-radius:200px;
+    object-fit: cover;
+  }
+
+  .mat-card{
+    background-color: rgba($color: #868686, $alpha: 0.3);
+  }
+  .parrafo{
+    color: #FFF;
+  }

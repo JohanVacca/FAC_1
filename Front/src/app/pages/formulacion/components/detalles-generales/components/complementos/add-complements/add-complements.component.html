@@ -1,0 +1,25 @@
+<mat-card class="maintarget">
+    <mat-card-title >Crear Instructivo </mat-card-title>
+    <mat-card-subtitle >En este módulo usted podrá realizar la creación de un instructivo
+    </mat-card-subtitle>
+    <div class="row">
+      <div class="col-lg-6">
+        <mat-form-field class="example-full-width" appearance="legacy">
+          <mat-label>Tipo de archivo</mat-label>
+          <input name="objetivo" [value]="objetivo" readonly matInput>
+        </mat-form-field>
+        <br>
+        <mat-label>Cargue un archivo</mat-label>
+        <input #fileInput type="file" id="file" (change)='uploadFileEvt($event)'
+          accept="PDF/*" />
+        <br>
+        <br>
+      </div>
+    </div>
+    <mat-card-actions>
+      <button mat-button mat-stroked-button mat-dialog-close="false">Cancelar</button>
+      <button class="primario" (click)="onSubmit()" mat-raised-button
+        color="primary" mat-dialog-close="true">Guardar</button>
+    </mat-card-actions>
+  </mat-card>
+  

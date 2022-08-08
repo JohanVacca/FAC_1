@@ -1,0 +1,46 @@
+<div class="container">
+  <mat-card>
+    <mat-card-title>Terminos y condiciones</mat-card-title>
+    <mat-card-subtitle>
+
+      <p>Este documento contiene las políticas internas establecidas por Fuerza Aérea Colombiana. para dar cumplimiento
+        a la Ley 1266 de 2008, a la ley 1581 de 2012 y demás normas reglamentarias que regulan el Habeas Data y la
+        protección de datos personales. </p>
+
+      <p> Así mismo promueven los valores de respeto, sujeción a la legalidad, reserva, confidencialidad, disponibilidad
+        y
+        manejo adecuado de la información personal que, es utilizada por la empresa, para el cumplimiento de los
+        objetivos corporativos y de negocio.</p>
+
+      <p> Estas políticas buscan garantizar que las personas naturales y jurídicas con las que interactúa la empresa
+        conozcan las finalidades y condiciones de uso y Tratamiento que de los datos personales se realizan en el
+        desarrollo del objeto social, se informen sobre quiénes son los encargados y responsables del Tratamiento de sus
+        datos y cuenten con los instrumentos para que ejerciten el derecho de decisión y control que tienen sobre la
+        información, uso y destino de sus datos personales.</p>
+
+      <p>Adicionalmente estas políticas incluyen los aspectos básicos de índole normativa, los anexos con las
+        finalidades
+        para las que es obtenida la información personal en la empresa, los esquemas de procedimientos que permiten la
+        autorización del dato por cuenta de su Titular y, las garantías e instrumentos para asegurar la vigencia de los
+        derechos fundamentales protegidos por las mencionadas disposiciones.</p>
+
+    </mat-card-subtitle>
+    <mat-slide-toggle color="primary" [(ngModel)]="aceptoTerminos">Acepto terminos</mat-slide-toggle>
+    <mat-card-actions>
+      <div mat-dialog-actions class="botonera-dialogo">
+        <div *ngIf="!Val">
+          <button [disabled]="!aceptoTerminos" mat-button mat-stroked-button (click)="crearProyecto()">Crear Proyectos</button>
+        </div>
+        <div *ngIf="Val">
+          <button [disabled]="!aceptoTerminos" mat-button mat-stroked-button (click)="upDate()">Actualizar</button>
+        </div>
+      </div>
+      <div *ngIf="hasError" class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Esta Incompleto!</strong> {{messageError}}
+        <button (click)="closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</div>

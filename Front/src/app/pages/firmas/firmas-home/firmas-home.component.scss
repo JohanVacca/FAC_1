@@ -1,0 +1,116 @@
+.mat-card-subtitle {
+  color: #004884;
+  font-family: "Work Sans", sans-serif;
+  display: block;
+  padding: 1rem;
+}
+
+.mat-form-field {
+  margin-top: 16px;
+}
+
+td {
+  line-height: 120%;
+}
+
+.tooltip-red {
+  background: #b71c1c;
+  font-size: 16px;
+}
+
+.tooltip-white {
+  background: #3772FF;
+  font-size: 16px;
+}
+
+.card {
+  padding: 3.3rem 2.4rem 4rem 2.4rem;
+}
+
+::ng-deep {
+  .card-firma {
+    mat-card-title {
+      font-weight: 700;
+      letter-spacing: normal;
+      align-items: center;
+      justify-content: center;
+      padding: 0 0 20px;
+      position: relative;
+      color: #004884;
+      font-family: "Work Sans", sans-serif;
+      display: block;
+      font-size: 24px;
+    }
+
+    &__title {
+      label {
+        color: #004884;
+        font-weight: 700;
+        letter-spacing: normal;
+        font-family: "Work Sans", sans-serif;
+        font-size: 24px;
+      }
+    }
+
+    &__message {
+      margin: 20px 0;
+    }
+
+    &__label {
+      margin: 20px 0;
+      text-align: center;
+
+      label {
+        font-size: 20px;
+      }
+    }
+
+    &__input {
+      input {
+        width: 100%;
+      }
+    }
+
+    &__format-error {
+      margin: 20px 0;
+
+      label {
+        color: red;
+      }
+    }
+
+    &__img {
+      align-self: center;
+      width: 510px;
+      height: 270px;
+      margin: 20px 0 50px;
+
+      img {
+        width: 500px;
+        height: 260px;
+      }
+    }
+
+    &__buttons {
+      align-self: center;
+
+      button {
+        width: fit-content;
+      }
+    }
+  }
+
+  .card-firma-listado {
+    &__table-div {
+
+
+      table {
+        width: 100%;
+
+        .table-acciones {
+          justify-content: left;
+        }
+      }
+    }
+  }
+}

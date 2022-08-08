@@ -1,0 +1,67 @@
+<div class="container">
+  <mat-card>
+    <form [formGroup]="registroProducto">
+      <mat-card>
+        <mat-card-title *ngIf="!data.actualizar"> Registrar Producto</mat-card-title>
+        <mat-card-title *ngIf="data.actualizar"> Actualizar Producto</mat-card-title>
+
+        <mat-card-content>
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Tipo de Producto</mat-label>
+            <mat-select formControlName="tipoProducto" name="typeIns">
+              <mat-option *ngFor="let typeIn of typeIns" [value]="typeIn.descr">
+                {{typeIn.descr}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Rubro Relacionado</mat-label>
+            <mat-select formControlName="rubroRelacionado" name="Rubros">
+              <mat-option *ngFor="let Rubro of Rubros" [value]="Rubro.descr">
+                {{Rubro.descr}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Descripcion</mat-label>
+            <input formControlName="descripcion" type="text" matInput>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>SubActividad</mat-label>
+            <mat-select formControlName="subActividad" name="subActividad">
+              <mat-option *ngFor="let subActividad of subActividades" [value]="subActividad.nombreSub">
+                {{subActividad.nombreSub}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card>
+        <mat-card-title> Participación</mat-card-title>
+        <mat-card-content>
+          <mat-form-field class="short-width" appearance="fill">
+            <mat-label>Fuerza Aérea</mat-label>
+            <input formControlName="partFuerza" type="number" matInput placeholder="Ingrese el porcentaje">
+          </mat-form-field>
+
+
+          <mat-form-field class="short-width" appearance="fill">
+            <mat-label>Otros</mat-label>
+            <input formControlName="partOtros" type="number" matInput placeholder="Ingrese el porcentaje">
+          </mat-form-field>
+
+        </mat-card-content>
+        <mat-card-actions class="btncrear">
+          <button *ngIf="!data.actualizar" [disabled]="!registroProducto.valid" (click)="guardarProducto()"
+            mat-raised-button color="primary" mat-dialog-close="false">Crear</button>
+          <button *ngIf="data.actualizar" [disabled]="!registroProducto.valid" (click)="updateProducto()"
+            mat-raised-button color="primary" mat-dialog-close="false">Actualizar</button>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+  </mat-card>
+</div>

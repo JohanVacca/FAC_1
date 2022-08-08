@@ -1,0 +1,72 @@
+<div class="container">
+  <mat-card class="card col-lg-12 col-md-12 col-xs-12 overflow-auto">
+    <div class="Botonadd">
+      <button mat-icon-button matTooltipClass="tooltip-white" matTooltip="Agregar Convocatoria"
+        matTooltipPosition="above" (click)="openDigCreate()">
+        <mat-icon class="iconoadd">add_circle</mat-icon>
+      </button>
+    </div>
+
+    <div class="titulo">Listado de Convenios</div>
+    <div class="parrafo">En la siguiente tabla encontrará los convenios registrados en el sistema</div>
+    
+    <div class=" overflow-auto tabla-responsive-x">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 ">
+
+        <ng-container matColumnDef="name">
+          <th class="parrafo" mat-header-cell *matHeaderCellDef> Nombre </th>
+          <td class="parrafo" mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Descripcion">
+          <th class="parrafo" mat-header-cell *matHeaderCellDef> Descripción </th>
+          <td class="parrafo" mat-cell *matCellDef="let element">{{element.Descripcion}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="activo">
+          <th class="parrafo" scope="col" mat-header-cell *matHeaderCellDef mat-sort-header>Estado</th>
+          <td class="parrafo" mat-cell *matCellDef="let element">
+            <mat-slide-toggle [checked]="element.isActive" color="primary" matTooltipClass="tooltip-white"
+              matTooltip="Activar/desactivar Convocatoria" (change)="update(element._id,element.isActive,element.name)">
+            </mat-slide-toggle>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="acciones">
+          <th class="parrafo" scope="col" mat-header-cell *matHeaderCellDef>Acciones</th>
+          <td class="parrafo" mat-cell *matCellDef="let row">
+            <ul class="table-action-list">
+              <li>
+                <button mat-icon-button aria-label="Example icon-button with a heart icon"
+                  matTooltipClass="tooltip-white" matTooltip="Configurar Proyecto" matTooltipPosition="above"
+                  [routerLink]="['/pages/admin/project',row._id]">
+                  <mat-icon>settings</mat-icon>
+                </button>
+              </li>
+              <li>
+                <button mat-icon-button aria-label="Example icon-button with a heart icon" (click)="editar(row._id)"
+                  aria-label="Eliminar Convenio" matTooltip="Editar Convenio" matTooltipClass="tooltip-white"
+                  matTooltipPosition="above" matTooltipPosition="above">
+                  <mat-icon>edit</mat-icon>
+                </button>
+              </li>
+              <li>
+                <button mat-icon-button aria-label="Example icon-button with a heart icon"
+                  (click)="deleteConvocatoria(row._id,row.name)" aria-label="Eliminar Convenio"
+                  matTooltip="Eliminar Convenio" matTooltipClass="tooltip-red" matTooltipPosition="above"
+                  matTooltipPosition="above">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </li>
+            </ul>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      </table>
+    </div>
+
+  </mat-card>
+</div>

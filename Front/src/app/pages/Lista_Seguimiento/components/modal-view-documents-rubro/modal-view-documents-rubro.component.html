@@ -1,0 +1,46 @@
+<div class="modal-rubros-documentos-dashboard">
+    <div class="modal-rubros-documentos-dashboard__title">
+        <label>{{TITLE}}</label>
+        <label>{{NAME}}{{data.name}}</label>
+    </div>
+    <table class="modal-rubros-documentos-dashboard__table">
+        <thead>
+        <tr>
+            <td>{{AMOUNT}}</td>
+            <td>{{VIEW_PDF}}</td>
+            <td>{{REMOVE}}</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let rubro of rubros">
+            <td>{{rubro.rubro | currency}}</td>
+            <td>
+                <div class='square-orange-icon icon-click-pdf'>
+                    <span
+                            class="material-icons"
+                            matTooltip="Ver documentos"
+                            (click)="downloadPDF(rubro.factura)"
+                    >
+                        picture_as_pdf
+                    </span>
+                </div>
+            </td>
+            <td>
+                <div class='square-red-icon icon-click-pdf'>
+                    <span
+                            class="material-icons"
+                            matTooltip="Eliminar rubro"
+                            (click)="removeRubro(rubro._id)"
+                    >
+                        delete
+                    </span>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="modal-rubros-documentos-dashboard__button">
+        <button mat-button mat-stroked-button (click)="closeModal()">{{CLOSE_MODAL}}</button>
+    </div>
+</div>

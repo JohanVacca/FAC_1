@@ -1,0 +1,197 @@
+<div class="container">
+    <div class="evaluate-project">
+        <form [formGroup]="evaluacion">
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                <tr>
+                    <th>Criterio de Evaluacion</th>
+                    <th>Puntaje Evalucacion</th>
+                    <th colspan="3">tabla de puntuaciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="thead-light">
+                    <th>1. calidad del proyecto</th>
+                    <th>0 - 45 Total</th>
+                    <th>Deficiente</th>
+                    <th>Aceptable</th>
+                    <th>Sobresaliente</th>
+                </tr>
+                <tr>
+                    <th>Formulación y antecedentes de la pregunta de investigación. Contribución de la pregunta de
+                        investigación planteada a la generación de nuevo conocimiento. Claridad y sustento de los
+                        fundamentos científicos. Claridad de la o las preguntas de investigación e hipótesis planteadas
+                        (Cuando aplique).
+                        En caso de que sea más un proyecto de desarrollo tecnológico que de investigación, verificar en
+                        el
+                        planteamiento del problema, la formulación o los antecedentes, si efectivamente el proyecto está
+                        orientado a la creación, modificación o adaptación de un producto, servicio o proceso específico
+                        gracias al empleo de la tecnología y conocimientos, y si tiene como función satisfacer una
+                        necesidad, demanda o servicio.
+                        En caso de ser un proyecto de transferencia de tecnología verificar que obedece a una necesidad
+                        u
+                        oportunidad para trasnferir conocimientos, tecnologías, habilidades y destrezas para el
+                        desarrollo
+                        de nuevas aplicaciones, servicios o procesos y mejorar las capacidades científicas y
+                        tecnológicas de
+                        la FAC y del país mismo.
+                        En cualquier tipo de proyecto, verificar la claridad y sustento de la pregunta o problema
+                        definido.
+                    </th>
+                    <th>
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Calificación</mat-label>
+                            <input *ngIf="!isScored" formControlName="vlrproyecto" type="number" matInput>
+                            <input [value]="Rvlrproyecto" *ngIf="isScored" formControlName="vlrproyecto" type="number" readonly matInput>
+                            <mat-error *ngIf="evaluacion">la maxima calificacion es 20 y la minima es 0</mat-error>
+                        </mat-form-field>
+                    </th>
+                    <th>0-6</th>
+                    <th>7-14</th>
+                    <th>15-20</th>
+                </tr>
+                <tr>
+                    <th>Coherencia en la estructura del proyecto. Articulación entre la pregunta de investigación, los
+                        objetivos, el diseño metodológico y el cronograma de actividades (que deben incorporar los
+                        componentes y actividades para alcanzar los objetivos planteados) y los productos esperados.
+                    </th>
+                    <th>
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label> Calificación</mat-label>
+                            <input *ngIf="!isScored" formControlName="vlrunidadependencia" type="number" matInput>
+                            <input [value]="Rvlrunidadependencia" *ngIf="isScored" formControlName="vlrunidadependencia" type="number" readonly matInput>
+
+                            <mat-error *ngIf="evaluacion">la maxima calificacion es 15 y la minima es 0</mat-error>
+                        </mat-form-field>
+                    </th>
+                    <th>0-4</th>
+                    <th>5-10</th>
+                    <th>11-15</th>
+                </tr>
+                <tr>
+                    <th>Perspectiva de uso potencial de los resultados de la investigación. Potencial de aplicación y
+                        uso
+                        de los resultados en la poblacion objetivo.
+                    </th>
+                    <th>
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Calificación</mat-label>
+                            <input *ngIf="!isScored" formControlName="vlrequipo" type="number" matInput>
+                            <input [value]="Rvlrequipo" *ngIf="isScored" formControlName="vlrequipo" type="number" readonly matInput>
+                            <mat-error *ngIf="evaluacion">la maxima calificacion es 5 y la minima es 0</mat-error>
+                        </mat-form-field>
+                    </th>
+                    <th>0-2</th>
+                    <th>3-4</th>
+                    <th>5</th>
+                </tr>
+                <tr>
+                    <th>Presupuesto. Concordancia entre el presupuesto total, las actividades y los objetivos planteados
+                        del proyecto. Justificacion adecuada de los rubros, cantidad y montos solicitados con los
+                        objetivos,
+                        la metodología y la duración del proyecto.
+                    </th>
+                    <th>
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Calificación</mat-label>
+                            <input *ngIf="!isScored" formControlName="vlrobjGeneral" type="number" matInput>
+                            <input [value]="RvlrobjGeneral" *ngIf="isScored" formControlName="vlrobjGeneral" type="number" readonly matInput>
+                            <mat-error *ngIf="evaluacion">la maxima calificacion es 5 y la minima es 0</mat-error>
+                        </mat-form-field>
+                    </th>
+                    <th>0-2</th>
+                    <th>3-4</th>
+                    <th>5</th>
+                </tr>
+                <tr class="thead-light">
+                    <th>2. conformacion de la alianza y del equipo de investigacion</th>
+                    <th>0 - 15 Total</th>
+                </tr>
+                <tr>
+                    <th>Conformación del equipo para dar respuesta a la pregunta o problema de investigación planteado.
+                    </th>
+                    <th>
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Calificación</mat-label>
+                            <input *ngIf="!isScored" formControlName="vlrobjEspecifico" type="number" matInput>
+                            <input [value]="RvlrobjEspecifico" *ngIf="isScored" formControlName="vlrobjEspecifico" type="number" readonly
+                                   matInput>
+                            <mat-error *ngIf="evaluacion">la maxima calificacion es 8 y la minima es 0</mat-error>
+                        </mat-form-field>
+                    </th>
+                    <th>0-2</th>
+                    <th>3-5</th>
+                    <th>6-8</th>
+                </tr>
+                <tr>
+                    <th>Aporte y complementariedad de los grupos o entidades que conforman la alianza.</th>
+                    <th>
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Calificación</mat-label>
+                            <input *ngIf="!isScored" formControlName="vlrresumen" type="number" matInput>
+                            <input [value]="Rvlrresumen" *ngIf="isScored" formControlName="vlrresumen" type="number" readonly matInput>
+                            <mat-error *ngIf="evaluacion">la maxima calificacion es 7 y la minima es 0</mat-error>
+                        </mat-form-field>
+                    </th>
+                    <th>0-2</th>
+                    <th>3-4</th>
+                    <th>5-7</th>
+                </tr>
+                <tr class="thead-light">
+                    <th>3. productos esperados</th>
+                    <th>0 - 20 Total</th>
+                </tr>
+                <tr>
+                    <th>Generación de productos de nuevo conocimiento y/o de desarrollo tecnológico e innovación.</th>
+                    <th>
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Calificación</mat-label>
+                            <input *ngIf="!isScored" formControlName="vlrpalabrasClaves" type="number" matInput>
+                            <input [value]="RvlrpalabrasClaves" *ngIf="isScored" formControlName="vlrpalabrasClaves" type="number" readonly
+                                   matInput>
+                            <mat-error *ngIf="evaluacion">la maxima calificacion es 15 y la minima es 1</mat-error>
+                        </mat-form-field>
+                    </th>
+                    <th>1-4</th>
+                    <th>5-10</th>
+                    <th>11-15</th>
+                </tr>
+                <tr>
+                    <th>Generación de productos de nuevo conocimiento y/o de desarrollo tecnológico e innovación.</th>
+                    <th>
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Calificación</mat-label>
+                            <input *ngIf="!isScored" formControlName="vlrmarco" type="number" matInput>
+                            <input [value]="Rvlrmarco" *ngIf="isScored" formControlName="vlrmarco" type="number" readonly matInput>
+                            <mat-error *ngIf="evaluacion">la maxima calificacion es 5 y la minima es 1</mat-error>
+                        </mat-form-field>
+                    </th>
+                    <th>1-2</th>
+                    <th>3-4</th>
+                    <th>5</th>
+                </tr>
+                <tr class="thead-light">
+                    <th>4. pertenencia</th>
+                    <th>0 - 20 Total</th>
+                </tr>
+                <tr>
+                    <th>Pertinencia con los Programas Estratégicos de la FAC.</th>
+                    <th>
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Calificación</mat-label>
+                            <input *ngIf="!isScored" formControlName="vlrestado" type="number" matInput>
+                            <input [value]="Rvlrestado" *ngIf="isScored" formControlName="vlrestado" type="number" readonly matInput>
+                            <mat-error *ngIf="evaluacion">la maxima calificacion es 20 y la minima es 0</mat-error>
+                        </mat-form-field>
+                    </th>
+                    <th>0-5</th>
+                    <th>6-15</th>
+                    <th>16-20</th>
+                </tr>
+                </tbody>
+            </table>
+                <button *ngIf="!isScored" mat-button (click)="evaluate()" cdkFocusInitial>Evaluar</button>
+                <button *ngIf="isScored" mat-button (click)="closeModal()" cdkFocusInitial>Cerrar</button>
+        </form>
+    </div>
+</div>

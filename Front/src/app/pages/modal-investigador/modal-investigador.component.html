@@ -1,0 +1,32 @@
+<div class="modal-investigadores-dashboard">
+    <div class="modal-investigadores-dashboard__title">
+        <label>{{TITLE}}</label>
+        <label>{{NAME}}{{data.nombre}}</label>
+        <label>{{TOTAL_HOURS}}{{data.dedicacion}}</label>
+    </div>
+    <table class="modal-investigadores-dashboard__table">
+        <ng-container *ngFor="let centro of centros">
+            <thead>
+            <tr>
+                <td class="modal-investigadores-dashboard__table--title" colspan="2">{{centro.name}}</td>
+            </tr>
+            </thead>
+            <thead>
+            <tr>
+                <td>{{PROJECT}}</td>
+                <td>{{DEDICATION}}</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let project of centro.proyectos">
+                <td>{{project.nombreProyecto}}</td>
+                <td>{{project.dedicacion}}</td>
+            </tr>
+            </tbody>
+        </ng-container>
+    </table>
+
+    <div class="modal-investigadores-dashboard__button">
+        <button mat-button mat-stroked-button (click)="closeModal()">{{CLOSE_MODAL}}</button>
+    </div>
+</div>

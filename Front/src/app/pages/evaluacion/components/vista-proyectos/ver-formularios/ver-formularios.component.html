@@ -1,0 +1,35 @@
+<div class="container">
+    <mat-card class="card">
+  
+      <mat-card-title>Listado de documentos</mat-card-title>
+      <mat-card-subtitle>En la siguiente tabla encontrará con la documentaciòn agregada por el investigador</mat-card-subtitle>
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Tipo de documento</th>
+            <th scope="col">Nombre del Documento</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let Doc of dataSource; index as i">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>
+            {{ Doc.NombreTipo }}
+            </td>
+            <td>
+              {{ Doc.NombreDoc }}
+            </td>
+            <th>
+              <button mat-icon-button aria-label="Example icon-button with a heart icon"
+                matTooltipClass="tooltip-white" matTooltip="ver" matTooltipPosition="above"
+                (click)="ver(Doc.NombreArchivo, Doc.NombreDoc)">
+                <mat-icon>find_in_page</mat-icon>
+              </button>
+            </th>
+          </tr>
+        </tbody>
+      </table>
+    </mat-card>
+</div>

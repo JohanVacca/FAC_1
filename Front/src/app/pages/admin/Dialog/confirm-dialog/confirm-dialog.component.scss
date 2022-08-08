@@ -1,0 +1,254 @@
+.dialogo {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  border-radius:1rem;
+}
+
+.icono {
+  background-color: #3772FF;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 6rem;
+  min-width: 6rem;
+  height: 6rem;
+  min-height: 6rem;
+  border-radius: 50%;
+  margin-bottom: 1.8rem;
+
+  .mat-icon {
+    color: inherit;
+    font-size: 4.6rem;
+    height: 4.6rem;
+    width: 4.6rem;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+h1 {
+  font-size: 2rem;
+  color: #004884 !important;
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 3rem;
+  text-align: left;
+  font-weight: 700;
+}
+
+.descripcion {
+  text-align: center;
+  color: #004884;
+  margin-top: 1.8rem;
+
+  &:empty {
+    margin-top: 0;
+  }
+}
+
+.botonera-dialogo {
+  margin: 4rem 0 0 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+button.mat-button.mat-flat-button {
+  border-color: #3772FF;
+  background-color: #3772FF;
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
+  border-radius: 1000px;
+}
+button.mat-stroked-button {
+  color: #3772FF;
+  border: solid 2px #3772FF;
+  background-color: white;
+  border-radius: 10000px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+// .mat-dialog-container{
+//   border-radius:1rem;
+//   padding:2.7rem;
+//   color:#004884;
+//   overflow-x: hidden;
+//   .mat-dialog-actions{
+//       &.centrar{
+//           justify-content: center;
+//       }
+//   }
+//   .dialog-close-button{
+//       position:absolute;
+//       top:.5rem;
+//       right:.5rem;
+//       color: #ffffff;
+//   }
+//   .dialogo-gov{
+//       max-width:54.6rem;
+//       width:54.6rem;
+//       position: relative;
+//       padding:5.7rem 1rem 3.82rem 1rem;
+//       .strong-label{
+//           font-weight: 700;
+//       }
+//       &.generar-pruebas{
+//           width:100%;
+//           max-width: 100%;
+//           padding:1.8rem 3.7rem 2.4rem 3.7rem;
+//           h1{
+//               font-size: 2rem;
+//               color:#004884 !important;
+//               font-family: 'Montserrat', sans-serif;
+//               margin-bottom: 3rem;
+//               text-align: left;
+//           }
+//       }
+//       .dialogo-gov__btn-cerrar{
+//           position: absolute;
+//           top:0;
+//           right:0;
+//           background-color: unset;
+//           border:none;
+//           width:2rem;
+//           height: 2rem;
+//           display: flex;
+//           align-items: center;
+//           justify-content: center;
+//           cursor: pointer;
+//           color: #ffffff;
+//           border-radius:50%;
+//           transition: all .2s;
+//           .mat-icon{
+//               width:1.6rem;
+//               height:1.6rem;
+//               font-size: 1.6rem;
+//               font-weight: 700;
+//           }
+//           &:hover, &:focus{
+//               background-color:  #ffffff;
+//               color:#ffffff;
+//           }
+//       }
+//       .icono{
+//           display:flex;
+//           justify-content: center;
+//           margin-bottom:3rem;
+//           .mat-icon{
+//               width:5.6rem;
+//               height:5.6rem;
+//               border-radius:50%;
+//               display: flex;
+//               justify-content: center;
+//               align-items: center;
+//               font-size:4rem;
+//               color:white;
+//           }
+//       }
+//       h1{
+//           text-align: center;
+//           font-size: 3rem;
+//           font-family: 'Montserrat', sans-serif;
+//           font-weight: 700;
+//           margin-bottom:0;
+//       }
+//       .descripcion{
+//           text-align: center;
+//           color:#004884;
+//           margin-top: 1.8rem;
+//           &:empty{
+//               margin-top:0;
+//           }
+//       }
+//       .botonera-dialogo{
+//           margin:4rem 0 0 0;
+//           padding:0;
+//           display: flex;
+//           justify-content: center;
+//           align-items: center;
+//       }
+//       &.dialog-info{
+//           h1{
+//               color: #ffffff;
+//           }
+//           .icono{
+//               .mat-icon{
+//                   background-color:  #ffffff;
+//               }
+//           }
+//       }
+//       &.dialog-success{
+//           h1{
+//               color: #069169;
+//           }
+//           .icono{
+//               .mat-icon{
+//                   background-color:  #069169;
+//               }
+//           }
+//       }
+//       &.dialog-error{
+//           h1{
+//               color:#A80521;;
+//           }
+//           .icono{
+//               .mat-icon{
+//                   background-color: #A80521;;
+//               }
+//           }
+//       }
+//       &.dialog-warning{
+//           h1{
+//               color: #FFAB00;
+//           }
+//           .icono{
+//               .mat-icon{
+//                   background-color:  #FFAB00;
+//               }
+//           }
+//       }
+//   }
+
+//   .mat-selection-list{
+//       color:#004884;
+//       .mat-list-item{
+//           height: auto;
+//           border-bottom: 2px solid  #E6EFFD;
+//           padding-top:.4rem;
+//           padding-bottom:.4rem;
+//           margin-right: 2rem;
+//           width: auto;
+//           &.indice-padre{
+//               .mat-list-item-content{
+//                   .mat-list-text{
+//                       .mat-line{
+//                           font-weight: 700;
+//                       }
+//                   }
+//               }
+
+//           }
+//           &:hover{
+//               background-color:  #E6EFFD;
+//           }
+//           .mat-pseudo-checkbox{
+//               border-color:  #ffffff;
+//               border-radius: .3rem;
+//               &.mat-pseudo-checkbox-checked{
+//                   background-color: white;
+//                   color:#004884;
+//                   border-color: #004884;
+//                   &:after{
+//                       border-color: #004884;
+//                   }
+//               }
+//           }
+//           .mat-list-item-content{
+//               color:#004884;
+//           }
+//       }
+//   }
+// }

@@ -1,0 +1,36 @@
+<div class="crear-investigador-modal">
+    <form [formGroup]="agregarInvestigador" autocomplete="off">
+        <mat-card>
+            <mat-card-title>Agregar Investigador</mat-card-title>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <mat-card>
+                            <mat-form-field class="full-width" appearance="fill">
+                                <mat-label>Nombres</mat-label>
+                                <input formControlName="nombres" matInput>
+                            </mat-form-field>
+                            <br>
+                            <mat-form-field class="full-width" appearance="fill">
+                                <mat-label>Apellidos</mat-label>
+                                <input formControlName="apellido" matInput>
+                            </mat-form-field>
+                            <mat-form-field class="full-width" appearance="fill">
+                                <mat-label>Documento de Identificación</mat-label>
+                                <input formControlName="identificacion" matInput type="number">
+                            </mat-form-field>
+                        </mat-card>
+                    </div>
+                </div>
+                <mat-card-actions class="crear-investigador-modal__button">
+                    <button [disabled]="!agregarInvestigador.valid" (click)="crearInvestigador()"
+                            mat-raised-button color="primary" mat-dialog-close="false">Crear Investigador
+                    </button>
+                    <button (click)="closeModal(false)"
+                            mat-raised-button color="primary" mat-dialog-close="false">Cancelar
+                    </button>
+                </mat-card-actions>
+            </div>
+        </mat-card>
+    </form>
+</div>

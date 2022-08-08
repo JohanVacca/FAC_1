@@ -1,0 +1,95 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 lg-12 md-6 sm-3">
+      <mat-card>
+        <mat-card-title>Formato Tabla de Honorarios</mat-card-title>
+        <mat-card-content>
+          <form [formGroup]="honorarios" class="example-form">
+
+            <mat-form-field class="short-width" appearance="legacy">
+              <mat-label>ID</mat-label>
+              <input formControlName="honorarioId" type="number" name="id" matInput />
+            </mat-form-field>
+
+            <mat-form-field class="short-width" appearance="legacy">
+              <mat-label>Formación</mat-label>
+              <input formControlName="formacion" name="formacion" matInput />
+            </mat-form-field>
+
+            <mat-form-field class="short-width" appearance="legacy">
+              <mat-label>Experiencia</mat-label>
+              <textarea formControlName="experiencia" name="experiencia" matInput></textarea>
+            </mat-form-field>
+
+            <mat-form-field class="short-width" appearance="legacy">
+              <mat-label>Tope Maximo</mat-label>
+              <input formControlName="topeMaximo" type="number" name="tope" matInput />
+            </mat-form-field>
+
+            <button mat-icon-button *ngIf="activate" matTooltipClass="tooltip-white" matTooltip="Agregar" (click)=" agregar()"
+              matTooltipPosition="above">
+              <mat-icon class="iconoadd">add_circle</mat-icon>
+            </button>
+            <br>
+          </form>
+        </mat-card-content>
+      </mat-card>
+
+    </div>
+    <div class="col-12 lg-12 md-6 sm-3">
+      <mat-card>
+        <mat-card-title>
+          Tabla de Honorarios
+        </mat-card-title>
+
+        <mat-card-content>
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef> id </th>
+              <td mat-cell *matCellDef="let element"> {{element.honorarioId}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="formacion">
+              <th mat-header-cell *matHeaderCellDef> formacion </th>
+              <td mat-cell *matCellDef="let element"> {{element.formacion}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="experiencia">
+              <th mat-header-cell *matHeaderCellDef> experiencia </th>
+              <td mat-cell *matCellDef="let element"> {{element.experiencia}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="tope">
+              <th mat-header-cell *matHeaderCellDef> tope </th>
+              <td mat-cell *matCellDef="let element"> {{element.topeMaximo}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="acciones">
+              <th scope="col" mat-header-cell *matHeaderCellDef>Acciones</th>
+              <td mat-cell *matCellDef="let row">
+                <ul class="table-action-list">
+                  <li>
+                    <button matTooltip="Actualizar" (click)="update(row)" matTooltipClass="tooltip-white">
+                      <mat-icon>edit</mat-icon>
+                    </button>
+                  </li>
+                  <li>
+                    <button matTooltip="Eliminar " (click)="delet(row._id)" matTooltipClass="tooltip-red"
+                      matTooltipPosition="below">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                  </li>
+
+
+                </ul>
+              </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        </mat-card-content>
+      </mat-card>
+
+    </div>
+  </div>
+</div>

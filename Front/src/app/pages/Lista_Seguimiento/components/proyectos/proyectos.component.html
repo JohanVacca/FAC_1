@@ -1,0 +1,53 @@
+<div class="container">
+    <mat-dialog-content class="mat-typography">
+        <mat-card class="card">
+            <mat-card-title>Listado de Proyectos para hacer seguimiento</mat-card-title>
+            <mat-card-subtitle>En la siguiente tabla encontrará Los proyectos activos en el sistema</mat-card-subtitle>
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                <ng-container matColumnDef="Titulo">
+                    <th mat-header-cell *matHeaderCellDef> Nombre del Proyecto</th>
+                    <td mat-cell *matCellDef="let element">{{element.iniciarProyecto[0].nombreProyecto}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Investigador">
+                    <th mat-header-cell *matHeaderCellDef>Investigador</th>
+                    <td mat-cell *matCellDef="let element">{{element.UserId.profile.names}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Gestor">
+                    <th mat-header-cell *matHeaderCellDef>Gestor</th>
+                    <td mat-cell *matCellDef="let element">{{element.iniciarProyecto[0].gestor}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="acciones">
+                    <th scope="col" mat-header-cell *matHeaderCellDef>Seguimiento</th>
+                    <td mat-cell *matCellDef="let row">
+                        <div>
+                            <ul class="table-action-list">
+                                <li>
+                                    <button mat-icon-button aria-label="Example icon-button with a heart icon"
+                                            *ngIf="row.Seguimiento"
+                                            matTooltipClass="tooltip-white" matTooltip="Realizar Seguimiento"
+                                            matTooltipPosition="above"
+                                            (click)="cerrardialog()"
+                                            [routerLink]="['/pages/seguimientoproject',row._id]">
+                                        <mat-icon>fact_check</mat-icon>
+                                    </button>
+
+                                    <alert *ngIf="!row.Seguimiento"
+                                           class="alert alert-warning alert-dismissible fade show">
+                                        Deshabilitado
+                                    </alert>
+
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </mat-card>
+    </mat-dialog-content>
+</div>

@@ -1,0 +1,108 @@
+::ng-deep {
+  .firma-imagen {
+    &-center {
+      text-align: center;
+    }
+    &-pdf {
+      height: 200px;
+      width: 200px;
+    }
+  }
+
+  .cdk-overlay-pane {
+    overflow-y: auto;
+  }
+
+  .centrar-todo {
+    text-align: center;
+  }
+
+  .image-table {
+    position: relative;
+
+    img {
+      position: relative;
+      top: 20px;
+    }
+  }
+}
+
+table,
+td,
+th {
+  border: 1px solid #595959;
+  border-collapse: collapse;
+}
+
+.table-pdf-form {
+  border-collapse: collapse;
+
+  td, tr {
+
+  }
+
+  .table-title {
+    background: darkblue;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .table-tbody {
+
+    .table-tr {
+
+      .table-td {
+
+      }
+    }
+  }
+}
+
+.cssencabezado {
+  font-size: 12pt;
+  font-weight: bold;
+}
+
+.title-table-codigo,
+.title-table-justificacion,
+.title-table-productos,
+.title-table-riesgos,
+.title-table-estructura,
+.title-table-equipo,
+.title-table-grupo,
+.title-table-costos {
+  background: lightgrey;
+  label {
+    font-size: 14px;
+    font-weight: bold;
+  }
+}
+
+.table-codigo-right {
+  margin-bottom: 10px;
+  float: right;
+
+  td {
+    padding: 10px 20px;
+    margin: 0;
+
+    label {
+      margin: 0;
+    }
+  }
+}
+
+.table-riesgos {
+  width: 100%;
+}
+
+.porcentaje {
+  label {
+    font-size: 15px;
+  }
+}
+
+.center-row-table {
+
+}

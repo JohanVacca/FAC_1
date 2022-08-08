@@ -1,0 +1,32 @@
+<div>
+    <div class="titulo-modal-centros">
+        <label><b>Jefe Actual:</b> {{this.data.jefe.profile.names}} {{this.data.jefe.profile.surname}}</label>
+    </div>
+    <div class="centro-de-inv">
+        <div class="centro-de-inv__form">
+            <form [formGroup]="centrosForm" class="example-form">
+                <mat-form-field class="full-width" appearance="fill">
+                    <mat-label>Jefe de centro</mat-label>
+                    <mat-select formControlName="jefe" [(value)]="jefe" name="Grupos">
+                        <mat-option *ngFor="let jefeDeCentro of jefesDeCentro" [value]="jefeDeCentro">
+                            {{jefeDeCentro.profile.names}} {{jefeDeCentro.profile.surname}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="legacy">
+                    <mat-label>Nombre del centro de investigación</mat-label>
+                    <input name="name" formControlName="name" [(ngModel)]="name" matInput/>
+                </mat-form-field>
+            </form>
+        </div>
+        <div class="centro-de-inv__btn">
+            <div class="centro-de-inv__btn--button">
+                <mat-card-actions class="planteamiento-card__btn">
+                    <button (click)="editarCentro()" mat-raised-button
+                            color="primary">Editar centro
+                    </button>
+                </mat-card-actions>
+            </div>
+        </div>
+    </div>
+</div>

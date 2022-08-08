@@ -1,0 +1,115 @@
+$responsive-action: 1000px;
+
+.btncrear {
+  text-align: right;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.short-width {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.full-width {
+  width: 70%;
+  align-items: center;
+}
+
+.mat-card-title {
+  font-weight: 700;
+  font-family: "Work Sans", sans-serif;
+  letter-spacing: normal;
+  margin: 0 0 16px;
+  color: #004884;
+  padding: 0.5rem;
+}
+
+.mat-card-subtitle {
+  color: #004884;
+  font-family: "Work Sans", sans-serif;
+}
+
+.tooltip-red {
+  background: #b71c1c;
+  font-size: 16px;
+}
+
+.tooltip-white {
+  background: #3772FF;
+
+  font-size: 16px;
+}
+
+.mat-form-field {
+  margin-top: 16px;
+}
+
+.iconoadd {
+  background-repeat: no-repeat;
+  display: inline-block;
+  fill: currentColor;
+  height: 54px;
+  width: 54px;
+  font-size: 44px;
+  background-color: transparent;
+  color: #3772FF;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  padding: 0.5rem;
+}
+
+::ng-deep {
+  mat-card {
+    .div-button-create-project {
+      text-align: center;
+      margin: 15px;
+    }
+  }
+}
+
+.error-label {
+  color: #f44336;
+  font-size: 11px;
+  top: -12 px;
+  position: relative;
+  padding-left: 10px;
+}
+
+::ng-deep {
+  mat-step-header {
+    cursor: auto !important;
+  }
+
+  .mat-step-label-selected {
+    label {
+      font-weight: bold;
+      text-decoration: underline;
+    }
+  }
+  .stepper-form-project {
+    .mat-step-text-label.ng-star-inserted {
+      label {
+        white-space: initial;
+        word-break: break-word;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: $responsive-action) {
+  .card-form {
+    margin: 20px 0;
+    padding: 0;
+  }
+}

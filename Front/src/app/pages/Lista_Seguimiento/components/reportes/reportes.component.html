@@ -1,0 +1,346 @@
+<div class="container">
+    <mat-card *ngIf="!hasReport">
+        <mat-card-subtitle>En esta sección podrá generar el reporte de seguimiento del proyecto
+            <strong>{{nombreproject}}</strong>
+        </mat-card-subtitle>
+
+        <button mat-flat-button color="primary" (click)="GenerarReporte()">Generar Reporte</button>
+
+    </mat-card>
+
+    <mat-card *ngIf="isLoading">
+        <app-loader></app-loader>
+    </mat-card>
+
+    <mat-card *ngIf="hasReport">
+        <div class="row">
+            <div class="GHJEAFR042">
+                <table class="table" id="GHJEAFR042">
+                    <thead>
+                    <tr>
+                        <td class="cssimgencabezado" colspan="3" rowspan="3">
+                            <img src="../../../../../assets/images/logo.png">
+
+                        </td>
+                        <td class="cssencabezado" colspan="5">FUERZA AÉREA COLOMBIANA AUTORIDAD AERONÁUTICA DE LA
+                            AVIACIÓN DE
+                            ESTADO
+                        </td>
+                        <td class="cssencabezado" colspan="1">Código</td>
+                        <td class="cssencabezado" colspan="3">4</td>
+                    </tr>
+                    <tr>
+                        <td class="cssencabezado" colspan="5" rowspan="2">FORMATO INFORME PARCIAL DE AVANCE DE PROYECTOS
+                            DE
+                            INVESTIGACIÓN
+                            DESARROLLO TECNOLÓGICO E
+                            INNOVACIÓN (I+D+I)
+                        </td>
+                        <td colspan="1" class="cssencabezado">Versión N°</td>
+                        <td colspan="3" class="cssencabezado">01</td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" class="cssencabezado">Vigencia</td>
+                        <td colspan="3" class="cssencabezado">23-11-2018</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td colspan="6" class="csstitulotabla">1. Información General del Proyecto</td>
+                        <td colspan="2" class="csstitulotabla">Código</td>
+                        <td colspan="5">DICTI- ____20__</td>
+                    </tr>
+                    <tr>
+                        <td class="csssubtitulotabla">Título</td>
+                        <td colspan="11">{{nombreproject}}</td>
+                    </tr>
+                    <tr>
+                        <td class="csssubtitulotabla" colspan="3">Investigador Líder</td>
+                        <td colspan="3">{{InvestigadorLider}}</td>
+                        <td class="csssubtitulotabla" colspan="2">Correo</td>
+                        <td colspan="4">{{Correo}}</td>
+                    </tr>
+                    <tr>
+                        <td class="csssubtitulotabla" colspan="3">Unidad/Dependencia</td>
+                        <td colspan="3">{{UnidadDependencia}}</td>
+                        <td class="csssubtitulotabla" colspan="2">Teléfono</td>
+                        <td colspan="4">{{Telefono}}</td>
+                    </tr>
+                    <tr>
+                        <td class="csssubtitulotabla" colspan="3">Fuente(s) de Financiación</td>
+                        <td colspan="3">
+                            <ul>
+                                <li *ngFor="let entidad of entidades">
+                                    {{entidad.nombre}}
+                                </li>
+                            </ul>
+                        </td>
+                        <td class="csssubtitulotabla" colspan="3">Fecha del Informe</td>
+                        <td colspan="3">{{FechaInforme | date:'dd-MM-yyyy'}}</td>
+                    </tr>
+                    <tr>
+                        <td class="csssubtitulotabla" colspan="2">Informe parcial No.</td>
+                        <td>{{version + 1}}</td>
+                        <td class="csssubtitulotabla" colspan="9"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="12" class="csstitulotabla">2. Cumplimiento Plan de Inversión del Proyecto</td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="3" rowspan="2" class="csssubtitulotabla">Rubro</td>
+                        <td colspan="6" class="csssubtitulotabla">Ejecución a la fecha</td>
+                        <td colspan="3" class="csssubtitulotabla" rowspan="2">% Cumplimiento</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" class="csssubtitulotabla">Presupuesto Asignado</td>
+                        <td colspan="3" class="csssubtitulotabla">Presupuesto Ejecutado</td>
+                    </tr>
+                    <tr *ngFor="let rubro of rubros">
+                        <td colspan="3">{{rubro.NombreRubro}}</td>
+                        <td colspan="3">{{rubro.EntidadesCostos | currency}}</td>
+                        <td colspan="3">{{getPresupuestoEjecutado(rubro.listaRubros) | currency}}</td>
+                        <td colspan="3">{{calculateCumplimiento(rubro.EntidadesCostos, rubro.listaRubros)}}</td>
+                    </tr>
+                    <tr>
+                        <td class="csssubtitulotabla" colspan="3"><b>TOTAL PROYECTO</b></td>
+                        <td colspan="3">{{getTotalAsignado() | currency}}</td>
+                        <td colspan="3">{{getTotalEjecutado() | currency}}</td>
+                        <td colspan="3">{{calculateCumplimientoTotal(getTotalAsignado(), getTotalEjecutado())}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="12" class="csstitulotabla">Justificación Saldo Pendiente de Ejecución del
+                            Proyecto
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="csssubtitulotabla" colspan="5"><b>Rubro</b></td>
+                        <td class="csssubtitulotabla" colspan="7"><b>Justificacion</b></td>
+                    </tr>
+                    <tr *ngFor="let rubro of rubros">
+                        <td colspan="5"><b>{{rubro.NombreRubro}}</b></td>
+                        <td colspan="7">{{rubro.Justificacion}}</td>
+                    </tr>
+                    <td colspan="12" class="csstitulotabla">3. Cumplimiento Cronograma de Actividades del Proyecto</td>
+                    <tr>
+                        <td colspan="2" class="csssubtitulotabla">Fecha inicio proyecto</td>
+                        <td colspan="2">{{fechaDeInicio}}</td>
+                        <td colspan="2" class="csssubtitulotabla">Duración (en días)</td>
+                        <td colspan="2">{{totalDays}}</td>
+                        <td colspan="2" class="csssubtitulotabla">Días para final proyecto</td>
+                        <td colspan="2">{{finalDate | date: 'shortDate'}}</td>
+                    </tr>
+                    <td colspan="12" class="csstitulotabla">Relacione las actividades del proyecto mencionadas en el
+                        GH-JEA-FR-014
+                    </td>
+                    <tr>
+                        <th colspan="4" class="csssubtitulotabla">Sub Actividad</th>
+                        <th colspan="2" class="csssubtitulotabla">Fecha planeada cumplimiento</th>
+                        <th colspan="2" class="csssubtitulotabla">Fecha real cumplimiento</th>
+                        <th colspan="2" class="csssubtitulotabla">Desfase</th>
+                        <th colspan="2" class="csssubtitulotabla">% Avance</th>
+                    </tr>
+                    <tr *ngFor="let sub of nuevocrono">
+                        <td colspan="4" scope="row">{{sub.nombreSub}}</td>
+                        <td colspan="2">{{sub.fechaFinal | date:'dd-MM-yyyy'}}</td>
+                        <td colspan="2">
+                            <label *ngIf="sub.fechaReal">{{sub.fechaReal | date: 'shortDate'}}</label>
+                            <label *ngIf="!sub.fechaReal">{{NO_REAL_DATE}}</label>
+                        </td>
+                        <td colspan="2">
+                            <ng-container *ngIf="sub.fechaReal">
+                                <label *ngIf="calculateGap(sub.fechaFinal.toString(), sub.fechaReal.toString()) > 0">
+                                    {{calculateGap(sub.fechaFinal.toString(), sub.fechaReal.toString())}} días a favor
+                                </label>
+                                <label *ngIf="calculateGap(sub.fechaFinal.toString(), sub.fechaReal.toString()) < 0">
+                                    {{calculateGap(sub.fechaFinal.toString(), sub.fechaReal.toString())}} días de
+                                    retraso
+                                </label>
+                                <label *ngIf="calculateGap(sub.fechaFinal.toString(), sub.fechaReal.toString()) === 0">
+                                    Sin desfase
+                                </label>
+                            </ng-container>
+                            <ng-container *ngIf="!sub.fechaReal">
+                                <label>{{NO_REAL_DATE}}</label>
+                            </ng-container>
+                        </td>
+                        <td colspan="2">
+                            <ng-container
+                                    *ngIf="calculateAdvance(sub.fechaInicio.toString(), sub.fechaFinal.toString()) === 0">
+                                <div class="advance-badge-0">Sin avance</div>
+                            </ng-container>
+                            <ng-container
+                                    *ngIf="calculateAdvance(sub.fechaInicio.toString(), sub.fechaFinal.toString()) > 0">
+                                <div>
+                                    {{calculateAdvance(sub.fechaInicio.toString(), sub.fechaFinal.toString())}}%
+                                </div>
+                            </ng-container>
+                        </td>
+                    </tr>
+                    <tr>
+
+                        <td colspan="10" class="csssubtitulotabla">AVANCE GLOBAL REAL DEL PROYECTO</td>
+                        <td colspan="2">{{avanceGlobal}}%</td>
+                    </tr>
+                    <tr>
+                        <td colspan="12" class="csstitulotabla">4. Modificaciones y/o Ajustes al Proyecto</td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="12" class="cssinfotabla">Relacione las solicitudes de modificación y/o ajustes al
+                            proyecto
+                            tanto para el cumplimiento de las actividades principales o hitos, como para la ejecución
+                            financiera del
+                            mismo. (Si requiere más espacio adjunte en informe separado y sustente en documentos).
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="3" class="csssubtitulotabla">Actividades principales o Hitos</td>
+                        <td></td>
+                        <td colspan="2" class="csssubtitulotabla">Ejecución Financiera</td>
+                        <td></td>
+                        <td class="csssubtitulotabla">Otra</td>
+                        <td colspan="4"></td>
+                    </tr>
+                    <tr id="Prueba">
+                        <td colspan="4" class="csssubtitulotabla">Descripción Modificación y/o Ajuste (adicione filas)
+                        </td>
+                        <td colspan="4" class="csssubtitulotabla">Justificación</td>
+                        <td colspan="2" class="csssubtitulotabla">Documentos (adjunte)</td>
+                        <td colspan="2" class="csssubtitulotabla">Aprobado DICTI</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"></td>
+                        <td colspan="4"></td>
+                        <td colspan="2"></td>
+                        <td class="cssopciontabla">si</td>
+                        <td class="cssopciontabla">no</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"></td>
+                        <td colspan="4"></td>
+                        <td colspan="2"></td>
+                        <td class="cssopciontabla">si</td>
+                        <td class="cssopciontabla">no</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"></td>
+                        <td colspan="4"></td>
+                        <td colspan="2"></td>
+                        <td class="cssopciontabla">si</td>
+                        <td class="cssopciontabla">no</td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="4" class="csssubtitulotabla">Quien presenta el informe</td>
+                        <td colspan="3">{{name}}</td>
+                        <td colspan="1" class="csssubtitulotabla">Firma</td>
+                        <td colspan="4" class="firma-imagen-center">
+                            <img class="firma-imagen-pdf" *ngIf="firmaInvestigador"
+                                 src="data:image/png;base64,{{firmaInvestigador.data}}" alt="Imagen De Firma">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="12" class="csstitulotabla">5. Validación del Informe de Avance (para ser
+                            diligenciado por el
+                            Centro de I+D+i a cargo del Proyecto)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="10">El Informe parcial de avance del proyecto fue presentado en la fecha
+                            establecida?
+                        </td>
+                        <td class="cssopciontabla">si</td>
+                        <td class="cssopciontabla">no</td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="10">La información contenida en el Informe parcial de avance del proyecto está
+                            debidamente
+                            soportada?
+                        </td>
+                        <td class="cssopciontabla">si</td>
+                        <td class="cssopciontabla">no</td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="10">La ejecución de los recursos financieros es acorde con el plan de inversión
+                            planeado?
+                        </td>
+                        <td class="cssopciontabla">si</td>
+                        <td class="cssopciontabla">no</td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="10">Los cambios al plan de inversión están debidamente justificados y aprobados por
+                            DICTI?
+                        </td>
+                        <td class="cssopciontabla">si</td>
+                        <td class="cssopciontabla">no</td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="10">El avance global del proyecto corresponde con el cronograma de actividades
+                            planeado?
+                        </td>
+                        <td class="cssopciontabla">si</td>
+                        <td class="cssopciontabla">no</td>
+                    </tr>
+                    <tr>
+                        <td colspan="10">Los cambios en las actividades principales o hitos están debidamente
+                            justificados y
+                            aprobados por DICTI?
+                        </td>
+                        <td class="cssopciontabla">si</td>
+                        <td class="cssopciontabla">no</td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" rowspan="3">Con base en la información anterior el proyecto de investigación
+                            debe:
+                        </td>
+                        <td colspan="2" class="csssubtitulotabla">Continuar</td>
+                        <td></td>
+                        <td colspan="3" rowspan="3" class="csssubtitulotabla"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="csssubtitulotabla">Cancelarse</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="csssubtitulotabla">Suspenderse</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+
+                        <td colspan="12" class="areatexttable">Determine las acciones a tomar en caso de suspensión o
+                            cancelación
+                            del proyecto de investigación. (Visita de auditoría al proyecto / Inicio de acciones
+                            disciplinarias y/o
+                            administrativas, otras)
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" class="csssubtitulotabla">Jefe Centro de I+D+i o Subdirector de Investigación e
+                            Innovación
+                        </td>
+                        <td colspan="3"></td>
+                        <td colspan="3" class="csssubtitulotabla">Firma</td>
+                        <td colspan="3"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </mat-card>
+    <mat-card-actions *ngIf="hasReport" class="seguimiento-reporte-button">
+        <button *ngIf="firmaInvestigador" mat-flat-button color="primary" (click)="downloadPDF()">Descargar PDF</button>
+        <label *ngIf="!firmaInvestigador">El usuario no tiene firma, ingrese una en el modulo de firmas</label>
+    </mat-card-actions>
+</div>
+
+
+<script src="https://unpkg.com/jspdf@2.0.0/dist/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.min.js"></script>

@@ -1,0 +1,140 @@
+  <div class="container">
+    <div class="row">
+      <div class="col-12 -lg-12 md-6 sm-3">
+          <mat-card>
+            <mat-form-field class="inputder" appearance="fill">
+              <mat-label>Numero de Item</mat-label>
+              <input [(value)]="sisNum" disabled matInput>
+            </mat-form-field>
+            <mat-form-field class="inputder" appearance="fill">
+              <mat-label>Nombre del Rubro</mat-label>
+              <input [(value)]="sisInfo" disabled matInput>
+            </mat-form-field>
+  
+  
+            <mat-card-title>Detalle del Rubro</mat-card-title>
+            <mat-card-subtitle>En este módulo se diligencia el detalle del rubro</mat-card-subtitle>
+  
+            <mat-horizontal-stepper>
+              <mat-step label="Detalles">
+                <mat-card-content>
+                  <mat-card *ngIf="val">
+                    <mat-card class="tarjetaint">
+                      <mat-form-field class="short-width" appearance="fill">
+                        <mat-label>Perfil del Investigador</mat-label>
+                        <input [(value)]="Perfil.PerfilDelInvestigador" disabled matInput>
+                      </mat-form-field>
+  
+                      <mat-form-field class="short-width" appearance="fill">
+                        <mat-label>Formación </mat-label>
+                        <input [(value)]="Perfil.Formacion" disabled matInput>
+                      </mat-form-field>
+  
+                      <mat-form-field class="short-width" appearance="fill">
+                        <mat-label>Experiencia </mat-label>
+                        <input [(value)]="Perfil.Experiencia" disabled matInput>
+                      </mat-form-field>
+
+                      <mat-form-field class="short-width" appearance="fill">
+                        <mat-label>Nombre del Investigador</mat-label>
+                        <input [(value)]="Perfil.NombreDelInvestigador" disabled matInput>
+                      </mat-form-field>
+  
+                      <mat-form-field class="short-width" appearance="fill">
+                        <mat-label>Rol del Investigador</mat-label>
+                        <input [(value)]="Perfil.RolDelInvestigador" disabled matInput>
+                      </mat-form-field>
+                      <mat-form-field class="short-width" appearance="fill">
+                        <mat-label>Horas semanales</mat-label>
+                        <input [(value)]="Perfil.HorasSemanales" disabled matInput>
+                      </mat-form-field>
+                      <mat-form-field class="short-width" appearance="fill">
+                        <mat-label>Duración en meses</mat-label>
+                        <input [(value)]="Perfil.DuracionEnMeses" disabled matInput>
+                      </mat-form-field>
+                    </mat-card>
+  
+                  </mat-card>
+                  <mat-card class="tarjetaint">
+                    <mat-form-field class="full-width" appearance="fill">
+                      <mat-label>Descripción</mat-label>
+                      <input [(value)]="Perfil.Descripcion" disabled matInput>
+                    </mat-form-field>
+  
+                    <mat-form-field class="full-width" appearance="fill">
+                      <mat-label>Justificación</mat-label>
+                      <input [(value)]="Perfil.Justificacion" disabled matInput>
+                    </mat-form-field>
+                    <br>
+                  </mat-card>
+                </mat-card-content>
+              </mat-step>
+              <mat-step label="entidades">
+                <mat-card class="card">
+                  <div class="container">
+                   
+
+
+                    <div class="container">
+                      <div class="container">
+                        <table class="table table-striped">
+                          <thead>
+                            <tr>
+                              <th scope="col" colspan="cantidad">Entidades Financieras</th>
+                            </tr>
+                            <tr>
+                              <th *ngFor="let i of entid" >{{i}}</th>
+                            </tr>
+                            <!-- <th *ngFor="let i of prueba"> -->
+                            <tr>
+                              <th *ngFor="let i of entid" >
+                                <tr>
+                                  <td>efectivo</td>
+                                  <td>especie</td>
+                                </tr>
+                              </th>
+                            </tr>
+                            <!-- </th> -->
+                      
+                          </thead>
+                          <tbody>
+                              <th *ngFor="let i of dataSourceRubro" >
+                                <tr>
+                                  <td>{{i.efectivo}}</td>
+                                  <td>{{i.especie}}</td>
+                                </tr>
+                              </th>
+                          </tbody>
+                          <tfoot>  
+                            <th *ngFor="let i of ArraySumas.suma" >
+                              <tr >
+                                <td>{{i}}</td>
+                              </tr>
+                            </th>
+                              <tr>
+                                <th colspan="3">
+                                  {{ArraySumas.sumaT}}
+                                </th>
+                              </tr>
+                          </tfoot>
+                      
+                        </table>
+                      </div>
+                      
+                    
+                    </div>
+
+  
+                  </div>
+                </mat-card>
+              </mat-step>
+            </mat-horizontal-stepper>
+          </mat-card>
+        <mat-card-actions >
+          <button mat-raised-button color="primary" mat-dialog-close="true" >Cerrar</button>
+        </mat-card-actions>
+      </div>
+    </div>
+  
+  </div>
+  

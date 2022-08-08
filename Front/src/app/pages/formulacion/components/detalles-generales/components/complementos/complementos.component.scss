@@ -1,0 +1,91 @@
+.mat-card {
+    margin: 2%;
+  }
+  
+  .mat-card-subtitle {
+    color: #004884;
+    font-family: "Work Sans", sans-serif;
+    display: block;
+    padding: 1rem;
+  }
+  
+  .mat-card-title {
+    font-weight: 700;
+    letter-spacing: normal;
+    margin: 0 0 16px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    position: relative;
+    margin-bottom: 2.1rem;
+    color: #004884;
+    font-family: "Work Sans", sans-serif;
+    display: block;
+  }
+  
+  
+  
+  // asdajshfkjhasfkas
+  .mat-form-field {
+    margin: 40px 0;
+    width: 500px !important;
+  }
+  
+  .mat-toolbar-single-row {
+    height: auto !important;
+    background: transparent;
+  }
+  
+  .mat-toolbar-single-row button {
+    width: 200px;
+  }
+  
+  .mat-form-field {
+    width: 100%;
+  }
+  
+  #uploadFile {
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: 9;
+    opacity: 0;
+    height: 100%;
+    cursor: pointer;
+    position: absolute;
+  }
+  
+
+  .Botonadd {
+    float: right;
+  }
+  
+  .short-width {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+  .full-width {
+    width: 70%;
+    align-items: center;
+  }
+  .iconoadd {
+    background-repeat: no-repeat;
+    display: inline-block;
+    fill: currentColor;
+    height: 44px;
+    width: 44px;
+    font-size: 44px;
+    background-color: #ffffff;
+    color: #3772FF;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    padding: 0.5rem;
+  }

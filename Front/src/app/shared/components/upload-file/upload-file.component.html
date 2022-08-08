@@ -1,0 +1,13 @@
+<form [formGroup]="fileForm">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <input style="display: none; height: 0" type="file" class="file" (change)="onFileChange($event)" #fileInput>
+        <button [class.disabled]="disabled"
+                [class.btn-primary]="btnColor === 'btn-primary'"
+                [class.btn-danger]="btnColor === 'btn-danger'"
+                [disabled]="disabled" class="btn-upload ion-upload" (click)="openBrowser()"></button>
+      </div>
+    </div>
+  </div>
+</form>

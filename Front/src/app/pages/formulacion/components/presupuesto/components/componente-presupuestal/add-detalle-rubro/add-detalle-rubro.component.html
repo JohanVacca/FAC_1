@@ -1,0 +1,222 @@
+<div class="container">
+    <mat-dialog-content class="mat-typography">
+        <div class="row">
+            <div class="col-12 -lg-12 md-6 sm-3">
+                <form [formGroup]="AddDettalle">
+                    <mat-card>
+                        <mat-form-field class="inputder" appearance="fill">
+                            <mat-label>Numero de Item</mat-label>
+                            <input [(value)]="sisNum" disabled matInput>
+                        </mat-form-field>
+                        <mat-form-field class="inputder" appearance="fill">
+                            <mat-label>Nombre del Rubro</mat-label>
+                            <input [(value)]="sisInfo" disabled matInput>
+                        </mat-form-field>
+
+
+                        <mat-card-title>Detalle del Rubro</mat-card-title>
+                        <mat-card-subtitle>En este módulo se diligencia el detalle del rubro</mat-card-subtitle>
+
+                        <mat-card-content>
+                            <mat-card *ngIf="esPersonalCientifico" class="tarjetaint card-rubro-form">
+                                <button
+                                        mat-raised-button
+                                        class="button-view-table"
+                                        (click)="verTabla()">Ver perfiles de investigadores
+                                </button>
+
+                                <mat-form-field class="short-width" appearance="fill">
+                                    <mat-label>Investigadores</mat-label>
+                                    <mat-select name="InvestigadorSeleccionado"
+                                                formControlName="InvestigadorSeleccionado">
+                                        <mat-option
+                                                *ngFor="let investigador of investigadores"
+                                                (change)="seleccionarInvestigador(investigador)"
+                                                (click)="seleccionarInvestigador(investigador)"
+                                                [value]="investigador">
+                                            {{investigador.nombres}} {{investigador.apellido}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+
+                                <mat-form-field class="short-width" appearance="fill">
+                                    <mat-label>Formación del Investigador</mat-label>
+                                    <mat-select name="Perfil" formControlName="PerfilDelInvestigador">
+                                        <mat-option
+                                                *ngFor="let perfilSeleccionado of Perfil"
+                                                (change)="cargar(perfilSeleccionado)"
+                                                (click)="cargar(perfilSeleccionado)"
+                                                [value]="perfilSeleccionado">
+                                            {{perfilSeleccionado.formacion}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+
+                                <mat-form-field class="short-width" appearance="fill">
+                                    <mat-label>Formación</mat-label>
+                                    <input [(value)]="Formacion" matInput formControlName="Formacion">
+                                </mat-form-field>
+
+                                <mat-form-field class="short-width" appearance="fill">
+                                    <mat-label>Experiencia</mat-label>
+                                    <input [(value)]="Experiencia" matInput formControlName="Experiencia"
+                                           readonly>
+                                </mat-form-field>
+                                <mat-form-field class="short-width" appearance="fill">
+                                    <mat-label>Nombre del Investigador</mat-label>
+                                    <input [(value)]="NombreDelInvestigador" matInput
+                                           formControlName="NombreDelInvestigador" readonly>
+                                </mat-form-field>
+
+                                <mat-form-field class="short-width" appearance="fill">
+                                    <mat-label>Rol del Investigador</mat-label>
+                                    <input [(value)]="RolDelInvestigador" matInput
+                                           formControlName="RolDelInvestigador" readonly>
+                                </mat-form-field>
+                                <mat-form-field class="short-width" appearance="fill">
+                                    <mat-label>Horas semanales</mat-label>
+                                    <input [(value)]="HorasSemanales" matInput formControlName="HorasSemanales"
+                                           readonly>
+                                </mat-form-field>
+                                <mat-form-field class="short-width" appearance="fill">
+                                    <mat-label>Duración en meses</mat-label>
+                                    <input [(value)]="DuracionEnMeses" matInput formControlName="DuracionEnMeses"
+                                           readonly>
+                                </mat-form-field>
+
+                                <mat-form-field class="short-width" appearance="fill">
+                                    <mat-label>Tipo de Rubro</mat-label>
+                                    <mat-select name="tipoDeRubro" formControlName="tipoDeRubro">
+                                        <mat-option
+                                                *ngFor="let tipo of tiposDeRubro"
+                                                (change)="seleccionarTipoDeRubro(tipo)"
+                                                (click)="seleccionarTipoDeRubro(tipo)"
+                                                [value]="tipo">
+                                            {{tipo}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+
+                                <mat-form-field class="short-width" appearance="fill">
+                                    <mat-label>Entidad</mat-label>
+                                    <mat-select name="entidad" formControlName="entidad">
+                                        <mat-option
+                                                *ngFor="let entidad of entidades"
+                                                (change)="seleccionarEntidad(entidad.nombre)"
+                                                (click)="seleccionarEntidad(entidad.nombre)"
+                                                [value]="entidad.nombre">
+                                            {{entidad.nombre}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+
+                                <div class="amounts-table" *ngIf="showMaxAmount">
+                                    <table>
+                                        <tbody>
+                                        <tr>
+                                            <td colspan="2" class="center-row"><b>Calculos de topes</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Tope máximo por hora</b></td>
+                                            <td>{{topeMaximoPorHora | currency}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Tope máximo por día (8 horas por día)</b></td>
+                                            <td>{{topeMaximoPorDia | currency}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Tope máximo por Semana (5 días por semana)</b></td>
+                                            <td>{{topeMaximoPorSemana | currency}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Tope máximo por Mes (4 semanas)</b></td>
+                                            <td>{{topeMaximoPorMes | currency}}</td>
+                                        </tr>
+                                        <tr class="backgroud-calculate-row">
+                                            <td><b>Valor por semana (Calculado)</b></td>
+                                            <td>{{calculoSemana | currency}}</td>
+                                        </tr>
+                                        <tr class="backgroud-calculate-row">
+                                            <td><b>Valor por mes (Calculado)</b></td>
+                                            <td>{{calculoMes | currency}}</td>
+                                        </tr>
+                                        <tr class="backgroud-calculate-row">
+                                            <td><b>Costo total</b></td>
+                                            <td>{{costoTotal | currency}}</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </mat-card>
+
+                            <mat-card *ngIf="!esPersonalCientifico" class="tarjetaint card-rubro-form">
+                                <mat-form-field class="short-width" appearance="fill">
+                                    <mat-label>Valor unitario</mat-label>
+                                    <input type="number" matInput formControlName="valorUnitario" (keyup)="calculateAmountWithUnitValue($event.target.value)">
+                                </mat-form-field>
+                                <mat-form-field class="short-width" appearance="fill">
+                                    <mat-label>Cantidad</mat-label>
+                                    <input type="number" matInput formControlName="cantidad" (keyup)="calculateAmountWithUnitCount($event.target.value)">
+                                </mat-form-field>
+                                <mat-form-field class="short-width" appearance="fill">
+                                    <mat-label>Monto</mat-label>
+                                    <input readonly type="number" [(value)]="monto" matInput formControlName="monto">
+                                </mat-form-field>
+                                <mat-form-field class="short-width" appearance="fill">
+                                    <mat-label>Tipo de Rubro</mat-label>
+                                    <mat-select name="tipoDeRubro" formControlName="tipoDeRubro">
+                                        <mat-option
+                                                *ngFor="let tipo of tiposDeRubro"
+                                                (change)="seleccionarTipoDeRubro(tipo)"
+                                                (click)="seleccionarTipoDeRubro(tipo)"
+                                                [value]="tipo">
+                                            {{tipo}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field class="short-width" appearance="fill">
+                                    <mat-label>Entidad</mat-label>
+                                    <mat-select name="entidad" formControlName="entidad">
+                                        <mat-option
+                                                *ngFor="let entidad of entidades"
+                                                (change)="seleccionarEntidad(entidad.nombre)"
+                                                (click)="seleccionarEntidad(entidad.nombre)"
+                                                [value]="entidad.nombre">
+                                            {{entidad.nombre}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </mat-card>
+
+                            <mat-card class="tarjetaint">
+                                <mat-form-field class="full-width" appearance="fill">
+                                    <mat-label>Descripción</mat-label>
+                                    <input [(value)]="Descripcion" matInput formControlName="Descripcion">
+                                </mat-form-field>
+
+                                <mat-form-field class="full-width" appearance="fill">
+                                    <mat-label>Justificación</mat-label>
+                                    <input [(value)]="Justificacion" matInput formControlName="Justificacion">
+                                </mat-form-field>
+                                <br>
+                            </mat-card>
+                        </mat-card-content>
+                    </mat-card>
+                </form>
+                <mat-card-actions>
+                    <mat-card-actions *ngIf="showMaxAmount && esPersonalCientifico">
+                        <button mat-raised-button color="primary" mat-dialog-close="true" (click)="guardarRubro()">
+                            Guardar
+                        </button>
+                    </mat-card-actions>
+                    <mat-card-actions *ngIf="!esPersonalCientifico">
+                        <button mat-raised-button color="primary" mat-dialog-close="true" (click)="guardarOtro()">
+                            Guardar
+                        </button>
+                    </mat-card-actions>
+                </mat-card-actions>
+            </div>
+        </div>
+    </mat-dialog-content>
+
+</div>

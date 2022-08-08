@@ -1,0 +1,108 @@
+<div class="card-listado-seguimiento">
+    <div class="container container-lista-seguimiento">
+        <label class="title-lista-seguimiento">{{TITLE_TABLE}}{{PROJECT_NAME}}</label>
+        <div class="lista-seguimiento__container">
+            <div class="lista-seguimiento__container--table">
+                <table>
+                    <thead>
+                    <tr>
+                        <td class="table-border-left">{{ACTIVITY}}</td>
+                        <td>{{SUB_ACTIVITY}}</td>
+                        <td>{{START_DATE}}</td>
+                        <td>{{PLANNING_DATE}}</td>
+                        <td>{{REAL_DATE}}</td>
+                        <td>{{GAP}}</td>
+                        <td>{{ADVANCE}}</td>
+                        <td class="table-border-right">{{ACTIONS}}</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <ng-container *ngFor="let activity of cronograma">
+                        <tr *ngFor="let sub of activity.subActividad; let i = index">
+                            <td *ngIf="i===0"
+                                [attr.rowspan]="activity.subActividad.length">
+                                <b>{{ activity.nombreAct}}</b>
+                            </td>
+                            <td>{{ sub.nombreSub }}</td>
+                            <td>{{ sub.fechaInicio | date: 'shortDate' }}</td>
+                            <td>{{ sub.fechaFinal | date: 'shortDate' }}</td>
+                            <td>
+                                <label *ngIf="sub.fechaReal">{{sub.fechaReal | date: 'shortDate'}}</label>
+                                <label *ngIf="!sub.fechaReal">{{NO_REAL_DATE}}</label>
+                            </td>
+                            <td>
+                                <ng-container *ngIf="sub.fechaReal">
+                                    <label
+                                            *ngIf="calculateGap(sub.fechaFinal.toString(), sub.fechaReal.toString()) > 0"
+                                            class="gap-badge gap-badge-green">
+                                        {{calculateGap(sub.fechaFinal.toString(), sub.fechaReal.toString())}} días a favor
+                                    </label>
+                                    <label
+                                            *ngIf="calculateGap(sub.fechaFinal.toString(), sub.fechaReal.toString()) < 0"
+                                            class="gap-badge gap-badge-red">
+                                        {{calculateGap(sub.fechaFinal.toString(), sub.fechaReal.toString())}} días de retraso
+                                    </label>
+                                    <label
+                                            *ngIf="calculateGap(sub.fechaFinal.toString(), sub.fechaReal.toString()) === 0"
+                                            class="gap-badge gap-badge-blue">
+                                        Sin desfase
+                                    </label>
+                                </ng-container>
+                                <ng-container *ngIf="!sub.fechaReal">
+                                    <label>{{NO_REAL_DATE}}</label>
+                                </ng-container>
+                            </td>
+                            <td>
+                                <ng-container
+                                        *ngIf="calculateAdvance(sub.fechaInicio.toString(), sub.fechaFinal.toString()) === 0">
+                                    <div class="advance-badge-0">Sin avance</div>
+                                </ng-container>
+                                <ng-container
+                                        *ngIf="calculateAdvance(sub.fechaInicio.toString(), sub.fechaFinal.toString()) > 0">
+                                    <div>
+                                        {{calculateAdvance(sub.fechaInicio.toString(), sub.fechaFinal.toString())}}%
+                                    </div>
+                                    <div class="advance-badge">
+                                        <div *ngIf="calculateAdvance(sub.fechaInicio.toString(), sub.fechaFinal.toString()) < 25"
+                                             [style.width]="calculateAdvance(sub.fechaInicio.toString(), sub.fechaFinal.toString()) + 'px'"
+                                             class="advance-badge-first-25"></div>
+                                        <div *ngIf="calculateAdvance(sub.fechaInicio.toString(), sub.fechaFinal.toString()) >= 25 && calculateAdvance(sub.fechaInicio.toString(), sub.fechaFinal.toString()) < 50"
+                                             [style.width]="calculateAdvance(sub.fechaInicio.toString(), sub.fechaFinal.toString()) + 'px'"
+                                             class="advance-badge-second-25"></div>
+                                        <div *ngIf="calculateAdvance(sub.fechaInicio.toString(), sub.fechaFinal.toString()) >= 50 && calculateAdvance(sub.fechaInicio.toString(), sub.fechaFinal.toString()) < 75"
+                                             [style.width]="calculateAdvance(sub.fechaInicio.toString(), sub.fechaFinal.toString()) + 'px'"
+                                             class="advance-badge-third-25"></div>
+                                        <div *ngIf="calculateAdvance(sub.fechaInicio.toString(), sub.fechaFinal.toString()) >= 75"
+                                             [style.width]="calculateAdvance(sub.fechaInicio.toString(), sub.fechaFinal.toString()) + 'px'"
+                                             class="advance-badge-fourth-25"></div>
+                                    </div>
+                                </ng-container>
+
+                            </td>
+                            <td>
+                                <div class="action-list-seguimientos" >
+                                    <div class="{{sub.fechaReal ? 'square-blue-icon' : 'square-green-icon'}}" >
+                                        <span
+                                                class="material-icons"
+                                                matTooltip="{{sub.fechaReal ? UPDATE_CRON : ADD_CRON}}"
+                                                (click)="setRealFinalDate(sub.nombreSub, activity._id, sub._id)">
+                                            {{sub.fechaReal ? 'edit_calendar' : 'event'}}
+                                        </span>
+                                    </div>
+                                    <div *ngIf="sub.fechaReal" class="square-red-icon" >
+                                        <span class="material-icons"
+                                              matTooltip="{{DELETE_CRON}}"
+                                              (click)="deleteRealFinalDate(activity._id, sub._id)">
+                                            delete_forever
+                                        </span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </ng-container>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

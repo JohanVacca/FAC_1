@@ -1,0 +1,26 @@
+<mat-card class="tarjeta">
+    <mat-card-title>Editar Convenio</mat-card-title>
+    <mat-card-subtitle>En este módulo usted podrá realizar las actualizaciones de la información de la Convenio
+    </mat-card-subtitle>
+    <form [formGroup]="updateConv" class="example-form">
+        <div>
+            <mat-card class="tarjeta2">
+                <mat-form-field class="example-full-width" appearance="legacy">
+                    <mat-label>Nombre</mat-label>
+                    <input name="name" formControlName="name" [(ngModel)]="name" matInput/>
+                </mat-form-field>
+            </mat-card>
+            <br>
+            <mat-form-field class="example-full-width" appearance="legacy">
+                <mat-label>Descripción</mat-label>
+                <input name="Descripcion" formControlName="Descripcion" [(ngModel)]="Descripcion" matInput/>
+            </mat-form-field>
+            <br>
+        </div>
+    </form>
+    <mat-card-actions>
+        <button mat-button mat-stroked-button mat-dialog-close="false">Cancelar</button>
+        <button (click)="onSubmit()" mat-raised-button color="primary" mat-dialog-close="true">Guardar</button>
+    </mat-card-actions>
+</mat-card>
+

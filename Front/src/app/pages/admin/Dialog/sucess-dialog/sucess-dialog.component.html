@@ -1,0 +1,11 @@
+<div class="dialogo" [attr.aria-label]="data.encabezado">
+  <div class="icono" aria-hidden="true">
+    <mat-icon>{{data.icono}}</mat-icon>
+  </div>
+  <h1 mat-dialog-title tabindex="0">{{data.encabezado}}</h1>
+  <p class="descripcion" tabindex="0">{{data.descripcion}}</p>
+  <div mat-dialog-actions class="botonera-dialogo">
+
+    <button mat-button mat-flat-button mat-dialog-close="true">Aceptar</button>
+  </div>
+</div>

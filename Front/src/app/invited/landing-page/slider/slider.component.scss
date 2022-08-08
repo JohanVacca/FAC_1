@@ -1,0 +1,14 @@
+@media (max-width: 768px) {
+    iframe{
+        height: 500px;
+    }
+  }
+  @media (max-width: 425px) {
+    iframe{
+        height: 250px;
+    }
+  }
+
+  .ytp-pause-overlay .ytp-scroll-min{
+    display: none!important;
+  }

@@ -1,0 +1,84 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 md-6 sm-3">
+            <mat-card>
+                <mat-card-title>
+                    Objetivos
+                </mat-card-title>
+                <mat-card-subtitle>
+                    Objetivo General
+                </mat-card-subtitle>
+                <mat-card-content>
+                    <!-- <form class="example-form"> -->
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Objetivo General</mat-label>
+                        <textarea matInput (keydown)="modificandoObjetivo()" [(ngModel)]="objetivoGeneral"></textarea>
+                    </mat-form-field>
+                    <button *ngIf="objetivoGeneral" mat-icon-button (click)="agregarObjGnral()" matTooltipClass="tooltip-white"
+                            matTooltip="Agregar Objetivo General" matTooltipPosition="above">
+                        <mat-icon *ngIf="!showObjetivoGeneral" class="iconoadd">add_circle</mat-icon>
+                        <mat-icon *ngIf="showObjetivoGeneral" class="iconoadd">edit_note</mat-icon>
+                    </button>
+                    <!-- </form> -->
+                </mat-card-content>
+                <div *ngIf="showObjetivoGeneral" class="objetivo-general-text">
+                    <label>Objetivo General: <span>{{objetivoGeneral}}</span></label>
+                </div>
+            </mat-card>
+        </div>
+        <div class="col-lg-12 md-6 sm-3">
+            <mat-card>
+                <form [formGroup]="objetivoEspecificos" autocomplete="off">
+                    <mat-card-subtitle>
+                        Objetivos Especificos
+                    </mat-card-subtitle>
+
+                    <mat-card-content>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Objetivo Especifico</mat-label>
+                            <input formControlName="descr" matInput>
+                        </mat-form-field>
+                        <button *ngIf="objetivoEspecificos.controls.descr.value" mat-icon-button matTooltipClass="tooltip-white"
+                                (click)="agregarObjEsp()" matTooltip="Agregar Objetivo Especifico"
+                                matTooltipPosition="above">
+                            <mat-icon class="iconoadd">add_circle</mat-icon>
+                        </button>
+
+                        <div class="table-objetivos" *ngIf="dataSource?.length > 0">
+                            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 palabras-clave-table">
+                                <ng-container matColumnDef="descripcion">
+                                    <th mat-header-cell *matHeaderCellDef> Descripcion</th>
+                                    <td mat-cell *matCellDef="let element"> {{element.descr}} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="acciones">
+                                    <th scope="col" mat-header-cell *matHeaderCellDef>Acciones</th>
+                                    <td mat-cell *matCellDef="let row">
+                                        <ul class="table-action-list">
+                                            <li>
+                                                <button (click)="deleteobj(row)" mat-icon-button
+                                                        aria-label="Example icon-button with a heart icon"
+                                                        matTooltipClass="tooltip-white"
+                                                        matTooltip="Eliminar registro" matTooltipPosition="above">
+
+                                                    <mat-icon>delete</mat-icon>
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </ng-container>
+
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                            </table>
+                        </div>
+                        <div *ngIf="dataSource?.length === 0" class="mensaje-sin-grupos">
+                            <label>Sin objetivos especificos</label>
+                        </div>
+                    </mat-card-content>
+                </form>
+            </mat-card>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,25 @@
+<mat-card class="tarjeta">
+  <form [formGroup]="updateConv" class="example-form">
+      <div>
+          <mat-card class="tarjeta2">
+              <mat-form-field class="example-full-width" appearance="legacy">
+                  <mat-label>Nombre</mat-label>
+                  <input name="name" formControlName="name" [(ngModel)]="name" matInput />
+                </mat-form-field>
+          </mat-card>
+          <br>
+              <mat-form-field class="example-full-width" appearance="legacy">
+                  <mat-label>Descripción</mat-label>
+                  <input name="Descripcion" formControlName="Descripcion" [(ngModel)]="Descripcion" matInput />
+              </mat-form-field>
+          <br>
+      </div>
+  </form>
+  <mat-card-actions>
+      <!--button  mat-button mat-stroked-button mat-dialog-close="false">Cancelar</button-->
+      <button *ngIf="Flag" (click)="agregar()" mat-raised-button color="primary">Guardar</button>
+  </mat-card-actions>
+</mat-card>
+
+  
+  

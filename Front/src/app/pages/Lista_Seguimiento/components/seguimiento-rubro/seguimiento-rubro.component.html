@@ -1,0 +1,52 @@
+<mat-card class="card">
+    <mat-card-title>CUMPLIMIENTO PLAN DE INVERSIÓN DEL PROYECTO</mat-card-title>
+    <mat-card-subtitle>En esta sección podrá realizar el seguimiento del presupuesto ejecutado a la fecha de los rubros
+        del proyectos
+    </mat-card-subtitle>
+
+    <div class="lista-rubros__container">
+        <div class="lista-rubros__container--table">
+            <table>
+                <thead>
+                <tr>
+                    <td class="table-border-left">{{RUBRO}}</td>
+                    <td>{{TIPO_DE_RUBRO}}</td>
+                    <td>{{PRESUPUESTO_ASIGNADO}}</td>
+                    <td>{{PRESUPUESTO_EJECUTADO}}</td>
+                    <td>{{CUMPLIMIENTO}}</td>
+                    <td class="table-border-right">{{ACTIONS}}</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let rubro of listaDeRubros">
+                    <td>{{rubro.NombreRubro}}</td>
+                    <td>{{rubro.tipoDeRubro}}</td>
+                    <td>{{rubro.EntidadesCostos | currency}}</td>
+                    <td>{{getPresupuestoEjecutado(rubro.listaRubros) | currency}}</td>
+                    <td>{{calculateCumplimiento(rubro.EntidadesCostos, rubro.listaRubros)}}</td>
+                    <td class="lista-rubro-acciones">
+                        <div class="{{'square-green-icon'}}">
+                            <span
+                                class="material-icons"
+                                matTooltip="{{ADD_PRESUPUESTO}}"
+                                (click)="setPresupuesto(rubro.NombreRubro, rubro._id, rubro.EntidadesCostos, rubro.listaRubros)"
+                            >
+                                {{'edit_calendar'}}
+                            </span>
+                        </div>
+                        <div *ngIf="getPresupuestoEjecutado(rubro.listaRubros)" class='square-orange-icon'>
+                            <span
+                                    class="material-icons"
+                                    matTooltip="Ver documentos"
+                                    (click)="viewDocuments(rubro._id)"
+                            >
+                                list_alt
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</mat-card>

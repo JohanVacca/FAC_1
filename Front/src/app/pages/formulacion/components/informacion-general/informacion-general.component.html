@@ -1,0 +1,154 @@
+<mat-card>
+    <form [formGroup]="iniciarProyecto" autocomplete="off">
+        <mat-card-content>
+            <div class="container">
+                <div class="row">
+                    <mat-card-title>Proyecto</mat-card-title>
+                    <div class="col-lg-12 col-sm-6"></div>
+                    <mat-form-field class="full-width" appearance="fill">
+                        <mat-label>Ingrese el nombre del proyecto</mat-label>
+                        <input formControlName="nombreProyecto" (input)="CambiaTexto($event.target.value)" matInput>
+                    </mat-form-field>
+                </div>
+            </div>
+        </mat-card-content>
+        <div class="container form-iniciar-proyecto">
+            <div class="row">
+                <div class="col-md-6 col-sm-12 card-form">
+                    <mat-card>
+                        <mat-card-subtitle>Información General</mat-card-subtitle>
+                        <mat-card-content>
+                            <mat-form-field class="full-width" appearance="fill">
+                                <mat-label>Unidad/Dependencia</mat-label>
+                                <input formControlName="dependencia" matInput>
+                            </mat-form-field>
+                            <mat-form-field class="short-width" appearance="fill">
+                                <mat-label>Correo Gestor ACTI</mat-label>
+                                <input matInput formControlName="email" (change)="correo($event)">
+                                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                            </mat-form-field>
+                            <mat-form-field class="short-width" appearance="fill">
+                                <mat-label>Telefono Gestor ACTI</mat-label>
+                                <input type="number" formControlName="telefonoGestor" matInput>
+                            </mat-form-field>
+                            <mat-form-field class="full-width" appearance="fill" *ngIf="!isLoadingEmail">
+                                <mat-label>Gestor ACTI</mat-label>
+                                <input formControlName="gestor" [(ngModel)]="UserIns" matInput readonly>
+                            </mat-form-field>
+                            <app-loader *ngIf="isLoadingEmail"></app-loader>
+                            <div class="error-label" *ngIf="hasErrorACTI">{{messageErrorACTI}}</div>
+                            <mat-form-field class="full-width" appearance="fill">
+                                <mat-label>Comandante Unidad /Jefe Dependenciía</mat-label>
+                                <mat-select formControlName="comandante" name="ComandIns">
+                                    <mat-option *ngFor="let ComandIn of ComandIns" [value]="ComandIn._id">
+                                        {{ComandIn.profile.names}} {{ComandIn.profile.surname}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <mat-card-subtitle>Lugar de ejecución del proyecto</mat-card-subtitle>
+                            <mat-form-field class="short-width" appearance="fill">
+                                <mat-label>Lugar de Ejecución</mat-label>
+                                <input formControlName="lugar" matInput>
+                            </mat-form-field>
+
+                            <mat-form-field class="short-width" appearance="fill">
+                                <mat-label>Duración en meses</mat-label>
+                                <input type="number" formControlName="duracion" matInput>
+                            </mat-form-field>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+                <div class="col-md-6 col-sm-12 card-form"> 
+                    <mat-card>
+                        <mat-card-subtitle>Lineas de Investigación</mat-card-subtitle>
+
+                        <mat-form-field class="full-width" appearance="fill">
+                            <input type="text"
+                                   placeholder="Lineas de Investigación"
+                                   aria-label="Number"
+                                   matInput
+                                   [formControl]="myControl"
+                                   [matAutocomplete]="auto">
+                            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="seleccionarLinea($event.option.value)">
+                                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                                    {{option}}
+                                </mat-option>
+                            </mat-autocomplete>
+                        </mat-form-field>
+
+                        <mat-card-content>
+                            <mat-form-field class="full-width" appearance="fill">
+                                <mat-label>Modelo de Investigacion del SEFAC</mat-label>
+                                <mat-select formControlName="modelo" name="typeIns">
+                                    <mat-option *ngFor="let typeIn of typeIns" [value]="typeIn.descr">
+                                        {{typeIn.descr}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <mat-form-field class="full-width" appearance="fill">
+                                <mat-label>Programas de Investigación</mat-label>
+                                <mat-select formControlName="programa" name="ProgamIns">
+                                    <mat-option *ngFor="let Progam of ProgamIns" [value]="Progam.descr">
+                                        {{Progam.descr}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <mat-form-field class="full-width" appearance="fill">
+                                <mat-label>Subprogramas Investigación</mat-label>
+                                <mat-select formControlName="subprograma" name="ProgamSubIns">
+                                    <mat-option *ngFor="let ProgamS of ProgamSubIns" [value]="ProgamS.descr">
+                                        {{ProgamS.descr}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <mat-form-field class="full-width" appearance="fill">
+                                <mat-label> Quien avala la Investigación</mat-label>
+                                <mat-select formControlName="avala" name="EndorIns">
+                                    <mat-option *ngFor="let EndorIn of EndorIns" [value]="EndorIn.descr">
+                                        {{EndorIn.descr}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <div class="full-width" appearance="fill">
+                                <div>
+                                    <label>Ingresar Unidad o Centro de investigación</label>
+                                </div>
+                                <mat-slide-toggle
+                                        color="primary" [checked]="isCentroDeInvestigacion"
+                                        matTooltipClass="tooltip-white"
+                                        matTooltip="Ingresar Centro de investifación"
+                                        (change)="habilitarUnidad($event.checked)">
+                                </mat-slide-toggle>
+                            </div>
+                            <mat-form-field *ngIf="isCentroDeInvestigacion" class="full-width" appearance="fill">
+                                <mat-label> Centro de Investigación</mat-label>
+                                <mat-select formControlName="centroDeInvestigacion" name="centroDeInvestigacion">
+                                    <mat-option *ngFor="let invCenter of invCenters" [value]="invCenter.name">
+                                        {{invCenter.name}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+
+                            <mat-form-field *ngIf="!isCentroDeInvestigacion" class="full-width" appearance="fill">
+                                <mat-label> Unidades</mat-label>
+                                <mat-select formControlName="unidades" name="unidades">
+                                    <mat-option *ngFor="let unidadActual of unidades" [value]="unidadActual.name">
+                                        {{unidadActual.name}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="div-button-create-project">
+        <button
+                [disabled]="!iniciarProyecto.valid"
+                mat-raised-button
+                class="button-view-table"
+                (click)="guardar()">Iniciar Proyecto
+        </button>
+    </div>
+</mat-card>

@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 md-6 sm-3">
+      <mat-card>
+        <mat-card-title>Registrar Bibliografía</mat-card-title>
+        <mat-card-content>
+          <form [formGroup]="bibliografias">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Registrar Bibliografía</mat-label>
+              <input formControlName="bibliografia" matInput>
+            </mat-form-field>
+            <button *ngIf="bibliografias.valid" mat-icon-button (click)="guardarBibliografia()"
+              matTooltipClass="tooltip-white" matTooltip="Agregar Palabra Clave" matTooltipPosition="above">
+              <mat-icon class="iconoadd">add_circle</mat-icon>
+            </button>
+          </form>
+          <mat-card-title>
+            Lista de Bibliografías
+          </mat-card-title>
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <ng-container matColumnDef="descripcion">
+              <th mat-header-cell *matHeaderCellDef> Descripcion </th>
+              <td mat-cell *matCellDef="let element"> {{element.bibliografia}} </td>
+            </ng-container>
+            <ng-container matColumnDef="acciones">
+              <th scope="col" mat-header-cell *matHeaderCellDef>Acciones</th>
+              <td mat-cell *matCellDef="let row">
+                <ul class="table-action-list">
+                  <li>
+                    <button mat-icon-button aria-label="Example icon-button with a heart icon"
+                      matTooltipClass="tooltip-white" (click)="deleteBibliografia(row.bibliografia)"
+                      matTooltip="Eliminar registro" matTooltipPosition="above">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                  </li>
+                </ul>
+              </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

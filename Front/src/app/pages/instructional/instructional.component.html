@@ -1,0 +1,63 @@
+<div class="container">
+
+  <mat-card class="card">
+    <div class="Botonadd" *ngIf='admin'>
+      <button mat-icon-button aria-label="agregar intructivo" matTooltipClass="tooltip-white"
+        matTooltip="Agregar Instructivo" matTooltipPosition="above" (click)="openDialog()">
+        <mat-icon class="iconoadd">add</mat-icon>
+      </button>
+    </div>
+    <h1>
+      Instructivos
+    </h1>
+    <p class="descripcion-pagina">A continuación encontrara los intructivos para los proyectos activos.</p>
+    <mat-card class="card" *ngFor="let a of instructives">
+      <mat-card-content>
+        <mat-card-header>
+          <mat-card-subtitle class="subtitulo">
+            {{a.Codigo}}
+          </mat-card-subtitle>
+          <mat-card-title class="titulo">
+            {{a.Titulo}}
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-card class="contenido">
+            <h2>Objetivo</h2>
+            <h3>
+              {{a.Objetivo}}
+            </h3>
+          </mat-card>
+        </mat-card-content>
+        <mat-card-actions>
+          <button class="btndescarga" mat-flat-button color="primary" (click)="ver(a.Codigo,a.NombreArchivo)">
+            DESCARGAR DOCUMENTO
+          </button>
+          <div class="Botonera" *ngIf='admin'>
+            <button class="Btnaccion" mat-icon-button aria-label="Example icon-button with a heart icon"
+              aria-label="Editar Instructivo" matTooltip="Editar Instructivo" matTooltipClass="tooltip-white"
+              matTooltipPosition="below" (click)="editarIns(a)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button class="Btnaccion" mat-icon-button aria-label="Example icon-button with a heart icon"
+              aria-label="Eliminar Instructivo" matTooltip="Eliminar Instructivo" matTooltipClass="tooltip-red"
+              matTooltipPosition="below" (click)="deleteIns(a._id,a.Codigo)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </mat-card-actions>
+
+
+
+      </mat-card-content>
+
+
+    </mat-card>
+    <mat-paginator [length]="length"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    (page)="getPuente($event)">>
+    </mat-paginator>
+  </mat-card>
+
+</div>

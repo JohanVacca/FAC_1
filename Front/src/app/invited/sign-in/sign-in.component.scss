@@ -1,0 +1,43 @@
+small{
+  padding: 0%!important;
+}
+
+.panel-informativo{
+  background-color: #ffffff60;
+  border-radius: 0rem;
+  padding:0; 
+  width: 450px;
+  height: 100vh;
+}
+
+.all{
+  background-image: url(https://mir-s3-cdn-cf.behance.net/project_modules/fs/c90a77103652341.5f5168ce9ba4e.jpg);
+  background-size: cover!important;
+  max-width: 100vw;
+  max-height: 100vh;
+}
+.contenedor {
+display: flex;
+justify-content: left;
+align-items: left;
+}
+
+.titulo-bienvenida{
+margin-top: 0;
+}
+
+.login-card{
+  padding:0;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  .icono{
+      /* background-color: #001326; */
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      width: 6rem;
+      height: 6rem;
+  }  
+}

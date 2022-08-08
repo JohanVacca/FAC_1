@@ -1,0 +1,200 @@
+<div class="dashboard" [ngClass]="{'dashboard__jefe': showSecondTable}">
+    <div class="dashboard__title">
+        <label>{{TITLE}}</label>
+    </div>
+
+    <div class="dashboard__sub-title">
+        <label>{{isEvaluator ? SUBTITLE_EVALUATOR : SUBTITLE}}</label>
+    </div>
+
+    <div class="dashboard__container">
+        <div class="dashboard__container--title">
+            <label>{{PROJECTS}}</label>
+        </div>
+        <div class="dashboard__container--table">
+
+            <app-loader *ngIf="isLoading"></app-loader>
+
+            <div *ngIf="!isLoading && projectList.length === 0" class="no-active-projects">
+                <div><label>{{isEvaluator ? NO_PROJECTS_EVALUATOR : NO_PROJECTS}}</label></div>
+                <div class="icon-not-found"><span class="material-icons">folder_off</span></div>
+            </div>
+
+            <table *ngIf="!isLoading && projectList.length > 0">
+                <thead>
+                <tr>
+                    <td class="table-border-left">{{NAME}}</td>
+                    <td>{{CONVOCATORIA}}</td>
+                    <td>{{STATUS}}</td>
+                    <td>{{DATE}}</td>
+                    <td class="table-border-right">{{ACTIONS}}</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let project of projectList">
+                    <td>
+                        <div class="dashboard-project-name">
+                            <div>
+                                <span class="material-icons">text_snippet</span>
+                            </div>
+                            <div><label>{{project.iniciarProyecto[0].nombreProyecto}}</label></div>
+                        </div>
+                    </td>
+                    <td>{{project.Convocatoria.name}}</td>
+                    <td>
+                        <div class="project-block" *ngIf="project.ProyectoBloqueado">
+                            <label>Bloqueado</label>
+                        </div>
+                        <div class="project-active" *ngIf="!project.ProyectoBloqueado">
+                            <label>Activo</label>
+                        </div>
+                    </td>
+                    <td>{{project.date}}</td>
+                    <td class="view-detail-icon">
+                        <div *ngIf="!project.ProyectoBloqueado" class="dashboard-actions">
+                            <div matTooltipClass="tooltip-white"
+                                 matTooltip="Ver Seguimiento"
+                                 matTooltipPosition="above"
+                                 class="square-icon-default"
+                                 (click)="goToDetail(project._id)"
+                            >
+                                <span class="material-icons">find_in_page</span>
+                            </div>
+                            <div matTooltipClass="tooltip-white"
+                                 matTooltip="Ver PDF"
+                                 matTooltipPosition="above"
+                                 class="square-red-icon"
+                                 (click)="viewPDF(project._id)"
+                            >
+                                <span class="material-icons">picture_as_pdf</span>
+                            </div>
+                        </div>
+                        <ng-container *ngIf="project.ProyectoBloqueado">
+                            <label>Sin acciones</label>
+                        </ng-container>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="dashboard__container dashboard__container--jefe" *ngIf="showSecondTable">
+        <div class="dashboard__container--title">
+            <label *ngIf="!showThirdTable">{{JEFE_TITLE}}</label>
+            <label *ngIf="showThirdTable">{{COMANDANTE_TITLE_INV}}</label>
+        </div>
+        <div class="dashboard__container--table">
+
+            <app-loader *ngIf="investigadoresIsLoading"></app-loader>
+
+            <div *ngIf="!investigadoresIsLoading && projectList.length === 0" class="no-active-projects">
+                <div><label>{{NO_INVESTIGADORES}}</label></div>
+                <div class="icon-not-found"><span class="material-icons">folder_off</span></div>
+            </div>
+
+            <table *ngIf="!investigadoresIsLoading && investigadores.length > 0">
+                <thead>
+                <tr>
+                    <td class="table-border-left">{{NAME}}</td>
+                    <td>{{ID}}</td>
+                    <td>{{HOURS}}</td> 
+                    <td class="table-border-right">{{ACTIONS}}</td>
+                </tr>
+                </thead> 
+                <tbody>
+                <tr *ngFor="let investigador of investigadores">
+                    <td>
+                        <div class="dashboard-project-name">
+                            <div>
+                                <span class="material-icons">account_box</span>
+                            </div>
+                            <div><span>{{investigador.nombre}}</span></div>
+                        </div>
+                    </td>
+                    <td>{{investigador.identificacion}}</td>
+                    <td>{{investigador.dedicacion}}</td>
+                    <td class="view-detail-icon">
+                        <div class="dashboard-actions">
+                            <div matTooltipClass="tooltip-white"
+                                 matTooltip="Ver Investigador"
+                                 matTooltipPosition="above"
+                                 class="square-green-icon"
+                                 (click)="viewDetail(investigador)"
+                            >
+                                <span class="material-icons">find_in_page</span>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!--  -->
+
+    <div class="dashboard__container dashboard__container--jefe" *ngIf="showSecondTable" >
+        <div class="dashboard__container--title">
+
+            <label>{{COMANDANTE_TITLE_NCED}}</label>
+        </div>
+        <div class="dashboard__container--table">
+  
+<!--  -->
+
+ <app-necesidades-table></app-necesidades-table>
+
+            <!--  -->
+
+        </div>
+    </div>
+
+    <!--  -->
+
+    <div class="dashboard__container dashboard__container--jefe" *ngIf="showThirdTable">
+        <div class="dashboard__container--title">
+            <label>{{COMANDANTE_TITLE}}</label>
+        </div>
+
+        <div class="dashboard__container--table">
+            <div class="dashboard__container--table">
+
+                <app-loader *ngIf="investigadoresIsLoading"></app-loader>
+
+                <div *ngIf="!investigadoresIsLoading && projectList.length === 0" class="no-active-projects">
+                    <div><label>{{NO_CENTERS}}</label></div>
+                    <div class="icon-not-found"><span class="material-icons">folder_off</span></div>
+                </div>
+
+                <table *ngIf="!centrosIsLoading && centros.length > 0">
+                    <thead>
+                    <tr>
+                        <td class="table-border-left">{{NAME}}</td>
+                        <td>{{JEFE}}</td>
+                        <td class="table-border-right">{{ACTIONS}}</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let centro of centros">
+                        <td>{{centro.name}}</td>
+                        <td>{{centro.jefe.profile.names}} {{centro.jefe.profile.surname}}</td>
+                        <td class="view-detail-icon">
+                            <div class="dashboard-actions">
+                                <div matTooltipClass="tooltip-white"
+                                     matTooltip="Ver Información del centro"
+                                     matTooltipPosition="above"
+                                     class="square-green-icon"
+                                     (click)="viewCentroDetail(centro)"
+                                >
+                                    <span class="material-icons">find_in_page</span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

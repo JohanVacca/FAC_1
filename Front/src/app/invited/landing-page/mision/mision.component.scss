@@ -1,0 +1,18 @@
+.all{
+    padding: 40px 0px 20px 0px;
+}
+img{
+    width:350px; 
+    height:350px; 
+    border-radius:200px;
+    object-fit: cover;
+  }
+  
+  @media (max-width: 600px) {
+    img{
+      padding: 10px 0px;
+      width:250px; 
+      height:250px; 
+      border-radius:200px;
+    }
+  }

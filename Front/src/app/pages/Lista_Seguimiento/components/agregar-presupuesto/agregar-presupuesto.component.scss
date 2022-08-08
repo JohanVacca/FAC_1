@@ -1,0 +1,36 @@
+.agregar-presupuesto {
+  &__title {
+    padding-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+
+    label {
+      text-transform: capitalize;
+    }
+  }
+
+  &__sub-title {
+    padding-top: 20px;
+  }
+
+  &__calendar {
+    padding-top: 15px;
+
+    .select-pdf {
+      display: block;
+    }
+  }
+
+  &__button {
+    padding-top: 15px;
+    text-align: center;
+
+    button:first-child {
+      padding-right: 20px;
+    }
+  }
+}
+
+.error-format-modal {
+  color: red;
+}

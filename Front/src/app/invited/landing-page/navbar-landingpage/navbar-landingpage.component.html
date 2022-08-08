@@ -1,0 +1,98 @@
+<nav class="navbar navbar-expand-lg fixed-top navbar-custom sticky-dark nav-sticky" (window:scroll)="windowScroll()"
+  style="background-color: rgba(0, 0, 0, 0.49);" id="navbar">
+
+  <div>
+    <a href="/">
+     <!--  <img class="logo" width="150px" height="auto" src="//d2r89ls1uje5rg.cloudfront.net/sites/all/themes/fac_theme/logo.png"> -->
+     <img class="logo" width="200px" height="auto" src="https://cdn979857.fac.mil.co/sites/default/files/marca%20fac%20gris%20fn.png">
+     
+    </a>
+    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+      aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" (click)="toggleMenu()">
+      <mat-icon>notes</mat-icon>
+    </button> -->
+  </div>
+</nav>
+
+<!-- ------------------------ Botones Flotantes izquierda ------------------------------------ -->
+<div class="social btn-group-vertical" id="navbarCollapse">
+  <ul>
+    <div class="espacio">
+      <li> <a class="Icon-1" mat-button (click)="toSomos()"><mat-icon> done_all</mat-icon>SOMOS</a></li>
+    </div>
+    <div class="espacio">
+      <li><a class="Icon-2" mat-button (click)="toModelo()"><mat-icon> attachment</mat-icon>MODELO</a></li>
+    </div>
+    <div class="espacio">
+      <li><a class="Icon-3" mat-button (click)="toFunciones()"><mat-icon> help_outline</mat-icon>FUNCIONES</a></li>
+    </div>
+    <div class="espacio">
+      <li><a class="Icon-4" mat-button (click)="toNormativas()"><mat-icon> stars</mat-icon>CAPACIDADES</a></li>
+    </div>
+    <div class="espacio">
+      <li><a class="Icon-5" mat-button (click)="toPublicaciones()"><mat-icon> import_contacts</mat-icon>PUBLICACIONES</a></li>
+    </div>
+    <div class="espacio">
+      <li><a class="Icon-6" mat-button (click)="toMision()"><mat-icon> place</mat-icon>MISION</a></li>
+    </div>
+    <!-- <button mat-button (click)="toContacto()">CONTACTO</button> -->
+    <div class="espacio">
+      <li><a class="Icon-7" mat-button routerLink="sign-in"><mat-icon> supervisor_account</mat-icon>LOGIN</a></li>
+    </div>
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- MENU IZQUIERDO -->
+<!-- <div class="example-container" [class.example-is-mobile]="mobileQuery.matches" *ngIf="shouldRun">
+  <mat-toolbar color="primary" class="example-toolbar">
+    <button mat-icon-button (click)="snav.toggle()">
+      <mat-icon>notes</mat-icon>
+    </button>
+    <a href="/">
+      <img class="logo" width="200px" height="auto" src="../../assets/images/Logoblanco.png">
+    </a>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="56">
+
+      <mat-nav-list class="lista">
+
+        <a class="listado" mat-list-item routerLink={{nav.route}} *ngFor="let nav of fillerNav"> <mat-icon >{{nav.icon}}</mat-icon>{{nav.name}}</a>
+
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+
+      <app-slider> </app-slider>
+      <app-somos></app-somos>
+      <app-model-investigation></app-model-investigation>
+      <app-functions></app-functions>
+      <img src="../../../assets/images/CAPACIDADES.png" alt="" style="width:100%; height:auto;">
+      <app-galery></app-galery>
+      <app-mision></app-mision>
+      <app-contact-landingpage></app-contact-landingpage>
+      <app-footer-landingpage></app-footer-landingpage>
+
+
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div> -->

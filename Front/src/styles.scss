@@ -1,0 +1,145 @@
+@import '~bootstrap/scss/bootstrap';
+
+.container{
+  padding: 20px;
+}
+
+.titulo{
+  font-family: "Roboto",sans-serif !important;
+  font-size: 24px;
+  /* font-weight: 800; */
+  padding: 15px 0px;
+  line-height: 1.8;
+}
+
+.tituloDicti{
+  font-family: "Roboto",sans-serif !important;
+  font-size: 35px;
+}
+
+.parrafo{
+  font-family: "Roboto",sans-serif !important;
+  font-size: 14px ;
+  color: #000;
+  line-height: 1.8;
+}
+
+.input{
+  font-family: "Roboto",sans-serif !important;
+  font-size: 14px ;
+  color: #000;
+}
+
+.mat-label{
+  font-family: "Roboto",sans-serif !important;
+  font-size: 14px ;
+  color: #000;
+}
+
+.tooltip-red {
+  background: #b71c1c;
+  font-size: 14px;
+}
+
+.tooltip-white {
+  background: #001326;
+  font-size: 14px;
+}
+/* ---------- TABLES -------------- */
+th.mat-header-cell {
+  background: #001326;
+  color: #e2e2e2;
+  font-size: 1rem;
+  border-bottom: solid;
+  text-align: center;
+
+  &.align-center {
+    text-align: center;
+
+    .mat-sort-header-container {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+
+td {
+  .mat-slide-toggle {
+    margin: 0;
+  }
+}
+th{
+  font-size: 20px!important;
+}
+td{
+  font-size: 14px;
+}
+
+ul.table-action-list {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  li {
+    display: inline-block;
+    padding-right: 0px;
+
+    &:last-of-type {
+      padding-right: 0;
+    }
+
+  }
+}
+
+button {
+  background-color: transparent!important;
+  color: #001326 !important;
+  border-radius: 0% !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: solid 0px #001326 !important;
+  border-left: solid 0px #001326 !important;
+  border-right: solid 0px #001326 !important;
+  border-bottom: solid 2px #001326 !important;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all .2s;
+  padding: .5rem;
+
+  &:hover {
+    background-color: #FFF;
+    color: #001326;
+  }
+}    
+
+.iconoadd {
+  background-repeat: no-repeat!important;
+  display: inline-block!important;
+  fill: currentColor!important;
+  height: 44px!important;
+  width: 44px!important;
+  font-size: 44px!important;
+  background-color: #001326!important;
+  color: #FFF!important;
+  border-radius: 50%!important;
+  display: flex!important;
+  justify-content: center!important;
+  align-items: center!important;
+  border: 0!important;
+  text-decoration: none!important;
+  cursor: pointer!important;
+  transition: all 0.2s!important;
+  padding: 0.5rem!important;
+}
+
+.mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
+  background-color: #001326;
+  color: #fff;
+}
+
+svg{
+  color: #001326;
+  background-color: transparent!important;
+}

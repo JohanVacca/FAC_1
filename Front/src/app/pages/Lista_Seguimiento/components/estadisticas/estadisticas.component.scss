@@ -1,0 +1,76 @@
+.estadisticas {
+  padding: 20px;
+
+  .estadisticas-info {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    grid-gap: 10px;
+
+    &__left,
+    &__right {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
+      grid-gap: 10px;
+    }
+
+    &__data {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
+      grid-gap: 5px;
+      height: auto;
+      min-height: 50px;
+      margin-top: 5px;
+
+      &--title {
+        display: grid;
+        place-items: center;
+        text-align: center;
+        color: white;
+        background: #008081;
+        label {
+          font-weight: bold;
+          margin: 0;
+        }
+      }
+
+      &--content {
+        display: grid;
+        place-items: center;
+        text-align: center;
+        background: #DDD9C6;
+        padding: 10px;
+
+        label {
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  &-finaciera {
+    &__title {
+      display: grid;
+      place-items: center;
+      text-align: center;
+      margin-top: 20px;
+      color: white;
+      background: #008081;
+      label {
+        font-weight: bold;
+        margin: 0;
+      }
+    }
+  }
+}
+
+.title-chart {
+  margin-top: 10px;
+  text-align: center;
+  label {
+    font-size: 20px;
+    font-weight: bold;
+  }
+}

@@ -1,0 +1,10 @@
+./Front/node_modules
+./Back/node_modules
+./Front/package-lock.json
+./Back/package-lock.json
+./Front/.DS_Store
+./Back/.DS_Store
+./Front/.idea
+./Back/.idea
+./Front/.vs
+./Back/.vs
