@@ -112,6 +112,11 @@ export class NecesidadesTableComponent implements OnInit, AfterViewInit {
         console.log("Error al agregar");
         console.log(error);
       })
+      this.updateNececidadesTableServiceService.updateTablenecesitadesObs$.subscribe(
+        () => {
+          this.getNecesidades();
+        }
+      );
     }
   }
 
