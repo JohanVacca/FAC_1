@@ -193,9 +193,30 @@ async function updateRubro(req, res, next) {
             data: file.data,
             path: '/img/uploads/' + file.name
         }
+
+          //CREAMOS EL CONSECUTIVO
         const projectObj = await ProyectoDao.findOne({_id: ProjectId})
-        projectObj.AgregarDetallesRubros.map(rubroActual => {
-            if (String(rubroActual._id) === idRubro) {
+        // if((projectObj.AgregarDetallesRubros[0].NombreRubro)=="Adquisición de equipos"){
+        //     const rubrosLength = ((projectObj.AgregarDetallesRubros[0].listaRubros).length)
+        //     const consecutivo = ((projectObj.iniciarProyecto[0].centroDeInvestigacion).substr(0,3)+"_")+(rubrosLength+1) //Crea consecutivo obteniendo primeros 3 digitos y añade número
+        // }
+        //console.log("///////////////////////////////////////////////")
+        //console.log(projectObj.AgregarDetallesRubros[0].NombreRubro)
+
+        //console.log("Consecutivo es de tipo: ", typeof(consecutivo))//string
+        //console.log(factura)
+        //console.log("Rubro: ",rubro)
+        //console.log("Consecutivo: ", consecutivo)//string
+        //console.log("///////////////////////////////////////////////")
+        //const consecutivopt2 = (consecutivo).substring(4,9) //Obtiene los ultimos 4 digitos numéricos desde el index 4
+
+        projectObj.AgregarDetallesRubros.map(rubroActual => { //ACA ESTAMOS TENIENDO EL RUBRO ACTUAL
+            if ((String(rubroActual._id) === idRubro) && ( (rubroActual.NombreRubro) == "Adquisición de equipos" )) {
+                console.log(rubroActual)
+                const rubrosLength = ((rubroActual.listaRubros).length)
+                const consecutivo = ((projectObj.iniciarProyecto[0].centroDeInvestigacion).substr(0,3)+"_")+(rubrosLength+1)
+                rubroActual.listaRubros.push({rubro, factura, consecutivo}) //Consecutivo
+            }else if ((String(rubroActual._id) === idRubro) && ( (rubroActual.NombreRubro) != "Adquisición de equipos" )){
                 rubroActual.listaRubros.push({rubro, factura})
             }
         })

@@ -16,7 +16,7 @@ export class ModalViewDocumentsRubroComponent implements OnInit {
   public AMOUNT = 'Monto';
   public VIEW_PDF = 'Ver PDF';
   public CLOSE_MODAL = 'Cerrar';
-  public REMOVE = 'Elimiar presupuesto';
+  public REMOVE = 'Eliminar presupuesto';
 
   constructor(
       public dialogRef: MatDialogRef<ModalViewDocumentsRubroComponent>,
@@ -61,5 +61,6 @@ export interface DocumentsViewInterface {
       path: string;
     };
     rubro: number;
+    consecutivo: string; //consecutivo
   }[];
 }

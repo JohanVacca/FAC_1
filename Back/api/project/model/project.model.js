@@ -56,6 +56,7 @@ let ProjectSchema = new Schema({
       PresupuestoEjecutado: Number,
       listaRubros: [{
         rubro: Number,
+        consecutivo: String,
         factura: {
           data: Object,
           name: String,
