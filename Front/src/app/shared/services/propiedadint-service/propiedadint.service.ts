@@ -12,8 +12,8 @@ export class PropiedadintService {
       private http: ApiService,
   ) { }
 
-  createPropiedad(proyecto, cronograma, subactividad, detalleProteccion: string) {
-    return this.http.post(`${this.endpoint}`, {detalleProteccion,proyecto, cronograma, subactividad}, null, true);
+  createPropiedad(proyecto, cronograma, subactividad, detalleProteccion: string, actividad: string) {
+    return this.http.post(`${this.endpoint}`, {detalleProteccion,proyecto, cronograma, subactividad, actividad}, null, true);
   }
 
   getAll() {

@@ -65,7 +65,7 @@ export class cronogramaService {
 
 
     update(cronogramaId: string, cronograma) {
-        const {proyectId, ConvocatoriaId, actividades, _id} = cronograma.cronogramas;
+        //const {proyectId, ConvocatoriaId, actividades, _id} = cronograma.cronogramas;
         return this.http.patch(`${this.endpoint}/${cronogramaId}`, cronograma.cronogramas, null, true)
             .pipe(
                 map((res: any) => {

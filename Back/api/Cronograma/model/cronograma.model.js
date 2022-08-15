@@ -19,6 +19,7 @@ let CronogramaSchema = new Schema({
           avance: Number,
           fechaReal: Date,
           Desface: Number,
+          protegido: Boolean,
           //SUBACTIVIDAD PENDIENTE AGREGAR PROTEGIDO
         },
       ],

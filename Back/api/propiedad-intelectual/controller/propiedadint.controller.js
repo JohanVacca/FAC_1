@@ -18,10 +18,11 @@ const ProyectoDao = require('../../project/dao/project.dao');
         validationResult(req).throw();
         let propiedadint = req.body;
         let objObj = JSON.parse(JSON.stringify(propiedadint));
-
+        //console.log(objObj);
         let cronoId = objObj.cronograma;
         let proyectoId = objObj.proyecto;
         objObj.descripcion = objObj.detalleProteccion.descrProteccion;
+        //objObj.actividad = objObj.actividad;
         //console.log("CronoId: ",cronoId);
 
         ProyectoDao.findOne({ _id: proyectoId }).then(proyecto => {
@@ -37,9 +38,11 @@ const ProyectoDao = require('../../project/dao/project.dao');
                     res.status(201).json({ "propiedadint": _obj });
                 });
         })
+
         // console.log("Imprimiendo objObj:");
         // console.log(objObj.descripcion);
-        // console.log("//////////////////////////////");
+        //console.log("//////////////////////////////");
+
     } catch (err) {
         const errorFormatter = ({ msg, param }) => {
             return `The value: ${param} ${msg}`;

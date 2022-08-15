@@ -12,7 +12,7 @@
                 <a
                     (click)="metodocrearPropiedad()"
                     (click)="modal.close()">
-                    <button data-dismiss="modal" [disabled]="formPropiedad.get('descrProteccion').invalid" type="submit" class="btn btn-success btn-lg float-start">Proteger</button>
+                    <button data-dismiss="modal" routerLink="/pages" [disabled]="formPropiedad.get('descrProteccion').invalid" type="submit" class="btn btn-success btn-lg float-start">Proteger</button>
                 </a>
             </div>
         </form>
@@ -132,7 +132,7 @@
                     <ng-container *ngFor="let cronograma of listaCronogramas">
                         <ng-container *ngFor="let cronogramaAux of cronograma.actividades">
                             <ng-container *ngFor="let sub of cronogramaAux.subActividad; let i = index">
-                                <tr *ngIf="(calculateAdvance(sub.fechaInicio.toString(), sub.fechaFinal.toString()) <= 75)">
+                                <tr *ngIf="(calculateAdvance(sub.fechaInicio.toString(), sub.fechaFinal.toString()) <= 75)&&((sub?.protegido)!=true)">
                                     <td *ngIf="i==0"                                                                    
 
                                         [attr.rowspan]="cronogramaAux.subActividad.length">
@@ -201,7 +201,7 @@
                                                 matTooltipClass="tooltip-white"
                                                 matTooltip="Proteger"
                                                 (click)="modal.open(contenido)"
-                                                (click)="openModalEdit(cronograma.proyectId, sub.nombreSub, cronograma._id, sub)"
+                                                (click)="openModalEdit(cronograma.proyectId, sub.nombreSub, cronograma._id, sub, cronogramaAux.nombreAct)"
                                                 matTooltipPosition="above"
                                         >
                                             <mat-icon>beenhere</mat-icon>

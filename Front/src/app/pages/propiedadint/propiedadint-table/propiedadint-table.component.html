@@ -42,6 +42,11 @@
             <td mat-cell *matCellDef="let element"> {{element.proyecto.iniciarProyecto[0].nombreProyecto}} </td>
         </ng-container>
 
+        <ng-container matColumnDef="actividad">
+            <th mat-header-cell  *matHeaderCellDef>Actividad</th>
+            <td mat-cell *matCellDef="let element"> {{element.actividad}} </td>
+        </ng-container>
+
         <ng-container matColumnDef="subactividad">
             <th mat-header-cell  *matHeaderCellDef>Subactividad</th>
             <td mat-cell *matCellDef="let element"> {{element.subactividad.nombreSub}} </td>
@@ -62,7 +67,7 @@
                                 aria-label="Example icon-button with a heart icon"
                                 matTooltipClass="tooltip-white"
                                 matTooltip="Eliminar"
-                                (click)="removePropiedad(row._id)"
+                                (click)="removePropiedad(row._id, row.actividad, row.cronograma, row.subactividad.nombreSub)"
                                 matTooltipPosition="above"
                         >
                             <mat-icon>delete</mat-icon>

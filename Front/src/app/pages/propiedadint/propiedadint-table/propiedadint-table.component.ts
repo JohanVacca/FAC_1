@@ -17,6 +17,7 @@ import { Options } from "selenium-webdriver";
 import { LocalStorageService } from "src/app/@core/services";
 import { PropiedadintService } from "src/app/shared/services/propiedadint-service/propiedadint.service";
 import { UpdateNececidadesTableServiceService } from "src/app/shared/services/general/update-nececidades-table-service.service";
+import { cronogramaService } from "src/app/shared/services/cronograma/cronograma.service";
 
 @Component({
   selector: 'app-propiedadint-table',
@@ -32,13 +33,17 @@ export class PropiedadintTableComponent implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource();
   public displayedColumns2: string[] = [
     "proyecto",
+    "actividad",
     "subactividad",
     "descripcion",
     "acciones",
   ];
+  public cronogramaParaActualizar;
+  public cronograma_id='';
 
   constructor(
     private localStorageService:LocalStorageService,
+    private cronogramaService: cronogramaService,
     private propiedadintService: PropiedadintService,
     private updateNececidadesTableServiceService: UpdateNececidadesTableServiceService,
     private fb: FormBuilder,
@@ -69,19 +74,53 @@ export class PropiedadintTableComponent implements OnInit, AfterViewInit {
       this.Propiedades = [];
       propiedades.map(propiedad => {
         this.Propiedades.push(propiedad);
-        //console.log(this.Propiedades)
+        console.log(this.Propiedades)
         this.dataSource.data = this.Propiedades;
       });
   });
   }
 
-  public removePropiedad(id: string): void {
-    this.propiedadintService
-      .removePropiedad(id)
-      .pipe(
-        finalize(() => this.updateNececidadesTableServiceService.updateTable())
-      )
-      .subscribe((nuevoCentro) => {});
+  public removePropiedad(id: string, actividad: string, cronogramaId, subactividad: string): void {
+    // console.log("actividad",actividad);
+    this.cronograma_id = cronogramaId._id;
+    //console.log("cronogramaId",this.cronograma_id);
+    // console.log("subactividad",subactividad);
+
+    if (cronogramaId !== null) {
+
+      this.cronogramaService.getById(this.cronograma_id).subscribe(response => {
+        this.cronogramaParaActualizar = response.cronograma;
+        this.actualizarEstadoSubactividad(actividad, subactividad, this.cronograma_id);
+        //console.log("Imprimiendo CRONOGRAMA Subscribe", this.cronogramaParaActualizar.cronograma) //Cronograma
+      });
+
+      this.propiedadintService.removePropiedad(id)
+      .pipe(finalize(() => this.updateNececidadesTableServiceService.updateTable())).subscribe((nuevoCentro) => {});
+    }
+  }
+
+  actualizarEstadoSubactividad(actividad: string, subactividad: string, cronogramaId: string){
+
+    //console.log("Cronograma para actualizar:", this.cronogramaParaActualizar);
+
+    var i;
+    var j;
+
+    for (i of this.cronogramaParaActualizar.actividades) {
+      if (i.nombreAct == actividad) {
+        //console.log(i.nombreAct," = ",this.nombreActividad)
+        for (j of i.subActividad) {
+          if (j.nombreSub == subactividad) {
+            //console.log(j.nombreSub," = ",this.SubActmodal)
+            //console.log(j)
+            j.protegido=false;
+          }
+        }
+      }
+    }
+    //console.log("UPDATE: ",this.cronogramaParaActualizar)
+    this.cronogramaService.update(cronogramaId,{cronogramas:this.cronogramaParaActualizar}).subscribe( () => {});
+    //console.log("TYPEOF: ",typeof(this.cronogramaParaActualizar))
   }
 
   //Construir formulario, se deben parecer los campos

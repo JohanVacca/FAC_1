@@ -12,6 +12,7 @@ import { Form,FormControl, Validators } from '@angular/forms'; //Se importa Form
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PropiedadintService } from 'src/app/shared/services/propiedadint-service/propiedadint.service';
 import { UpdateNececidadesTableServiceService } from 'src/app/shared/services/general/update-nececidades-table-service.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -49,6 +50,8 @@ export class CronogramaNewComponent implements OnInit, AfterViewInit {
   public idProyectoCronograma = '';
   public idCronograma = '';
   public subact = '';
+  public cronogramaParaActualizar;
+  public nombreActividad = '';
 
   constructor(
     private cronogramaService: cronogramaService,
@@ -58,6 +61,7 @@ export class CronogramaNewComponent implements OnInit, AfterViewInit {
     private projectService: ProjectService,
     private form: FormBuilder,
     private modal: NgbModal,
+    private router: Router,
     public dialog: MatDialog
   ) {}
 
@@ -71,6 +75,7 @@ export class CronogramaNewComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {}
 
   ngOnInit(): void {
+    //this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.getAll();
     this.builder();
   }
@@ -79,21 +84,51 @@ export class CronogramaNewComponent implements OnInit, AfterViewInit {
     const descripcionProteccion = this.formPropiedad.value;
     //console.log("Descripcion", descripcionProteccion[0]);
     //console.log("Project Id", this.idProyectoCronograma);
+    //console.log("Actividad: ", this.nombreActividad);
     //console.log("Cronograma Id", this.idCronograma);
     //console.log("Subactividad: ", this.subact)
 
     if (this.idCronograma !== null && descripcionProteccion[0]!='undefined') {
-      this.propiedadintService.createPropiedad(this.idProyectoCronograma, this.idCronograma, this.subact, descripcionProteccion)
-      .pipe(finalize(() => this.updateNececidadesTableServiceService.updateTable()))
+
+      this.cronogramaService.getById(this.idCronograma).subscribe(response => {
+        this.cronogramaParaActualizar = response.cronograma;
+        //console.log("Imprimiendo CRONOGRAMA Subscribe", this.cronogramaParaActualizar.cronograma) //Cronograma
+        this.actualizarEstadoSubactividad();
+      });
+
+      this.propiedadintService.createPropiedad(this.idProyectoCronograma, this.idCronograma, this.subact, descripcionProteccion, this.nombreActividad)
+      .pipe(finalize(() => this.updateNececidadesTableServiceService.updateTable()))//refrescar tabla
       .subscribe(data=>{
-        //console.log("Agregado con éxito");
       }, error =>{
         throw(error);
       })
     }
   }
 
-  openModalEdit(idProyectoCronograma, nombresubAct, idCronograma, subact) {
+  actualizarEstadoSubactividad(){
+    var i;
+    var j;
+    //console.log("Imprimiendo CRONOGRAMA", this.cronogramaParaActualizar) //Cronograma
+    //console.log(typeof(this.cronogramaParaActualizar));
+    for (i of this.cronogramaParaActualizar.actividades) {
+      if (i.nombreAct == this.nombreActividad) {
+        //console.log(i.nombreAct," = ",this.nombreActividad)
+        for (j of i.subActividad) {
+          if (j.nombreSub == this.SubActmodal) {
+            //console.log(j.nombreSub," = ",this.SubActmodal)
+            //console.log(j)
+            j.protegido=true;
+          }
+        }
+      }
+    }
+    this.cronogramaService.update(this.idCronograma,{cronogramas:this.cronogramaParaActualizar}).subscribe( () => {});
+    //console.log("TYPEOF: ",typeof(this.cronogramaParaActualizar))
+    //console.log("UPDATE: ",this.cronogramaParaActualizar)
+  }
+
+  openModalEdit(idProyectoCronograma, nombresubAct, idCronograma, subact, actividad) {
+    this.nombreActividad = actividad;
     this.subact = subact;
     this.SubActmodal = nombresubAct;
     this.idProyectoCronograma = idProyectoCronograma;

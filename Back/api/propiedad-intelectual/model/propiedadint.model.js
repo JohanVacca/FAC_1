@@ -10,6 +10,7 @@ let PropiedadintSchema = Schema({
     cronograma: { type: mongoose.Schema.Types.ObjectId, ref: 'Cronograma' }, //Enlace a cronograma-actividades-subActividad.nombreSub
     descripcion: String,
     proyecto: { type: mongoose.Schema.Types.ObjectId, ref: 'Proyecto' },
+    actividad: String,
     subactividad:
         {
           nombreSub: String,
