@@ -1,18 +1,18 @@
+
 <div class="dashboard" [ngClass]="{'dashboard__jefe': showSecondTable}">
     <div class="dashboard__title">
         <label>{{TITLE}}</label>
     </div>
 
-    <div class="dashboard__sub-title">
+    <div class="dashboard__sub-title" *ngIf="!showNecesidadesTable">
         <label>{{isEvaluator ? SUBTITLE_EVALUATOR : SUBTITLE}}</label>
     </div>
 
-    <div class="dashboard__container">
+    <div class="dashboard__container" *ngIf="!showNecesidadesTable">
         <div class="dashboard__container--title">
             <label>{{PROJECTS}}</label>
         </div>
         <div class="dashboard__container--table">
-
             <app-loader *ngIf="isLoading"></app-loader>
 
             <div *ngIf="!isLoading && projectList.length === 0" class="no-active-projects">
@@ -20,7 +20,7 @@
                 <div class="icon-not-found"><span class="material-icons">folder_off</span></div>
             </div>
 
-            <table *ngIf="!isLoading && projectList.length > 0">
+            <table id="tabla" *ngIf="!isLoading && projectList.length > 0">
                 <thead>
                 <tr>
                     <td class="table-border-left">{{NAME}}</td>
@@ -53,18 +53,18 @@
                     <td class="view-detail-icon">
                         <div *ngIf="!project.ProyectoBloqueado" class="dashboard-actions">
                             <div matTooltipClass="tooltip-white"
-                                 matTooltip="Ver Seguimiento"
-                                 matTooltipPosition="above"
-                                 class="square-icon-default"
-                                 (click)="goToDetail(project._id)"
+                                matTooltip="Ver Seguimiento"
+                                matTooltipPosition="above"
+                                class="square-icon-default"
+                                (click)="goToDetail(project._id)"
                             >
                                 <span class="material-icons">find_in_page</span>
                             </div>
                             <div matTooltipClass="tooltip-white"
-                                 matTooltip="Ver PDF"
-                                 matTooltipPosition="above"
-                                 class="square-red-icon"
-                                 (click)="viewPDF(project._id)"
+                                matTooltip="Ver PDF"
+                                matTooltipPosition="above"
+                                class="square-red-icon"
+                                (click)="viewPDF(project._id)"
                             >
                                 <span class="material-icons">picture_as_pdf</span>
                             </div>
@@ -93,7 +93,7 @@
                 <div class="icon-not-found"><span class="material-icons">folder_off</span></div>
             </div>
 
-            <table *ngIf="!investigadoresIsLoading && investigadores.length > 0">
+            <table id="tabla" *ngIf="!investigadoresIsLoading && investigadores.length > 0">
                 <thead>
                 <tr>
                     <td class="table-border-left">{{NAME}}</td>
@@ -117,10 +117,10 @@
                     <td class="view-detail-icon">
                         <div class="dashboard-actions">
                             <div matTooltipClass="tooltip-white"
-                                 matTooltip="Ver Investigador"
-                                 matTooltipPosition="above"
-                                 class="square-green-icon"
-                                 (click)="viewDetail(investigador)"
+                                matTooltip="Ver Investigador"
+                                matTooltipPosition="above"
+                                class="square-green-icon"
+                                (click)="viewDetail(investigador)"
                             >
                                 <span class="material-icons">find_in_page</span>
                             </div>
@@ -136,20 +136,28 @@
 
     <div class="dashboard__container dashboard__container--jefe" *ngIf="showSecondTable" >
         <div class="dashboard__container--title">
-
             <label>{{COMANDANTE_TITLE_NCED}}</label>
         </div>
         <div class="dashboard__container--table">
-  
-<!--  -->
-
- <app-necesidades-table></app-necesidades-table>
-
-            <!--  -->
-
+            <app-necesidades-table></app-necesidades-table>
         </div>
     </div>
-
+    <div class="dashboard__container dashboard__container--jefe" *ngIf="showNecesidadesTable" >
+        <div class="dashboard__container--title">
+            <label>{{COMANDANTE_TITLE_NCED}}</label>
+        </div>
+        <div class="dashboard__container--table">
+            <app-necesidades-table></app-necesidades-table>
+        </div>
+    </div>
+    <div class="dashboard__container dashboard__container--jefe" *ngIf="showPropiedadesTable" >
+        <div class="dashboard__container--title">
+            <label>Listado de Propiedad Intelectual</label>
+        </div>
+        <div class="dashboard__container--table">
+            <app-propiedadint-table></app-propiedadint-table>
+        </div>
+    </div>
     <!--  -->
 
     <div class="dashboard__container dashboard__container--jefe" *ngIf="showThirdTable">
@@ -167,7 +175,7 @@
                     <div class="icon-not-found"><span class="material-icons">folder_off</span></div>
                 </div>
 
-                <table *ngIf="!centrosIsLoading && centros.length > 0">
+                <table id="tabla" *ngIf="!centrosIsLoading && centros.length > 0">
                     <thead>
                     <tr>
                         <td class="table-border-left">{{NAME}}</td>
@@ -182,10 +190,10 @@
                         <td class="view-detail-icon">
                             <div class="dashboard-actions">
                                 <div matTooltipClass="tooltip-white"
-                                     matTooltip="Ver Información del centro"
-                                     matTooltipPosition="above"
-                                     class="square-green-icon"
-                                     (click)="viewCentroDetail(centro)"
+                                    matTooltip="Ver Información del centro"
+                                    matTooltipPosition="above"
+                                    class="square-green-icon"
+                                    (click)="viewCentroDetail(centro)"
                                 >
                                     <span class="material-icons">find_in_page</span>
                                 </div>

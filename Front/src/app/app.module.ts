@@ -12,7 +12,7 @@ import {ProjectService} from './shared/services/Proyect/project.service';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {SharedModule} from './shared/shared.module';
 import { NecesidadesModule } from './pages/necesidades/necesidades.module';
-
+import { PropiedadintModule } from './pages/propiedadint/propiedadint.module';
 @NgModule({
     declarations: [
         AppComponent,
@@ -27,7 +27,8 @@ import { NecesidadesModule } from './pages/necesidades/necesidades.module';
         NgbModule,
         MatTooltipModule,
         SharedModule,
-        NecesidadesModule
+        NecesidadesModule,
+        PropiedadintModule
     ],
     providers: [
         ApiService,

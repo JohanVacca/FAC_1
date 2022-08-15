@@ -31,7 +31,7 @@ NecesidadSchema.static('create', async (necesidad) => {
     let _obj = new NecesidadDao(necesidad);
     let saved = await  _obj.save();
     let __obj = await NecesidadDao.findOne({_id: saved._id})
-    .populate('unidad')
+    .populate('unidad') //se llama igual que en el modelo de necesidad
     .exec();
     return (__obj);
 });

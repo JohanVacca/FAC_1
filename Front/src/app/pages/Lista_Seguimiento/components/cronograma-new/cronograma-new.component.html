@@ -1,6 +1,32 @@
+<!--INICIA ESPACIO PARA DEFINIR MODAL EDITAR NECESIDAD-->
+<ng-template #contenido let-modal>
+    <div class="modal-body">
+        <form class="mt-3" [formGroup]="formPropiedad" (ngSubmit)="metodocrearPropiedad()">
+            <h1 class="text-center"><strong>Proteccion: {{SubActmodal}}</strong></h1>
+            <div class="form-group">
+                <h4>Detalle del producto esperado: {{proyecto_propiedadint[0].descripcion}}</h4>
+                <textarea [class.is-invalid]="formPropiedad.get('descrProteccion').touched && formPropiedad.get('descrProteccion').invalid" formControlName="descrProteccion" placeholder="Descripción acerca de la protección ..." class="form-control form-control-lg"></textarea>
+            </div>
+
+            <div class="mb-3">
+                <a
+                    (click)="metodocrearPropiedad()"
+                    (click)="modal.close()">
+                    <button data-dismiss="modal" [disabled]="formPropiedad.get('descrProteccion').invalid" type="submit" class="btn btn-success btn-lg float-start">Proteger</button>
+                </a>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-success" (click)="modal.close()">Cancelar</button>
+    </div>
+</ng-template>
+<!--MODAL TERMINADO-->
+
 <div class="card-listado-seguimiento">
     <div class="container container-lista-seguimiento">
-        <label class="title-lista-seguimiento">{{TITLE_TABLE}}{{PROJECT_NAME}}</label>
+        <label class="title-lista-seguimiento" *ngIf="(semaforo_cronograma == 1)">{{TITLE_TABLE}}{{PROJECT_NAME}}</label>
+        <label class="title-lista-seguimiento" *ngIf="(semaforo_cronograma == 2)">Protección</label>
         <div class="lista-seguimiento__container">
             <div class="lista-seguimiento__container--table">
                 <table>
@@ -101,6 +127,92 @@
                         </tr>
                     </ng-container>
                     </tbody>
+                    <!-- INICIA ITERACION DE TODOS LOS CRONOGRAMAS PARA SUBDIRECTOR -->
+                    <tbody *ngIf="(semaforo_cronograma == 2)">
+                    <ng-container *ngFor="let cronograma of listaCronogramas">
+                        <ng-container *ngFor="let cronogramaAux of cronograma.actividades">
+                            <ng-container *ngFor="let sub of cronogramaAux.subActividad; let i = index">
+                                <tr *ngIf="(calculateAdvance(sub.fechaInicio.toString(), sub.fechaFinal.toString()) <= 75)">
+                                    <td *ngIf="i==0"                                                                    
+
+                                        [attr.rowspan]="cronogramaAux.subActividad.length">
+                                        <b>{{ cronogramaAux.nombreAct}}</b>
+                                    </td>
+                                    <td>{{ sub.nombreSub }}</td>
+                                    <td>{{ sub.fechaInicio | date: 'shortDate' }}</td>
+                                    <td>{{ sub.fechaFinal | date: 'shortDate' }}</td>
+                                    <td>
+                                        <label *ngIf="sub.fechaReal">{{sub.fechaReal | date: 'shortDate'}}</label>
+                                        <label *ngIf="!sub.fechaReal">{{NO_REAL_DATE}}</label>
+                                    </td>
+                                    <td>
+                                        <ng-container *ngIf="sub.fechaReal">
+                                            <label
+                                                    *ngIf="calculateGap(sub.fechaFinal.toString(), sub.fechaReal.toString()) > 0"
+                                                    class="gap-badge gap-badge-green">
+                                                {{calculateGap(sub.fechaFinal.toString(), sub.fechaReal.toString())}} días a favor
+                                            </label>
+                                            <label
+                                                    *ngIf="calculateGap(sub.fechaFinal.toString(), sub.fechaReal.toString()) < 0"
+                                                    class="gap-badge gap-badge-red">
+                                                {{calculateGap(sub.fechaFinal.toString(), sub.fechaReal.toString())}} días de retraso
+                                            </label>
+                                            <label
+                                                    *ngIf="calculateGap(sub.fechaFinal.toString(), sub.fechaReal.toString()) === 0"
+                                                    class="gap-badge gap-badge-blue">
+                                                Sin desfase
+                                            </label>
+                                        </ng-container>
+                                        <ng-container *ngIf="!sub.fechaReal">
+                                            <label>{{NO_REAL_DATE}}</label>
+                                        </ng-container>
+                                    </td>
+                                    <td>
+                                        <ng-container
+                                                *ngIf="calculateAdvance(sub.fechaInicio.toString(), sub.fechaFinal.toString()) === 0">
+                                            <div class="advance-badge-0">Sin avance</div>
+                                        </ng-container>
+                                        <ng-container
+                                                *ngIf="calculateAdvance(sub.fechaInicio.toString(), sub.fechaFinal.toString()) > 0">
+                                            <div>
+                                                {{calculateAdvance(sub.fechaInicio.toString(), sub.fechaFinal.toString())}}%
+                                            </div>
+                                            <div class="advance-badge">
+                                                <div *ngIf="calculateAdvance(sub.fechaInicio.toString(), sub.fechaFinal.toString()) < 25"
+                                                    [style.width]="calculateAdvance(sub.fechaInicio.toString(), sub.fechaFinal.toString()) + 'px'"
+                                                    class="advance-badge-first-25"></div>
+                                                <div *ngIf="calculateAdvance(sub.fechaInicio.toString(), sub.fechaFinal.toString()) >= 25 && calculateAdvance(sub.fechaInicio.toString(), sub.fechaFinal.toString()) < 50"
+                                                    [style.width]="calculateAdvance(sub.fechaInicio.toString(), sub.fechaFinal.toString()) + 'px'"
+                                                    class="advance-badge-second-25"></div>
+                                                <div *ngIf="calculateAdvance(sub.fechaInicio.toString(), sub.fechaFinal.toString()) >= 50 && calculateAdvance(sub.fechaInicio.toString(), sub.fechaFinal.toString()) < 75"
+                                                    [style.width]="calculateAdvance(sub.fechaInicio.toString(), sub.fechaFinal.toString()) + 'px'"
+                                                    class="advance-badge-third-25"></div>
+                                                <div *ngIf="calculateAdvance(sub.fechaInicio.toString(), sub.fechaFinal.toString()) >= 75"
+                                                    [style.width]="calculateAdvance(sub.fechaInicio.toString(), sub.fechaFinal.toString()) + 'px'"
+                                                    class="advance-badge-fourth-25"></div>
+                                            </div>
+                                        </ng-container>
+
+                                    </td>
+                                    <td [attr.id]="cronograma.proyectId">
+                                        <button
+                                                *ngIf="sesion_rol=='Sub-Director' && this.semaforo_cronograma == 2"
+                                                mat-icon-button
+                                                matTooltipClass="tooltip-white"
+                                                matTooltip="Proteger"
+                                                (click)="modal.open(contenido)"
+                                                (click)="openModalEdit(cronograma.proyectId, sub.nombreSub, cronograma._id, sub)"
+                                                matTooltipPosition="above"
+                                        >
+                                            <mat-icon>beenhere</mat-icon>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </ng-container>
+                        </ng-container>
+                    </ng-container>
+                    </tbody>
+                    <!-- FINALIZA ITERACION DE TODOS LOS CRONOGRAMAS PARA SUBDIRECTOR -->
                 </table>
             </div>
         </div>

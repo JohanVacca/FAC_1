@@ -202,7 +202,7 @@ async function updateRubro(req, res, next) {
         // }
         //console.log("///////////////////////////////////////////////")
         //console.log(projectObj.AgregarDetallesRubros[0].NombreRubro)
-
+        //console.log(projectObj)
         //console.log("Consecutivo es de tipo: ", typeof(consecutivo))//string
         //console.log(factura)
         //console.log("Rubro: ",rubro)
@@ -212,7 +212,7 @@ async function updateRubro(req, res, next) {
 
         projectObj.AgregarDetallesRubros.map(rubroActual => { //ACA ESTAMOS TENIENDO EL RUBRO ACTUAL
             if ((String(rubroActual._id) === idRubro) && ( (rubroActual.NombreRubro) == "Adquisición de equipos" )) {
-                console.log(rubroActual)
+                //console.log(rubroActual)
                 const rubrosLength = ((rubroActual.listaRubros).length)
                 const consecutivo = ((projectObj.iniciarProyecto[0].centroDeInvestigacion).substr(0,3)+"_")+(rubrosLength+1)
                 rubroActual.listaRubros.push({rubro, factura, consecutivo}) //Consecutivo

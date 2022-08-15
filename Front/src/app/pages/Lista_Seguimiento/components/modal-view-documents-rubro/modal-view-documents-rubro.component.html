@@ -1,12 +1,13 @@
 <div class="modal-rubros-documentos-dashboard">
     <div class="modal-rubros-documentos-dashboard__title">
         <label>{{TITLE}}</label>
-        <label>{{NAME}}{{data.name}}</label>
+        <label>Rubro: {{data.name}}</label>
     </div>
     <table class="modal-rubros-documentos-dashboard__table">
         <thead>
         <tr>
-            <td>Consecutivo</td>
+            <td *ngIf="data.name == 'Adquisición de equipos'">Consecutivo</td>
+            <td *ngIf="data.name != 'Adquisición de equipos'"></td>
             <td>{{AMOUNT}}</td>
             <td>{{VIEW_PDF}}</td>
             <td>{{REMOVE}}</td>

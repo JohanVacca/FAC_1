@@ -1,6 +1,6 @@
 import {Component, ChangeDetectorRef, OnDestroy} from '@angular/core';
 import {take, tap} from 'rxjs/operators';
-import {MENU_ADMIN_ITEMS, MENU_EVALUATOR_ITEMS, MENU_INVESTIGADOR_ITEMS, MENU_RESPONSABLE_ITEMS} from '../pages/pages-menu';
+import {MENU_ADMIN_ITEMS, MENU_EVALUATOR_ITEMS, MENU_INVESTIGADOR_ITEMS, MENU_RESPONSABLE_ITEMS, MENU_SUBDIR_ITEMS} from '../pages/pages-menu';
 import {Roles} from '../@core/enums/roles.enum';
 import {AuthService} from '../@core/services/auth/auth.service';
 import {MediaMatcher} from '@angular/cdk/layout';
@@ -47,13 +47,16 @@ export class PagesComponent implements OnDestroy {
                 this.fillerNav = MENU_INVESTIGADOR_ITEMS;
                 break;
             case Roles.Responsable:
-                this.fillerNav = MENU_RESPONSABLE_ITEMS;
-                break;                
+                this.fillerNav = MENU_RESPONSABLE_ITEMS; //Ejemplo ruta
+                break;
             case Roles.Evaluator:
                 this.fillerNav = MENU_EVALUATOR_ITEMS;
                 break;
+            case Roles.SubDirector:
+                this.fillerNav = MENU_SUBDIR_ITEMS; //SUBDIRECTOR PROPIEDAD INT
+                break;
             default:
-                this.fillerNav = MENU_INVESTIGADOR_ITEMS;
+                this.fillerNav = MENU_INVESTIGADOR_ITEMS; //Por default asigna estos elementos
         }
     }
 

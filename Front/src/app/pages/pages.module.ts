@@ -46,6 +46,7 @@ import { ModalViewDocumentsRubroComponent } from './Lista_Seguimiento/components
 import { EstadisticasComponent } from './Lista_Seguimiento/components/estadisticas/estadisticas.component';
 import {ChartsModule} from 'ng2-charts';
 import { NecesidadesModule } from './necesidades/necesidades.module';
+import { PropiedadintModule } from './propiedadint/propiedadint.module';
 
 const PAGES_COMPONENTS = [
     PagesComponent,
@@ -96,7 +97,7 @@ const PAGES_COMPONENTS = [
         ListaSeguimientoComponent,
         ProyectosComponent,
         SeguimientoComponent,
-        CronogramaNewComponent,
+        CronogramaNewComponent,//Declarando tabla de cronograma
         SeguimientoRubroComponent,
         ReportesComponent,
         ShowCalendarComponent,
@@ -106,7 +107,7 @@ const PAGES_COMPONENTS = [
         ModalViewDocumentsRubroComponent,
         EstadisticasComponent,
 
-    ], exports: [CronogramaNewComponent]
+    ], exports:[CronogramaNewComponent] //Exporta cronograma
 })
 export class PagesModule {
 }

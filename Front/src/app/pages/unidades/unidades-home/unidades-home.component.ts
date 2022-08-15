@@ -38,6 +38,8 @@ export class UnidadesHomeComponent implements OnInit {
     this.builder();
     this.getUnidades();
     this.getUsers();
+    console.log(this.Responsables)
+    console.log(this.Comandantes)
   }
 
 
@@ -49,7 +51,16 @@ export class UnidadesHomeComponent implements OnInit {
   }
 
   public addUnidad(): void {
-    if (this.name && this.ubicacion && this.rResponsable && this.comandante) {
+
+    let condicion = true;
+    this.unidades.forEach(unidad => {
+      if(this.name === unidad.name){
+        condicion = false;
+        console.log('El nombre de la unidad ya existe')
+      }
+    });
+
+    if (this.name && this.ubicacion && this.rResponsable && this.comandante && condicion) {
       this.unidadService.createUnidad(this.name, this.ubicacion, this.rResponsable._id, this.comandante._id)
         .pipe(finalize(() => this.getUnidades()))
         .subscribe(nuevoCentro => {
@@ -84,10 +95,13 @@ export class UnidadesHomeComponent implements OnInit {
       .subscribe(users => {
         this.Responsables = [];
         users.map(user => {
+          //console.log(user.role.name)
           if (user.role.name === 'Responsable') {
+            //console.log('se agrega responsable')
             this.Responsables.push(user);
           }
           if (user.role.name === 'Comandante') {
+            //console.log('se agrega comandante')
             this.Comandantes.push(user);
           }
         });

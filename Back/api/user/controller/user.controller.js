@@ -27,7 +27,7 @@ function getAll(req, res, next) {
 
 function getAllFilterUnidad(req, res, next) {
     let query = req.query;
-    console.log("ControladorUser")
+    //console.log("ControladorUser")
     UserDao['getAll'](query)
         .then(async users => {
             let unidades = await UnidadDao.find().exec();

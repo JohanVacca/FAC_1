@@ -41,7 +41,7 @@ interface lineasinv {
 }
 
 @Component({
-  selector: "app-necesidades-table",
+  selector: "app-necesidades-table",//Exportar componente
   templateUrl: "./necesidades-table.component.html",
   styleUrls: ["./necesidades-table.component.scss"],
 })
@@ -103,14 +103,14 @@ export class NecesidadesTableComponent implements OnInit, AfterViewInit {
 
   metodoActualizarNecesidad(){
     const datos = this.formNecesidad.value;
-    console.log(this.formNecesidad.value);
+    //console.log(this.formNecesidad.value);
 
     if (this.id !== null) {
       this.necesidadService.patchNecesidad(this.id, datos).subscribe(data=>{
-        console.log("Editado con éxito");
+        //console.log("Editado con éxito");
       }, error =>{
-        console.log("Error al agregar");
-        console.log(error);
+        //console.log("Error al agregar");
+        //console.log(error);
       })
       this.updateNececidadesTableServiceService.updateTablenecesitadesObs$.subscribe(
         () => {

@@ -11,12 +11,18 @@ $border-orange-button: #FFB46C;
 $background-red-button: #FCEAEA;
 $border-red-button: #ED6667;
 
+#tabla {
+  width: 100px;
+  margin: auto;
+}
+
 .dashboard {
   background-color: $background-color;
   height: 100%;
   padding: 20px;
   text-align: center;
   width: 100%;
+
 
   &__jefe {
     height: auto;
@@ -59,7 +65,7 @@ $border-red-button: #ED6667;
       display: contents;
 
       table {
-        display: block;
+        //display: block;
         overflow-x: auto;
         white-space: nowrap;
         border-collapse: collapse;

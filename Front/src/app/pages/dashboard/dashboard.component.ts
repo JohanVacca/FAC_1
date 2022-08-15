@@ -50,8 +50,11 @@ export class DashboardComponent implements OnInit {
 
     public showSecondTable = false;
     public showThirdTable = false;
+    public showPropiedadesTable = false;
+    public showNecesidadesTable = false;
     public investigadoresIsLoading = false;
     public ROLE_SUBDIRECTOR = 'Sub-Director';
+    public ROLE_RESPONSABLE = "Responsable";
     public ROLE_JEFE = 'Jefe De Centro';
     public ROLE_COMANDANTE = 'Comandante';
     public JEFE_TITLE = 'Investigadores En Centro';
@@ -78,7 +81,7 @@ export class DashboardComponent implements OnInit {
         private usersService: UsersService,
         private invCenterService: InvCenterService,
         private dialog: MatDialog,
-        private necesidadService: NecesidadService, 
+        private necesidadService: NecesidadService,
         private fb: FormBuilder,
         private investigationLinesService: InvestigationLinesService,
         private investigationProgramService: InvestigationProgramService,
@@ -89,8 +92,9 @@ export class DashboardComponent implements OnInit {
         this.role = localStorage.getItem('Role');
         this.user = JSON.parse(localStorage.getItem('user'));
         this.validateJefeRole();
+        this.validateResponsable();
         this.validateComandanteRole();
-
+        this.validateSubdir();
         this.initializeData();
     }
 
@@ -129,6 +133,13 @@ export class DashboardComponent implements OnInit {
 
     private validateJefeRole(): void {
         this.showSecondTable = [this.ROLE_COMANDANTE, this.ROLE_JEFE, this.ROLE_SUBDIRECTOR].includes(this.role);
+    }
+
+    private validateResponsable(): void {
+        this.showNecesidadesTable = [this.ROLE_RESPONSABLE].includes(this.role);
+    }
+    private validateSubdir(): void {
+        this.showPropiedadesTable = [this.ROLE_SUBDIRECTOR].includes(this.role);
     }
 
     private validateComandanteRole(): void {

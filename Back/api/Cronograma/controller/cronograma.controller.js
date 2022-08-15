@@ -1,6 +1,7 @@
 "use strict";
 
 var CronogramaDao = require("../dao/cronograma.dao");
+const daoProject = require("../../project/dao/project.dao");
 
 const { check, validationResult } = require("express-validator/check");
 
@@ -14,6 +15,24 @@ function getAll(req, res, next) {
   let query = req.query;
   CronogramaDao["getAll"](query)
     .then(async (cronogramas) => {
+      // let aux = [];
+      // cronogramas.forEach(async (crp) => {
+      //   const proyecto = await daoProject
+      //     .findOne({
+      //       _id: crp.proyectId,
+      //     })
+      //     .exec();
+      //   aux = [
+      //     ...aux,
+      //     {
+      //       proyectName: proyecto?.iniciarProyecto[0]?.nombreProyecto ?? null,
+      //       ...crp._doc,
+      //     },
+      //   ];
+      //   console.log(aux)
+      // });
+
+      // console.log(aux);
       res.status(200).json({ cronogramas: cronogramas });
     })
     .catch((err) => {

@@ -84,10 +84,15 @@ const routes: Routes = [
                 canActivate: [AuthGuardService]
             },
             {
-                path: 'necesidades',
+                path: 'necesidades',//Ejemplo ruta
                 loadChildren: () => import('./necesidades/necesidades.module').then(m => m.NecesidadesModule),
                 canActivate: [AuthGuardService]
-            },            
+            },
+            {
+                path: 'propiedad-intelectual',//propiedad-intelectual route
+                loadChildren: () => import('./propiedadint/propiedadint.module').then(m => m.PropiedadintModule),
+                canActivate: [AuthGuardService]
+            },
             {
                 path: '**',
                 redirectTo: '',

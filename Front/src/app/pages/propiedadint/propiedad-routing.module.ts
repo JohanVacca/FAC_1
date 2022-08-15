@@ -1,16 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {UnidadesHomeComponent} from './unidades-home/unidades-home.component';
+import { PropiedadintHomeComponent } from './propiedadint-home/propiedadint-home.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: UnidadesHomeComponent
-  }
+  {path: '', component: PropiedadintHomeComponent}
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class UnidadesRoutingModule { }
+export class PropiedadIntRoutingModule { }

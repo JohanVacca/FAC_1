@@ -50,6 +50,17 @@ function create(req, res, next) {
         let userId = req.user.sub.user._id;
         UnidadDao.findOne({ rResponsable: userId }).then(unidad => {
             objObj.unidad = unidad;
+            objObj.consecutivo = objObj.unidad.name;
+
+            //console.log(necesidad)
+            // let necesidadAux = this.getAll(unidad._id);
+            // console.log(necesidadAux)
+
+            //Logica para consecutivo
+
+            //console.log(objObj.unidad.name);
+            //console.log(objObj.consecutivo);
+
             NecesidadDao['create'](objObj)
                 .then(async _obj => {
                     res.status(201).json({ "necesidad": _obj });
@@ -163,6 +174,9 @@ function actualizarNecesidad(req, res, next){
         }
         if(!necesidad.porque){
             delete necesidad.porque
+        }
+        if(!necesidad.consecutivo){
+            delete necesidad.consecutivo
         }
 
         let necesidadObj = JSON.parse(JSON.stringify(necesidad));

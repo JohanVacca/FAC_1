@@ -6,6 +6,7 @@ let Schema = mongoose.Schema;
 
 let NecesidadSchema = Schema({
     name: String,
+    consecutivo: String,
     programa: '',
     subprograma: '',
     descripcion: String,

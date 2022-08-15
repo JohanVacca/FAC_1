@@ -73,7 +73,7 @@ let ProjectSchema = new Schema({
       partOtros: Number,
       rubroRelacionado: String,
       tipoProducto: String,
-      subActividad: String,
+      subActividad: String, //SUBACTIVIDAD
     },
   ],
   resultadosPrevios: String,

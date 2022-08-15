@@ -115,21 +115,26 @@ export class CreateProyectComponent implements OnInit {
 
             if (!primerPaso) {
                 this.messageError = 'Falta información en el primer paso';
+                console.log('Falta información en el 1 paso');
                 this.hasError = true;
             }
             if (!segundoPaso) {
                 this.messageError = 'Falta información en el segundo paso';
+                console.log('Falta información en el 2 paso');
                 this.hasError = true;
             }
             if (!tercerPaso) {
                 this.messageError = 'Falta información en el cuarto paso';
+                console.log('Falta información en el 3 paso');
                 this.hasError = true;
             }
             if (!cuartoPaso) {
                 this.messageError = 'Falta información en el tercer paso';
+                console.log('Falta información en el 4 paso');
                 this.hasError = true;
             }
             if (!quintoPaso) {
+                console.log('Falta información en el 5 paso');
             }
             if (!this.informaciones) {
             }

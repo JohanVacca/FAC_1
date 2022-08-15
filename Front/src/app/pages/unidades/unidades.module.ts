@@ -18,7 +18,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
   declarations: [UnidadesHomeComponent],
     imports: [
         CommonModule,
-        UnidadesRoutingModule,
+        UnidadesRoutingModule,//import
         MatFormFieldModule,
         MatTableModule,
         MatCardModule,
@@ -33,4 +33,3 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     ]
 })
 export class UnidadesModule { }
- 

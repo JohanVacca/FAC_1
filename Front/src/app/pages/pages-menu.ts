@@ -23,6 +23,11 @@ export const MENU_EVALUATOR_ITEMS = [
 ];
 /* A constant that is being exported. */
 export const MENU_RESPONSABLE_ITEMS = [
-    {name: 'Necesidades', route: 'necesidades', icon: 'help_outline'}
+    {name: 'Inicio', route: '/pages', icon: 'home'},
+    {name: 'Necesidades', route: 'necesidades', icon: 'help_outline'} //Ejemplo ruta
 ];
 
+export const MENU_SUBDIR_ITEMS = [
+    {name: 'Inicio', route: '/pages', icon: 'home'},
+    {name: 'Propiedad', route: 'propiedad-intelectual', icon: 'text_snippet'} //SUBDIRECTOR PROPIEDAD INT
+];
