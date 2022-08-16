@@ -1,19 +1,18 @@
-import {Component, OnInit, AfterViewInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {cronogramaService} from 'src/app/shared/services/cronograma/cronograma.service';
-import {FormGroup, FormBuilder} from '@angular/forms';
-import {SucessDialogComponent} from '../../../admin/Dialog/sucess-dialog/sucess-dialog.component';
-import {MatDialog} from '@angular/material/dialog';
-import {finalize} from 'rxjs/operators';
-import {ShowCalendarComponent} from '../show-calendar/show-calendar.component';
-import {ProjectService} from '../../../../shared/services/Proyect/project.service';
-import {Actividad} from '../../../../shared/services/saveStateService/StateInterface';
-import { Form,FormControl, Validators } from '@angular/forms'; //Se importa Formbuilder y Validators para crear formularios y validar campos
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { PropiedadintService } from 'src/app/shared/services/propiedadint-service/propiedadint.service';
-import { UpdateNececidadesTableServiceService } from 'src/app/shared/services/general/update-nececidades-table-service.service';
-import { Router } from '@angular/router';
-
+import { Component, OnInit, AfterViewInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
+import { cronogramaService } from "src/app/shared/services/cronograma/cronograma.service";
+import { FormGroup, FormBuilder } from "@angular/forms";
+import { SucessDialogComponent } from "../../../admin/Dialog/sucess-dialog/sucess-dialog.component";
+import { MatDialog } from "@angular/material/dialog";
+import { finalize } from "rxjs/operators";
+import { ShowCalendarComponent } from "../show-calendar/show-calendar.component";
+import { ProjectService } from "../../../../shared/services/Proyect/project.service";
+import { Actividad } from "../../../../shared/services/saveStateService/StateInterface";
+import { Form, FormControl, Validators } from "@angular/forms"; //Se importa Formbuilder y Validators para crear formularios y validar campos
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { PropiedadintService } from "src/app/shared/services/propiedadint-service/propiedadint.service";
+import { UpdateNececidadesTableServiceService } from "src/app/shared/services/general/update-nececidades-table-service.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-cronograma-new",
@@ -21,7 +20,7 @@ import { Router } from '@angular/router';
   styleUrls: ["./cronograma-new.component.scss"],
 })
 export class CronogramaNewComponent implements OnInit, AfterViewInit {
-  public listaCronogramas = [];
+  public listaCronogramas : any = [];
   public cronogramaCompleto;
   public cronograma: Actividad[];
   public cronogramaId: string;
@@ -47,11 +46,11 @@ export class CronogramaNewComponent implements OnInit, AfterViewInit {
   public proyecto_propiedadint = [];
   public SubActmodal = "";
   public formPropiedad!: FormGroup;
-  public idProyectoCronograma = '';
-  public idCronograma = '';
-  public subact = '';
+  public idProyectoCronograma = "";
+  public idCronograma = "";
+  public subact = "";
   public cronogramaParaActualizar;
-  public nombreActividad = '';
+  public nombreActividad = "";
 
   constructor(
     private cronogramaService: cronogramaService,
@@ -80,7 +79,7 @@ export class CronogramaNewComponent implements OnInit, AfterViewInit {
     this.builder();
   }
 
-  metodocrearPropiedad(){
+  metodocrearPropiedad() {
     const descripcionProteccion = this.formPropiedad.value;
     //console.log("Descripcion", descripcionProteccion[0]);
     //console.log("Project Id", this.idProyectoCronograma);
@@ -88,24 +87,38 @@ export class CronogramaNewComponent implements OnInit, AfterViewInit {
     //console.log("Cronograma Id", this.idCronograma);
     //console.log("Subactividad: ", this.subact)
 
-    if (this.idCronograma !== null && descripcionProteccion[0]!='undefined') {
+    if (this.idCronograma !== null && descripcionProteccion[0] != "undefined") {
+      this.cronogramaService
+        .getById(this.idCronograma)
+        .subscribe((response) => {
+          this.cronogramaParaActualizar = response.cronograma;
+          //console.log("Imprimiendo CRONOGRAMA Subscribe", this.cronogramaParaActualizar.cronograma) //Cronograma
+          this.actualizarEstadoSubactividad();
+        });
 
-      this.cronogramaService.getById(this.idCronograma).subscribe(response => {
-        this.cronogramaParaActualizar = response.cronograma;
-        //console.log("Imprimiendo CRONOGRAMA Subscribe", this.cronogramaParaActualizar.cronograma) //Cronograma
-        this.actualizarEstadoSubactividad();
-      });
-
-      this.propiedadintService.createPropiedad(this.idProyectoCronograma, this.idCronograma, this.subact, descripcionProteccion, this.nombreActividad)
-      .pipe(finalize(() => this.updateNececidadesTableServiceService.updateTable()))//refrescar tabla
-      .subscribe(data=>{
-      }, error =>{
-        throw(error);
-      })
+      this.propiedadintService
+        .createPropiedad(
+          this.idProyectoCronograma,
+          this.idCronograma,
+          this.subact,
+          descripcionProteccion,
+          this.nombreActividad
+        )
+        .pipe(
+          finalize(() =>
+            this.updateNececidadesTableServiceService.updateTable()
+          )
+        ) //refrescar tabla
+        .subscribe(
+          (data) => {},
+          (error) => {
+            throw error;
+          }
+        );
     }
   }
 
-  actualizarEstadoSubactividad(){
+  actualizarEstadoSubactividad() {
     var i;
     var j;
     //console.log("Imprimiendo CRONOGRAMA", this.cronogramaParaActualizar) //Cronograma
@@ -117,17 +130,25 @@ export class CronogramaNewComponent implements OnInit, AfterViewInit {
           if (j.nombreSub == this.SubActmodal) {
             //console.log(j.nombreSub," = ",this.SubActmodal)
             //console.log(j)
-            j.protegido=true;
+            j.protegido = true;
           }
         }
       }
     }
-    this.cronogramaService.update(this.idCronograma,{cronogramas:this.cronogramaParaActualizar}).subscribe( () => {});
+    this.cronogramaService
+      .update(this.idCronograma, { cronogramas: this.cronogramaParaActualizar })
+      .subscribe(() => {});
     //console.log("TYPEOF: ",typeof(this.cronogramaParaActualizar))
     //console.log("UPDATE: ",this.cronogramaParaActualizar)
   }
 
-  openModalEdit(idProyectoCronograma, nombresubAct, idCronograma, subact, actividad) {
+  openModalEdit(
+    idProyectoCronograma,
+    nombresubAct,
+    idCronograma,
+    subact,
+    actividad
+  ) {
     this.nombreActividad = actividad;
     this.subact = subact;
     this.SubActmodal = nombresubAct;
@@ -172,17 +193,45 @@ export class CronogramaNewComponent implements OnInit, AfterViewInit {
           this.semaforo_cronograma = 2;
           this.PROJECT_NAME = "a";
 
-          this.listaCronogramas.forEach((element) => {
-            //console.log("Entra: ",(element.actividades[0].nombreAct));
-            this.getProject(element.proyectId);
-            //console.log(this.LISTA_NOMBRESPR);//Imprime todo lleno ya
-          });
+          const filterObject = (obj, filter, filterValue) => Object.keys(obj).reduce((acc, val) => (obj[val][filter] === filterValue ? acc : {
+            ...acc,
+            [val]: obj[val]
+          }), {});
+
+          //console.log("Antes del For: ", this.listaCronogramas)
+
+          for (let q of this.listaCronogramas) {
+            for (let i of q.actividades) {
+
+              //i = Object.fromEntries( Object.entries(i.subActividad.protegido).filter(([key, value]) => value === false) )
+
+              const aux = filterObject(i.subActividad, "protegido", true);
+
+              i.subActividad = Object.values(aux);
+
+              //console.log("metodo metodo: ", Object.values(aux));
+              //console.log("normal normal: ", i.subActividad);
+              // for (let j of i.subActividad) {
+              //   if (j.protegido == true) {
+              //     console.log("j j j: ",j);
+              //   }
+              //   j = Object.filter(j, subact => subact.protegido == false);
+              // }
+
+            }
+          }
+
+          //console.log("Typeof: ", typeof(this.listaCronogramas))
+
+          //console.log("Entra: ",(element.actividades[0].nombreAct));
+          //this.getProject(element.proyectId);
+          //console.log(this.LISTA_NOMBRESPR);//Imprime todo lleno ya
 
           // for (let i = 0; i < this.listaCronogramas.length; i++) {
           //     this.listaCronogramas[i].push(this.LISTA_NOMBRESPR[i]);
           // }
 
-          //console.log(this.listaCronogramas);
+          //console.log("Cronogramas: ",this.listaCronogramas);
           //console.log(this.LISTA_NOMBRESPR);
           //console.log("semaforo: ",this.semaforo_cronograma)
           //Crear una variable [] que guarde los nombres de los proyectos y aca debemos llamar al metodo getProject y editarlo para que guarde

@@ -132,9 +132,8 @@
                     <ng-container *ngFor="let cronograma of listaCronogramas">
                         <ng-container *ngFor="let cronogramaAux of cronograma.actividades">
                             <ng-container *ngFor="let sub of cronogramaAux.subActividad; let i = index">
-                                <tr *ngIf="(calculateAdvance(sub.fechaInicio.toString(), sub.fechaFinal.toString()) <= 75)&&((sub?.protegido)!=true)">
-                                    <td *ngIf="i==0"                                                                    
-
+                                <tr *ngIf="(calculateAdvance(sub.fechaInicio.toString(), sub.fechaFinal.toString()) <= 75)">
+                                    <td *ngIf="i==0"
                                         [attr.rowspan]="cronogramaAux.subActividad.length">
                                         <b>{{ cronogramaAux.nombreAct}}</b>
                                     </td>
@@ -192,7 +191,6 @@
                                                     class="advance-badge-fourth-25"></div>
                                             </div>
                                         </ng-container>
-
                                     </td>
                                     <td [attr.id]="cronograma.proyectId">
                                         <button
