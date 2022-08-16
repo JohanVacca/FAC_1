@@ -29,5 +29,5 @@ export const MENU_RESPONSABLE_ITEMS = [
 
 export const MENU_SUBDIR_ITEMS = [
     {name: 'Inicio', route: '/pages', icon: 'home'},
-    {name: 'Propiedad', route: 'propiedad-intelectual', icon: 'text_snippet'} //SUBDIRECTOR PROPIEDAD INT
-];
+    {name: 'Propiedad intelectual', route: 'propiedad-intelectual', icon: 'text_snippet'} //SUBDIRECTOR PROPIEDAD INT
+];      //PODRIAMOS INDICAR CON UN ICONO EXTRA EN PROPIEDADES LA ALERTA... IMPORTAR EN EL TS LOS CRONOGRAMAS PARA CONTARLOS DE 0 A 75 Y SIN PROTEGER COMO YA LO HEMOS HECHO

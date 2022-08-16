@@ -13,13 +13,26 @@
   </mat-toolbar>
 
   <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+
     <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
       fixedTopGap="56">
 
       <mat-nav-list>
         <app-nav-perfil></app-nav-perfil>
-        <a class="LetraBlanca" mat-list-item [routerLink]="nav.route" *ngFor="let nav of fillerNav">
+        <a class="LetraBlanca" mat-list-item [routerLink]="nav.route" *ngFor="let nav of fillerNav"> <!--Acá van las rutas/submenus-->
+
           <mat-icon>{{nav.icon}}</mat-icon> {{nav.name}}
+
+          <button
+          *ngIf="nav.icon2=='announcement'"
+          mat-icon-button
+          matTooltip="¡¡Pendientes por proteger!!"
+          aria-label="Example icon-button with a heart icon"
+          routerLink="/pages/propiedad-intelectual"
+          >
+          <mat-icon [ngStyle]="{'color':'red'}" >{{nav.icon2}}</mat-icon>
+          </button>
+
         </a>
       </mat-nav-list>
 

@@ -207,7 +207,7 @@ export class CronogramaNewComponent implements OnInit, AfterViewInit {
 
               const aux = filterObject(i.subActividad, "protegido", true);
 
-              i.subActividad = Object.values(aux);
+              i.subActividad = Object.values(aux); //Esto debido a la forma en que termina el objeto en 'aux'
 
               //console.log("metodo metodo: ", Object.values(aux));
               //console.log("normal normal: ", i.subActividad);
